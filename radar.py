@@ -17,6 +17,7 @@ OUTPUT = os.path.join(D, "output")
 FILL_LOCK = os.path.join(D, ".fill.lock")
 CLOSED_AFTER_DAYS = 3
 PORT = 8765
+MIN_HOURS_BETWEEN_SCANS = 6
 
 
 NODE = os.path.expanduser("~/.local/node/bin/node")
@@ -78,7 +79,19 @@ def notify(rows):
     subprocess.run(["osascript", "-e", script], capture_output=True, timeout=20)
 
 
+def hours_until_next_scan():
+    row = db().execute("SELECT max(at) AS at FROM scans").fetchone()
+    if not row["at"]:
+        return 0
+    age = (dt.datetime.now(dt.timezone.utc) - dt.datetime.fromisoformat(row["at"])).total_seconds() / 3600
+    return max(0, MIN_HOURS_BETWEEN_SCANS - age)
+
+
 def scan(send_notification=True):
+    wait = hours_until_next_scan()
+    if wait and "--force" not in sys.argv:
+        print(f"last scan was recent; next one allowed in {wait:.1f} hours")
+        return
     lock = open(LOCK, "w")
     try:
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
@@ -273,6 +286,9 @@ class Handler(BaseHTTPRequestHandler):
         if origin and not re.fullmatch(r"http://(localhost|127\.0\.0\.1):\d+", origin):
             return self.reply({"error": "forbidden"}, code=403)
         if self.path == "/api/scan":
+            wait = hours_until_next_scan()
+            if wait:
+                return self.reply({"started": False, "error": f"Scans run at most every {MIN_HOURS_BETWEEN_SCANS} hours, to stay polite to job sites. Next one in {wait:.1f} hours."})
             subprocess.Popen([sys.executable, os.path.abspath(__file__), "scan", "--no-notify"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
             return self.reply({"started": True})
         if self.path == "/api/state":

@@ -2,7 +2,7 @@
 data/
 output/
 radar.db*
-.jobright.json
+.jobright.json*
 .scan.lock
 .fill.lock
 *.log

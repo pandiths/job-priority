@@ -87,5 +87,5 @@ async function load(){const [J,S,T,D]=await Promise.all(["jobs","status","tracke
 const t=$("#today");t.replaceChildren("Today: ",el("b",null,P.waiting)," filled forms to submit · ",el("b",null,jobs.filter(j=>inList(j,"now")).length)," roles to apply to · ",el("b",null,P.applied)," applied so far");
 const al=[];if(s)for(const [k,v] of Object.entries(s.status)){if(k[0]=="_")continue;if(!v.ok)al.push(`${k} didn't scan: ${v.error||"all boards failed"}`)}$("#alerts").replaceChildren(...al.map(x=>el("div","alert",x)));if(!$("#dlg").open&&!(["prep","learn"].includes(view)&&document.activeElement?.type=="checkbox"))render();if(S.scanning)setTimeout(load,5000)}
 const setView=v=>{view=v;store.set("view",v);render()};$("#vBoard").onclick=()=>setView("board");$("#vInbox").onclick=()=>setView("inbox");$("#vPrep").onclick=()=>setView("prep");$("#vLearn").onclick=()=>setView("learn");$("#src").onchange=e=>{source=e.target.value;sel=null;render()};
-$("#scan").onclick=async()=>{await post("/api/scan",{});$("#scan").disabled=true;$("#scan").textContent="Scanning…";setTimeout(load,3000)};load();
+$("#scan").onclick=async()=>{const r=await post("/api/scan",{});if(r.error){$("#alerts").replaceChildren(el("div","alert",r.error));return}$("#scan").disabled=true;$("#scan").textContent="Scanning…";setTimeout(load,3000)};load();
 </script></body></html>

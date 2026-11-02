@@ -1,9 +1,12 @@
 """Job sources. Each returns normalised dicts: company,title,location,url,posted,text,salary,source + optional Jobright signals."""
-import html, json, os, re, subprocess, urllib.request
+import html, json, os, re, subprocess, threading, time, urllib.error, urllib.request
 from concurrent.futures import ThreadPoolExecutor
 from urllib.parse import unquote
 
 D = os.path.dirname(os.path.abspath(__file__))
+# Scan politely: few requests at once, a pause per board, and a full stop when a site asks us to slow down.
+WORKERS = 3
+PAUSE_SECONDS = 1.0
 SIMPLIFY = "https://raw.githubusercontent.com/SimplifyJobs/New-Grad-Positions/dev/.github/scripts/listings.json"
 NODE = os.path.expanduser("~/.local/node/bin/node")
 
@@ -112,18 +115,27 @@ def simplify():
     return out
 
 
+JOBRIGHT_NOT_BEFORE = 1794211200  # 2026-11-09 00:00 Pacific
+JOBRIGHT_EVERY_HOURS = 24
+
+
 def jobright():
     # Written when Jobright restricts the account. No request is sent until this file is deleted by hand.
     pause_file = os.path.join(D, "data", "jobright_paused")
     if os.path.exists(pause_file):
         raise RuntimeError("Paused: Jobright restricted the account. Delete data/jobright_paused only after access is restored.")
+    if time.time() < JOBRIGHT_NOT_BEFORE:
+        raise RuntimeError("Off until Nov 9, 2026, after the 7-day suspension ends.")
+    # Once a day at most, even with --force. The fetch takes about an hour, so it runs on its own
+    # and each scan uses the last finished result. Stamped at launch so a crash still counts.
     out_file = os.path.join(D, ".jobright.json")
-    p = subprocess.run([NODE, os.path.join(D, "jobright_fetch.cjs"), out_file], capture_output=True, text=True, timeout=240)
-    if p.returncode == 3:
-        open(pause_file, "w").close()
-        raise RuntimeError("Paused: Jobright restricted the account. Delete data/jobright_paused only after access is restored.")
-    if p.returncode:
-        raise RuntimeError(p.stderr.strip()[:200] or "fetch failed")
+    stamp = os.path.join(D, "data", "jobright_last_scan")
+    if not os.path.exists(stamp) or time.time() - os.path.getmtime(stamp) >= JOBRIGHT_EVERY_HOURS * 3600:
+        open(stamp, "w").close()
+        log = open(os.path.join(D, "data", "jobright_fetch.log"), "w")
+        subprocess.Popen([NODE, os.path.join(D, "jobright_fetch.cjs"), out_file, pause_file], stdout=log, stderr=log, start_new_session=True)
+    if not os.path.exists(out_file) or time.time() - os.path.getmtime(out_file) > 2 * 86400:
+        raise RuntimeError("Running slowly in the background (about an hour); results show on the next scan.")
     data = json.load(open(out_file))
     if data["queries"] and data["failed"] == data["queries"]:
         raise RuntimeError("every Jobright query failed; the session may have expired")
@@ -177,12 +189,20 @@ def scan_all(boards):
     discovered = discover(jobs, boards)
     for label, fn, key in (("Greenhouse", greenhouse, "greenhouse"), ("Ashby", ashby, "ashby"), ("Lever", lever, "lever"), ("Workday", workday, "workday")):
         ok, bad, count = 0, [], 0
+        slow_down = threading.Event()
         def run(b):
+            if slow_down.is_set():
+                return b, [], "skipped"
+            time.sleep(PAUSE_SECONDS)
             try:
                 return b, fn(b), None
+            except urllib.error.HTTPError as e:
+                if e.code in (429, 503):
+                    slow_down.set()
+                return b, [], str(e)[:80]
             except Exception as e:
                 return b, [], str(e)[:80]
-        with ThreadPoolExecutor(6 if key == "workday" else 12) as ex:
+        with ThreadPoolExecutor(1 if key == "workday" else WORKERS) as ex:
             for b, got, err in ex.map(run, boards[key]):
                 if err:
                     bad.append(b)
@@ -190,6 +210,8 @@ def scan_all(boards):
                     ok += 1
                     count += len(got)
                     jobs += [dict(j, source=label) for j in got]
-        status[label] = dict(ok=ok > 0, jobs=count, boards=ok, failed=bad)
+        status[label] = dict(ok=ok > 0 and not slow_down.is_set(), jobs=count, boards=ok, failed=bad)
+        if slow_down.is_set():
+            status[label]["error"] = "the site asked us to slow down, so this scan stopped early"
     status["_discovered"] = discovered
     return jobs, status
