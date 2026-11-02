@@ -1,0 +1,11 @@
+# Personal or generated data: never commit
+data/
+output/
+radar.db*
+.jobright.json
+.scan.lock
+.fill.lock
+*.log
+node_modules/
+__pycache__/
+.env*

@@ -1,0 +1,12 @@
+{
+ "cooldown": {
+  "examplecompany": "Rejected recently"
+ },
+ "never_claim": [
+  "some tool you have not used"
+ ],
+ "claimable": [
+  "Python",
+  "SQL"
+ ]
+}
