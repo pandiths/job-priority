@@ -13,8 +13,10 @@ const body = (title, position) => ({ searchType: 'job_title', value: title, jobT
   for (const [t, pos] of queries) {
     const r = await jp.evaluate(async ([b, pos]) => {
       const res = await fetch(`/swan/recommend/search?searchType=job_title&refresh=false&count=10&position=${pos}&sortCondition=1`, { method: 'POST', headers: { 'content-type': 'application/json', 'x-client-type': 'web' }, body: JSON.stringify(b) });
-      return res.ok ? res.text() : '';
+      return res.status === 403 ? 'RESTRICTED' : res.ok ? res.text() : '';
     }, [body(t, pos), pos]);
+    // Stop at once: repeating requests on a restricted account can only make it worse.
+    if (r === 'RESTRICTED') { console.error('Jobright says the account is restricted'); process.exit(3); }
     let list = [];
     try { const j = JSON.parse(r); list = j.result.jobList || []; } catch (e) { failed++; }
     for (const it of list) {

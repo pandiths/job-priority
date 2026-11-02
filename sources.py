@@ -108,13 +108,20 @@ def simplify():
     for x in json.loads(get(SIMPLIFY, timeout=60)):
         locs = "; ".join(x.get("locations") or [])
         if x.get("active") and x.get("is_visible", True) and x.get("date_posted", 0) > cutoff and wanted_title(x.get("title")) and is_us(locs):
-            out.append(dict(company=x["company_name"], title=x["title"], location=locs[:80], url=x["url"], posted=x["date_posted"], text="", ats=ats_key(x["url"])))
+            out.append(dict(company=x["company_name"], title=x["title"], location=locs[:80], url=x["url"], posted=x["date_posted"], text="", ats=ats_key(x["url"]), simplify_id=x["id"]))
     return out
 
 
 def jobright():
+    # Written when Jobright restricts the account. No request is sent until this file is deleted by hand.
+    pause_file = os.path.join(D, "data", "jobright_paused")
+    if os.path.exists(pause_file):
+        raise RuntimeError("Paused: Jobright restricted the account. Delete data/jobright_paused only after access is restored.")
     out_file = os.path.join(D, ".jobright.json")
-    p = subprocess.run([NODE, os.path.join(D, "jobright_fetch.js"), out_file], capture_output=True, text=True, timeout=240)
+    p = subprocess.run([NODE, os.path.join(D, "jobright_fetch.cjs"), out_file], capture_output=True, text=True, timeout=240)
+    if p.returncode == 3:
+        open(pause_file, "w").close()
+        raise RuntimeError("Paused: Jobright restricted the account. Delete data/jobright_paused only after access is restored.")
     if p.returncode:
         raise RuntimeError(p.stderr.strip()[:200] or "fetch failed")
     data = json.load(open(out_file))
@@ -124,7 +131,7 @@ def jobright():
     for j in data["jobs"]:
         if wanted_title(j.get("title")) and is_us(j.get("location")):
             j["posted_utc"] = j.pop("posted", None)
-            out.append(dict(j, posted=j["posted_utc"], ats=ats_key(j.get("url") or ""), jobright=True))
+            out.append(dict(j, posted=j["posted_utc"], ats=ats_key(j.get("url") or ""), jobright=True, jobright_id=j["id"]))
     return out
 
 

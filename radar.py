@@ -33,6 +33,7 @@ def db():
       state TEXT DEFAULT 'new', notified INT DEFAULT 0);
     CREATE TABLE IF NOT EXISTS scans(at TEXT, status TEXT, total INT, new INT);
     CREATE INDEX IF NOT EXISTS jobs_score ON jobs(score);
+    CREATE TABLE IF NOT EXISTS study(id TEXT PRIMARY KEY);
     """)
     if "raw" not in [r["name"] for r in c.execute("PRAGMA table_info(jobs)")]:
         c.execute("ALTER TABLE jobs ADD COLUMN raw TEXT")
@@ -60,7 +61,7 @@ def merge(raw):
                 hit["location"] = (hit.get("location", "") + "; " + j["location"]).strip("; ")[:80]
             if len(j.get("text") or "") > len(hit.get("text") or ""):
                 hit["text"] = j["text"]
-            for k in ("applicants", "tags", "skill", "seniority", "years", "salary", "jobright", "applied"):
+            for k in ("applicants", "tags", "skill", "seniority", "years", "salary", "jobright", "applied", "jobright_id", "simplify_id"):
                 if j.get(k) not in (None, "", []) and hit.get(k) in (None, "", []):
                     hit[k] = j[k]
         if j.get("ats"):
@@ -121,7 +122,7 @@ def visible(c):
     rows = scoring.tracker_rows()
     cutoff = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=CLOSED_AFTER_DAYS)).isoformat()
     out = []
-    for r in c.execute("SELECT id,company,title,location,url,sources,applicants,tags,eval,score,first_seen,last_seen,state,notified FROM jobs WHERE last_seen>=? ORDER BY score DESC", (cutoff,)):
+    for r in c.execute("SELECT id,company,title,location,url,sources,applicants,tags,eval,score,first_seen,last_seen,state,notified,json_extract(raw,'$.jobright_id') AS jobright_id,json_extract(raw,'$.simplify_id') AS simplify_id FROM jobs WHERE last_seen>=? ORDER BY score DESC", (cutoff,)):
         d = dict(r)
         d.update(eval=json.loads(d["eval"]), sources=json.loads(d["sources"]), tags=json.loads(d["tags"]))
         e = d["eval"]
@@ -129,6 +130,7 @@ def visible(c):
         status = row["status"] if row else ""
         d["tracker_i"] = row["i"] if row else None
         d["prepared"] = os.path.exists(prep_paths(d)[2])
+        d["fillable"] = bool(fill_target(d["url"]))
         d["bucket"] = "filled" if status in FILLED_STATUSES else "applied" if status in APPLIED_STATUSES or e["applied"] or d["state"] == "applied" else "skipped" if status == "SKIPPED" else "blocked" if e["block"] else "now" if d["score"] >= scoring.APPLY_NOW and e["parts"]["timing"] >= 45 and e["parts"]["fit"] >= 70 and e["parts"]["level"] >= 60 and not e["thin_jd"] else "strong" if d["score"] >= scoring.STRONG else "other"
         out.append(d)
     return out
@@ -206,7 +208,7 @@ def fill(job):
         return dict(ok=False, error="Prepare a resume that passes the ATS check first.")
     target = fill_target(job["url"])
     if not target:
-        return dict(ok=False, error="This site has no automatic filler yet. Open the posting and apply by hand.")
+        return dict(ok=False, error="This site has no automatic filler yet. Use Open posting or an Apply through button.")
     kind, url = target
     script, gen = {"greenhouse": ("gh.sh", "gh_run.js"), "ashby": ("ashby.sh", "ashby_gen.js"), "lever": ("lever.sh", "lever_gen.js")}[kind]
     name, out, _ = prep_paths(job)
@@ -249,6 +251,8 @@ class Handler(BaseHTTPRequestHandler):
         c = db()
         if u.path == "/api/jobs":
             return self.reply(visible(c))
+        if u.path == "/api/study":
+            return self.reply([r["id"] for r in c.execute("SELECT id FROM study")])
         if u.path == "/api/tracker":
             return self.reply(tracker_list())
         if u.path == "/api/status":
@@ -284,6 +288,12 @@ class Handler(BaseHTTPRequestHandler):
                 args = ["set", row["company"], row["role"], "SUBMITTED"] if row else ["add", dt.date.today().isoformat(), r["company"], r["title"], "SUBMITTED", "", "marked in Job Radar"]
                 subprocess.run([sys.executable, TRACKER] + args, capture_output=True, timeout=20)
             c.execute("UPDATE jobs SET state=? WHERE id=?", (b["state"], b["id"]))
+            c.commit()
+            return self.reply({"ok": True})
+        if self.path == "/api/study":
+            b = json.loads(self.rfile.read(int(self.headers.get("Content-Length", 0))))
+            c = db()
+            c.execute("INSERT OR IGNORE INTO study VALUES(?)" if b.get("done") else "DELETE FROM study WHERE id=?", (str(b.get("id"))[:80],))
             c.commit()
             return self.reply({"ok": True})
         if self.path in ("/api/prepare", "/api/fill"):

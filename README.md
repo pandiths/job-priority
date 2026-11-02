@@ -10,7 +10,7 @@ Scan sources -> filter and rank -> tailor resume -> truth checks + ATS check -> 
 
 | Step | Code | Notes |
 |---|---|---|
-| Scan | `sources.py`, `jobright_fetch.js` | Greenhouse, Ashby, Lever and Workday public APIs, SimplifyJobs, and Jobright through a logged-in browser tab |
+| Scan | `sources.py`, `jobright_fetch.cjs` | Greenhouse, Ashby, Lever and Workday public APIs, SimplifyJobs, and Jobright through a logged-in browser tab |
 | Rank | `scoring.py` | Weighted score for fit, timing, level, sponsorship, brand and location, plus hard blocks such as clearance or no sponsorship |
 | Tailor | `apply/prepare.mjs`, `apply/claude.mjs` | Keyword tailoring, then Claude rewords bullets using only the fact bank |
 | Truth checks | `apply/resume.mjs` | Rejects new never-claim terms, numbers missing from the fact bank, and quotes that aren't exact, then a second Claude pass audits each edit |
