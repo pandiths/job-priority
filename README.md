@@ -10,12 +10,15 @@ Scan sources -> filter and rank -> tailor resume -> truth checks + ATS check -> 
 
 | Step | Code | Notes |
 |---|---|---|
-| Scan | `sources.py`, `jobright_fetch.cjs` | Greenhouse, Ashby, Lever and Workday public APIs, SimplifyJobs, and Jobright through a logged-in browser tab |
+| Scan | `sources.py`, `bigco.py`, `feeds.py`, `jobright_fetch.cjs` | Greenhouse, Ashby, Lever, Workday, SmartRecruiters and Workable public APIs; Amazon, Google, Apple, Meta, Oracle and JPMorgan career sites; SimplifyJobs and Jobright GitHub lists; Hacker News Who is hiring; Adzuna and JSearch when an API key is set; SLB, Docusign, Lowe's, Ford and Nokia career sites; Jobright through a logged-in browser tab (off by default) |
+| Sponsors | `sponsors.json`, `tools/build_sponsors.py` | Certified H-1B filings per employer from public Labor Department data; raises the sponsorship score and found new boards to scan |
 | Rank | `scoring.py` | Weighted score for fit, timing, level, sponsorship, brand and location, plus hard blocks such as clearance or no sponsorship |
 | Tailor | `apply/prepare.mjs`, `apply/claude.mjs` | Keyword tailoring, then Claude rewords bullets using only the fact bank |
 | Truth checks | `apply/resume.mjs` | Rejects new never-claim terms, numbers missing from the fact bank, and quotes that aren't exact, then a second Claude pass audits each edit |
 | Gate | `ats_score.py` | Needs ATS 90 or higher on one page, otherwise the Fill button doesn't appear |
 | Fill | `radar.py` | Runs the local fillers, leaves sponsorship questions blank, and lists what's left for you |
+| Home | `web/index.html` | One screen: the next job to apply to, forms that need an answer, fresh matches, referral-note drafts (you send them) and the pipeline; flips to a board view |
+| Bay Area | `bay_area.json`, `tools/bay_area.py` | Bay Area H-1B sponsors by worksite city on a map, with which ones the app reads and their open roles |
 
 The score is a ranking heuristic, not a probability. It hasn't been calibrated against real interview outcomes.
 

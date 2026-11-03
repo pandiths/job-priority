@@ -8,6 +8,9 @@ D = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, D)
 import scoring, sources  # noqa: E402
 
+# Sources that carry the full job description; their row wins when the same job comes from several places.
+FULL_TEXT_SOURCES = ("Greenhouse", "Ashby", "Lever", "Workday", "SmartRecruiters", "Workable", "Career sites")
+
 DB = os.path.join(D, "radar.db")
 BOARDS = os.path.join(D, "boards.json")
 LOCK = os.path.join(D, ".scan.lock")
@@ -35,6 +38,7 @@ def db():
     CREATE TABLE IF NOT EXISTS scans(at TEXT, status TEXT, total INT, new INT);
     CREATE INDEX IF NOT EXISTS jobs_score ON jobs(score);
     CREATE TABLE IF NOT EXISTS study(id TEXT PRIMARY KEY);
+    CREATE TABLE IF NOT EXISTS referrals(company TEXT, role TEXT, at TEXT, PRIMARY KEY(company, role));
     """)
     if "raw" not in [r["name"] for r in c.execute("PRAGMA table_info(jobs)")]:
         c.execute("ALTER TABLE jobs ADD COLUMN raw TEXT")
@@ -48,7 +52,7 @@ def now():
 def merge(raw):
     """Same job from several sources becomes one row: ATS text wins, Jobright adds competition signals."""
     by_ats, merged = {}, {}
-    for j in sorted(raw, key=lambda x: 0 if x["source"] in ("Greenhouse", "Ashby", "Lever", "Workday") else 1):
+    for j in sorted(raw, key=lambda x: 0 if x["source"] in FULL_TEXT_SOURCES else 1):
         key = (scoring.company_key(j["company"]), scoring.norm(re.sub(r"\(.*?\)", "", j["title"])))
         hit = by_ats.get(j.get("ats")) if j.get("ats") else None
         hit = hit or merged.get(key)
@@ -147,6 +151,36 @@ def visible(c):
         d["bucket"] = "filled" if status in FILLED_STATUSES else "applied" if status in APPLIED_STATUSES or e["applied"] or d["state"] == "applied" else "skipped" if status == "SKIPPED" else "blocked" if e["block"] else "now" if d["score"] >= scoring.APPLY_NOW and e["parts"]["timing"] >= 45 and e["parts"]["fit"] >= 70 and e["parts"]["level"] >= 60 and not e["thin_jd"] else "strong" if d["score"] >= scoring.STRONG else "other"
         out.append(d)
     return out
+
+
+def bay_area(jobs):
+    """Bay Area H-1B sponsors (bay_area.json) with the roles the last scans found for each.
+    Employer variants that match the same job-board company (Amazon.com Services, Amazon Web Services) are merged."""
+    path = os.path.join(D, "bay_area.json")
+    if not os.path.exists(path):
+        return []
+    by_co = {}
+    for j in jobs:
+        if j["state"] != "dismissed" and j["bucket"] != "blocked":
+            by_co.setdefault(scoring.norm_company(j["company"]), []).append(j)
+    names = sorted((n for n in by_co if len(n) >= 4), key=len, reverse=True)
+    groups = {}
+    for e in json.load(open(path)):
+        k = scoring.norm_company(e["employer"])
+        k = next((n for n in names if k == n or k.startswith(n + " ")), k)
+        g = groups.setdefault(k, dict(name=e["employer"], filings=0, wage=e.get("median_wage"), cities={}, board=None, roles=[]))
+        g["filings"] += e["count"]
+        g["board"] = g["board"] or e.get("board")
+        for city, n in e["cities"].items():
+            city = re.sub(r"\s+", " ", city).strip(" ,")
+            city = {"San J Ose": "San Jose", "San Francsico": "San Francisco", "San Franciso": "San Francisco"}.get(city, city)
+            g["cities"][city] = g["cities"].get(city, 0) + n
+    for k, g in groups.items():
+        js = by_co.get(k, [])
+        if js:
+            g["name"] = js[0]["company"]
+        g["roles"] = [dict(id=j["id"], title=j["title"], score=round(j["score"]), bucket=j["bucket"]) for j in js[:50]]
+    return sorted(groups.values(), key=lambda g: -g["filings"])
 
 
 def tracker_list():
@@ -271,6 +305,10 @@ class Handler(BaseHTTPRequestHandler):
         if u.path == "/api/status":
             s = c.execute("SELECT at,status,total,new FROM scans ORDER BY at DESC LIMIT 1").fetchone()
             return self.reply(dict(scan=dict(s, status=json.loads(s["status"])) if s else None, pipeline=pipeline(), scanning=scanning(), weights=scoring.WEIGHTS))
+        if u.path == "/api/referrals":
+            return self.reply([dict(r) for r in c.execute("SELECT company,role,at FROM referrals ORDER BY at DESC")])
+        if u.path == "/api/companies":
+            return self.reply(bay_area(visible(c)))
         if u.path == "/api/prep":
             job = job_row(parse_qs(u.query).get("id", [""])[0])
             return self.reply(prep_status(job) if job else {"state": "none"})
@@ -310,6 +348,16 @@ class Handler(BaseHTTPRequestHandler):
             b = json.loads(self.rfile.read(int(self.headers.get("Content-Length", 0))))
             c = db()
             c.execute("INSERT OR IGNORE INTO study VALUES(?)" if b.get("done") else "DELETE FROM study WHERE id=?", (str(b.get("id"))[:80],))
+            c.commit()
+            return self.reply({"ok": True})
+        if self.path == "/api/referral":
+            # Records a referral ask the user sent themselves. The app never sends messages.
+            b = json.loads(self.rfile.read(int(self.headers.get("Content-Length", 0))))
+            c = db()
+            if b.get("sent"):
+                c.execute("INSERT OR REPLACE INTO referrals VALUES(?,?,?)", (str(b.get("company"))[:120], str(b.get("role"))[:200], now()))
+            else:
+                c.execute("DELETE FROM referrals WHERE company=? AND role=?", (b.get("company"), b.get("role")))
             c.commit()
             return self.reply({"ok": True})
         if self.path in ("/api/prepare", "/api/fill"):

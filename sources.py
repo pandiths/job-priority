@@ -12,12 +12,15 @@ NODE = os.path.expanduser("~/.local/node/bin/node")
 
 ENGINEER = re.compile(r"engineer|developer|\bsde\b|\bswe\b|\bmle\b|member of technical staff", re.I)
 TARGET = re.compile(r"software|machine learning|\bml\b|\bai\b|back-?end|platform|infrastructure|forward deployed|full[- ]?stack|applied|\bllm|mlops|reliability|\bsre\b|product engineer|\bsde\b|\bswe\b|\bmle\b|member of technical staff", re.I)
-EXCLUDE = re.compile(r"\bsenior\b|\bsr\b|\bstaff\b|principal|\blead\b|manager|director|\bhead\b|\bvp\b|\bintern\b|internship|co-?op\b|front-?end|\bios\b|android|embedded|firmware|hardware|\bqa\b|\btest engineer|verification|support|sales|recruit|architect|\bphd\b|clearance|polygraph|silicon|\bcad\b|mechanical|electrical|summer 20|\biv\b|\bv\b|apprentice|physical design|designer|contractor|data center|\bit systems|in test\b|\bsdet\b|analyst|gameplay", re.I)
+EXCLUDE = re.compile(r"\bsenior\b|\bsr\b|\bstaff\b|principal|distinguished|\bfellow\b|vice president|\blead\b|manager|director|\bhead\b|\bvp\b|\bintern\b|internship|co-?op\b|front-?end|\bios\b|android|embedded|firmware|hardware|\bqa\b|\btest engineer|verification|support|sales|recruit|architect|\bphd\b|clearance|polygraph|silicon|\bcad\b|mechanical|electrical|summer 20|\biv\b|\bv\b|apprentice|physical design|designer|contractor|data center|\bit systems|in test\b|\bsdet\b|analyst|gameplay", re.I)
 
 STATES = "AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY DC".split()
 US_CODES = re.compile(r"\b(?:" + "|".join(STATES) + r"|US|USA|U\.S\.)\b")
 US_NAMES = re.compile(r"united states|san francisco|new york|\bnyc\b|seattle|bay area|palo alto|mountain view|sunnyvale|san jose|los angeles|boston|chicago|austin|bellevue|redmond|menlo park|santa clara|cupertino|denver|atlanta|san diego|washington", re.I)
-FOREIGN = re.compile(r"canada|toronto|vancouver|montreal|london|\buk\b|united kingdom|ireland|dublin|germany|berlin|munich|france|paris|india|bangalore|bengaluru|hyderabad|singapore|japan|tokyo|china|beijing|shanghai|australia|sydney|netherlands|amsterdam|poland|spain|israel|mexico|brazil|korea|seoul|pune|mumbai|delhi|chennai|noida|gurgaon|emea|apac|europe|latam|philippines|argentina|colombia|romania|portugal|sweden", re.I)
+US_STATE_NAMES = re.compile(r"\b(?:alabama|alaska|arizona|arkansas|california|colorado|connecticut|delaware|florida|georgia|hawaii|idaho|illinois|indiana|iowa|kansas|kentucky|louisiana|maine|maryland|massachusetts|michigan|minnesota|mississippi|missouri|montana|nebraska|nevada|new hampshire|new jersey|new mexico|north carolina|north dakota|ohio|oklahoma|oregon|pennsylvania|rhode island|south carolina|south dakota|tennessee|texas|utah|vermont|virginia|west virginia|wisconsin|wyoming)\b", re.I)
+# US places whose names also match FOREIGN (Dublin CA/OH, New Mexico). Only codes that aren't also country codes.
+US_OVERRIDE = re.compile(r",\s*(?:CA|OH|NM)\b")
+FOREIGN = re.compile(r"new zealand|\bnz\b|canada|toronto|vancouver|montreal|london|\buk\b|united kingdom|ireland|dublin|germany|berlin|munich|france|paris|india|bangalore|bengaluru|hyderabad|singapore|japan|tokyo|china|beijing|shanghai|australia|sydney|netherlands|amsterdam|poland|spain|israel|mexico|brazil|korea|seoul|pune|mumbai|delhi|chennai|noida|gurgaon|emea|apac|europe|latam|philippines|argentina|colombia|romania|portugal|sweden", re.I)
 
 
 def wanted_title(t):
@@ -28,9 +31,9 @@ def wanted_title(t):
 
 def is_us(loc):
     for part in re.split(r"[;|/]", loc or ""):
-        if FOREIGN.search(part):
+        if FOREIGN.search(part) and not (US_STATE_NAMES.search(part) or US_OVERRIDE.search(part)):
             continue
-        if US_CODES.search(part) or US_NAMES.search(part) or re.search(r"remote", part, re.I):
+        if US_CODES.search(part) or US_NAMES.search(part) or US_STATE_NAMES.search(part) or re.search(r"remote", part, re.I):
             return True
     return False
 
@@ -89,19 +92,28 @@ def workday(spec):
     tenant = tenant_wd.split(".")[0]
     base = f"https://{tenant_wd}.myworkdayjobs.com/wday/cxs/{tenant}/{site}"
     seen, out = set(), []
+    # Global boards (eBay, Barclays) list many non-US roles first, so read up to 3 pages of 20 per query.
+    pages = []
     for q in ("machine learning engineer", "software engineer"):
-        body = json.dumps({"appliedFacets": {}, "limit": 20, "offset": 0, "searchText": q}).encode()
-        for p in json.loads(get(base + "/jobs", body, {"Content-Type": "application/json"})).get("jobPostings", []):
-            path, loc = p.get("externalPath"), p.get("locationsText", "")
-            if path in seen or "30+" in p.get("postedOn", "") or not wanted_title(p.get("title")):
-                continue
-            seen.add(path)
-            if not (is_us(loc) or re.search(r"\d+ Locations", loc)):
-                continue
-            d = json.loads(get(base + path, headers={"Accept": "application/json"}))["jobPostingInfo"]
-            full = f"{d.get('location', '')} {(d.get('country') or {}).get('descriptor', '')}"
-            if is_us(full):
-                out.append(dict(company=pretty(tenant), title=d["title"], location=d.get("location", loc), url=f"https://{tenant_wd}.myworkdayjobs.com/en-US/{site}{path}", posted=d.get("startDate"), text=clean(d.get("jobDescription")), ats="wd:" + path.rsplit("_", 1)[-1]))
+        for offset in (0, 20, 40):
+            if offset:
+                time.sleep(0.5)
+            body = json.dumps({"appliedFacets": {}, "limit": 20, "offset": offset, "searchText": q}).encode()
+            got = json.loads(get(base + "/jobs", body, {"Content-Type": "application/json"})).get("jobPostings", [])
+            pages += got
+            if len(got) < 20:
+                break
+    for p in pages:
+        path, loc = p.get("externalPath"), p.get("locationsText", "")
+        if path in seen or "30+" in p.get("postedOn", "") or not wanted_title(p.get("title")):
+            continue
+        seen.add(path)
+        if not (is_us(loc) or re.search(r"\d+ Locations", loc)):
+            continue
+        d = json.loads(get(base + path, headers={"Accept": "application/json"}))["jobPostingInfo"]
+        full = f"{d.get('location', '')} {(d.get('country') or {}).get('descriptor', '')}"
+        if is_us(full):
+            out.append(dict(company=pretty(tenant), title=d["title"], location=d.get("location", loc), url=f"https://{tenant_wd}.myworkdayjobs.com/en-US/{site}{path}", posted=d.get("startDate"), text=clean(d.get("jobDescription")), ats="wd:" + path.rsplit("_", 1)[-1]))
     return out
 
 
@@ -110,8 +122,12 @@ def simplify():
     cutoff, out = time.time() - 21 * 86400, []
     for x in json.loads(get(SIMPLIFY, timeout=60)):
         locs = "; ".join(x.get("locations") or [])
+        # Most rows say "Other"; skip only the ones Simplify marked as closed to H-1B candidates.
+        if x.get("sponsorship") in ("U.S. Citizenship is Required", "Does Not Offer Sponsorship"):
+            continue
         if x.get("active") and x.get("is_visible", True) and x.get("date_posted", 0) > cutoff and wanted_title(x.get("title")) and is_us(locs):
-            out.append(dict(company=x["company_name"], title=x["title"], location=locs[:80], url=x["url"], posted=x["date_posted"], text="", ats=ats_key(x["url"]), simplify_id=x["id"]))
+            out.append(dict(company=x["company_name"], title=x["title"], location=locs[:80], url=x["url"], posted=x["date_posted"], text="", ats=ats_key(x["url"]), simplify_id=x["id"],
+                            tags=["H1B sponsor"] if x.get("sponsorship") == "Offers Sponsorship" else []))
     return out
 
 
@@ -176,18 +192,55 @@ def discover(jobs, boards):
     return added
 
 
+# Free API plans have small quotas. JSearch's free plan allows 25 calls a month and a run costs 2,
+# so it runs at most every 72 hours (about 20 calls a month). Adzuna costs 4 a run, fine at the 6-hour scan limit.
+KEYED_EVERY_HOURS = {"JSearch": 72}
+
+
+def rationed(name, fn):
+    """Calls fn at most every KEYED_EVERY_HOURS[name]; between runs, returns the last saved result."""
+    cache = os.path.join(D, "data", name.lower() + "_last.json")
+    if os.path.exists(cache) and time.time() - os.path.getmtime(cache) < KEYED_EVERY_HOURS[name] * 3600:
+        return json.load(open(cache))
+    got, err = [], None
+    try:
+        got = fn()
+    except Exception as e:
+        err = e  # a failed run still uses up its turn, so a broken call isn't repeated every scan
+    with open(cache + ".tmp", "w") as f:
+        json.dump(got, f)
+    os.replace(cache + ".tmp", cache)
+    if err:
+        raise err
+    return got
+
+
 def scan_all(boards):
     """Returns (jobs, status). A failing board never stops the scan; it is reported in status."""
     status, jobs = {}, []
-    for name, fn in (("Jobright", jobright), ("SimplifyJobs", simplify)):
+    import bigco, feeds  # here, not at the top: both import helpers from this module
+    keyed = {"Adzuna": feeds.secret("adzuna-app-id") and feeds.secret("adzuna-app-key"), "JSearch": feeds.secret("rapidapi-key")}
+    for name, fn in (("Jobright", jobright), ("SimplifyJobs", simplify), ("Jobright GitHub", feeds.jobright_github), ("Hacker News", feeds.hn_hiring), ("Adzuna", feeds.adzuna), ("JSearch", feeds.jsearch)):
+        if name in keyed and not keyed[name]:
+            status[name] = dict(ok=False, jobs=0, error="Not set up: needs an API key")
+            continue
         try:
-            got = fn()
+            got = rationed(name, fn) if name in KEYED_EVERY_HOURS else fn()
             jobs += [dict(j, source=name) for j in got]
             status[name] = dict(ok=True, jobs=len(got))
         except Exception as e:
             status[name] = dict(ok=False, jobs=0, error=str(e)[:200])
-    discovered = discover(jobs, boards)
-    for label, fn, key in (("Greenhouse", greenhouse, "greenhouse"), ("Ashby", ashby, "ashby"), ("Lever", lever, "lever"), ("Workday", workday, "workday")):
+    # Big companies' own career sites, one at a time.
+    got_all, bad = [], []
+    for company, fn in bigco.BIGCO.items():
+        try:
+            got_all += fn()
+        except Exception as e:
+            bad.append(f"{company} ({str(e)[:60]})")
+    jobs += [dict(j, source="Career sites") for j in got_all]
+    status["Career sites"] = dict(ok=len(bad) < len(bigco.BIGCO), jobs=len(got_all), boards=len(bigco.BIGCO) - len(bad), failed=bad)
+    discovered = discover(jobs, boards) + feeds.discover_more(jobs, boards)
+    for label, fn, key in (("Greenhouse", greenhouse, "greenhouse"), ("Ashby", ashby, "ashby"), ("Lever", lever, "lever"), ("Workday", workday, "workday"), ("SmartRecruiters", feeds.smartrecruiters, "smartrecruiters"), ("Workable", feeds.workable, "workable")):
         ok, bad, count = 0, [], 0
         slow_down = threading.Event()
         def run(b):
@@ -203,7 +256,7 @@ def scan_all(boards):
             except Exception as e:
                 return b, [], str(e)[:80]
         with ThreadPoolExecutor(1 if key == "workday" else WORKERS) as ex:
-            for b, got, err in ex.map(run, boards[key]):
+            for b, got, err in ex.map(run, boards.get(key, [])):
                 if err:
                     bad.append(b)
                 else:

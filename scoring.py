@@ -143,7 +143,10 @@ def to_dt(v):
         d = dt.datetime.fromisoformat(s)
         return d if d.tzinfo else d.replace(tzinfo=dt.timezone.utc)
     except ValueError:
-        return None
+        try:  # Amazon writes "October 15, 2026"
+            return dt.datetime.strptime(str(v).strip(), "%B %d, %Y").replace(tzinfo=dt.timezone.utc)
+        except ValueError:
+            return None
 
 
 def timing_score(posted, applicants, tags):
@@ -178,9 +181,53 @@ def brand_score(company):
     return 40, 3
 
 
+# Certified H-1B filings per employer for ML/software titles, from public Labor Department data (sponsors.json).
+NAME_SUFFIX = re.compile(r"\b(inc|incorporated|llc|l l c|corp|corporation|co|company|ltd|limited|lp|llp|plc|pllc|pc|na|n a|"
+                         r"the|usa|us|u s|l p|america|americas|north america|holdings|holding|group|services)\b")
+NAME_TAIL = re.compile(r"(?: (?:com|technologies|technology|labs|software|platforms|systems|ai|io))+$")
+
+
+def norm_company(n):
+    n = (n or "").upper().replace("&", " AND ")
+    n = re.sub(r"\(.*?\)", " ", n)
+    n = re.sub(r"[^A-Z0-9 ]", " ", n).lower()
+    n = NAME_SUFFIX.sub(" ", re.sub(r"\band\b", " ", n))
+    return NAME_TAIL.sub("", re.sub(r"\s+", " ", n).strip())
+
+
+def load_sponsors():
+    try:
+        rows = json.load(open(os.path.join(HERE, "sponsors.json")))["employers"]
+    except (OSError, ValueError, KeyError):
+        return {}
+    out = {}
+    for key, count, _wage, _name in rows:
+        k = NAME_TAIL.sub("", key)
+        out[k] = out.get(k, 0) + count
+    return out
+
+
+SPONSORS = load_sponsors()
+
+
+def h1b_filings(company):
+    """Filings for this company; 'Amazon' also counts 'Amazon Development Center' and similar units."""
+    k = norm_company(company)
+    if not k:
+        return 0
+    if k in SPONSORS:
+        return SPONSORS[k]
+    return sum(v for s, v in SPONSORS.items() if s.startswith(k + " ")) if len(k) >= 4 else 0
+
+
 def sponsor_score(job, tier):
     if sponsor_signal(job.get("text")) == "yes":
         return 100, "Job text says it sponsors"
+    filed = h1b_filings(job.get("company"))
+    if filed >= 20:
+        return 95, f"Filed {filed:,} H-1B applications for software/ML roles in the past year (Labor Dept data)"
+    if filed:
+        return 88, f"Filed {filed} H-1B applications for software/ML roles in the past year (Labor Dept data)"
     if any("h1b" in str(t).lower() for t in job.get("tags") or []):
         return 85, "Jobright: H-1B sponsor likely"
     if tier == 1:
@@ -246,4 +293,4 @@ def evaluate(job, resume_text, tracker):
         total -= 15
     if at_company >= 3:
         total -= 5
-    return dict(score=round(max(0, total), 1), parts={k: round(v) for k, v in parts.items()}, years=years, tier=tier, sponsor_why=sponsor_why, ats=ats_r.get("score"), ats_max=ats_r.get("max_honest_score"), missing=ats_r.get("missing_claimable", [])[:10], cannot_claim=ats_r.get("missing_not_claimable", [])[:10], required_missing=ats_r.get("required_missing", []), thin_jd=bool(ats_r.get("thin")), summary_only=bool(job.get("jobright")) and not any(x in job.get("sources", []) for x in ("Greenhouse", "Ashby", "Lever", "Workday")), block=blocked(job, years), applied=applied or bool(job.get("applied")), at_company=at_company, cooldown=cooldown, salary=salary_text(job), posted=posted.isoformat() if posted else None, requirements=requirements_excerpt(text))
+    return dict(score=round(max(0, total), 1), parts={k: round(v) for k, v in parts.items()}, years=years, tier=tier, sponsor_why=sponsor_why, ats=ats_r.get("score"), ats_max=ats_r.get("max_honest_score"), missing=ats_r.get("missing_claimable", [])[:10], cannot_claim=ats_r.get("missing_not_claimable", [])[:10], required_missing=ats_r.get("required_missing", []), thin_jd=bool(ats_r.get("thin")), summary_only=bool(job.get("jobright")) and not any(x in job.get("sources", []) for x in ("Greenhouse", "Ashby", "Lever", "Workday", "SmartRecruiters", "Workable", "Career sites")), block=blocked(job, years), applied=applied or bool(job.get("applied")), at_company=at_company, cooldown=cooldown, salary=salary_text(job), posted=posted.isoformat() if posted else None, requirements=requirements_excerpt(text))

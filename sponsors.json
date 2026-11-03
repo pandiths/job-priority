@@ -1,0 +1,2405 @@
+{
+"source": "US Department of Labor LCA disclosure data, FY2026 Q3 (decisions Oct 1 2025 to Jun 30 2026): certified H-1B filings for ML/AI/software engineer and data scientist titles, staffing firms excluded. Rebuilt with tools/build_sponsors.py.",
+"employers": [
+[
+"amazon com",
+5813,
+162700,
+"Amazon.com Services LLC"
+],
+[
+"google",
+4741,
+193000,
+"Google LLC"
+],
+[
+"microsoft",
+3577,
+179055,
+"Microsoft Corporation"
+],
+[
+"meta platforms",
+2849,
+214979,
+"Meta Platforms, Inc"
+],
+[
+"apple",
+2036,
+181100,
+"Apple Inc."
+],
+[
+"amazon development center",
+1801,
+155000,
+"Amazon Development Center U.S., Inc."
+],
+[
+"adobe",
+602,
+185000,
+"Adobe Inc."
+],
+[
+"amazon web",
+575,
+155000,
+"Amazon Web Services, Inc."
+],
+[
+"intel",
+402,
+142500,
+"Intel Corporation"
+],
+[
+"cisco systems",
+399,
+163600,
+"Cisco Systems, Inc."
+],
+[
+"oracle",
+345,
+134971,
+"Oracle America, Inc."
+],
+[
+"amazon data",
+302,
+152100,
+"Amazon Data Services, Inc"
+],
+[
+"nvidia",
+285,
+189592,
+"NVIDIA Corporation"
+],
+[
+"tesla",
+266,
+200000,
+"Tesla, Inc."
+],
+[
+"salesforce",
+264,
+169025,
+"Salesforce, Inc."
+],
+[
+"bytedance",
+262,
+210000,
+"BYTEDANCE INC."
+],
+[
+"linkedin",
+261,
+149240,
+"LinkedIn Corporation"
+],
+[
+"doordash",
+226,
+170600,
+"DoorDash, Inc."
+],
+[
+"goldman sachs",
+221,
+131000,
+"GOLDMAN SACHS SERVICES LLC"
+],
+[
+"netflix",
+199,
+264514,
+"Netflix, Inc."
+],
+[
+"waymo",
+199,
+205000,
+"Waymo LLC"
+],
+[
+"ebay",
+193,
+207685,
+"eBay Inc."
+],
+[
+"snowflake",
+183,
+160000,
+"Snowflake Inc."
+],
+[
+"expedia",
+171,
+131913,
+"Expedia, Inc."
+],
+[
+"databricks",
+165,
+141150,
+"Databricks, Inc."
+],
+[
+"jpmorgan chase",
+161,
+128353,
+"JPMorgan Chase & Co."
+],
+[
+"ford motor",
+153,
+129920,
+"FORD MOTOR COMPANY"
+],
+[
+"stripe",
+151,
+158802,
+"Stripe, LLC"
+],
+[
+"tiktok",
+145,
+222000,
+"TikTok Inc."
+],
+[
+"cvs shared resources",
+144,
+125000,
+"CVS Shared Services Resources LLC"
+],
+[
+"uber technologies",
+140,
+183000,
+"Uber Technologies, Inc."
+],
+[
+"audible",
+111,
+158100,
+"AUDIBLE, INC."
+],
+[
+"bank national association",
+110,
+112923,
+"U.S. Bank National Association"
+],
+[
+"pinterest",
+106,
+163322,
+"Pinterest, Inc."
+],
+[
+"paypal",
+102,
+138123,
+"PayPal, Inc."
+],
+[
+"zoox",
+93,
+188000,
+"Zoox Inc."
+],
+[
+"zoom communications",
+90,
+165360,
+"Zoom Communications, Inc."
+],
+[
+"ibm",
+84,
+182017,
+"IBM Corporation"
+],
+[
+"netapp",
+82,
+150080,
+"NetApp, Inc."
+],
+[
+"state street bank trust",
+81,
+137688,
+"State Street Bank and Trust Company"
+],
+[
+"tiktok usds joint venture",
+77,
+195900,
+"TikTok USDS Joint Venture LLC"
+],
+[
+"rocket partnership",
+76,
+105000,
+"Rocket Limited Partnership"
+],
+[
+"servicenow",
+75,
+143417,
+"ServiceNow, Inc."
+],
+[
+"airbnb",
+73,
+196000,
+"Airbnb, Inc."
+],
+[
+"american express travel related",
+72,
+130998,
+"American Express Travel Related Services Company, Inc."
+],
+[
+"annapurna labs",
+70,
+181250,
+"Annapurna Labs (U.S.) Inc."
+],
+[
+"wayfair",
+68,
+160500,
+"Wayfair LLC"
+],
+[
+"siemens industry software",
+67,
+130000,
+"Siemens Industry Software Inc."
+],
+[
+"general motors",
+64,
+140000,
+"General Motors"
+],
+[
+"duolingo",
+64,
+159150,
+"Duolingo, Inc."
+],
+[
+"kla",
+63,
+151900,
+"KLA Corporation"
+],
+[
+"equifax",
+61,
+129376,
+"Equifax Inc."
+],
+[
+"fidelity technology d b a fidelity investments",
+59,
+97000,
+"Fidelity Technology Group, LLC d/b/a Fidelity Investments"
+],
+[
+"palantir technologies",
+59,
+165000,
+"PALANTIR TECHNOLOGIES INC."
+],
+[
+"docusign",
+55,
+170198,
+"Docusign Inc."
+],
+[
+"yahoo",
+52,
+131997,
+"Yahoo Holdings Inc."
+],
+[
+"robinhood markets",
+52,
+166000,
+"Robinhood Markets, Inc."
+],
+[
+"hewlett packard enterprise",
+51,
+131560,
+"Hewlett Packard Enterprise Company"
+],
+[
+"caterpillar",
+48,
+108077,
+"Caterpillar Inc"
+],
+[
+"lyft",
+48,
+162000,
+"Lyft, Inc."
+],
+[
+"bloomberg",
+48,
+131997,
+"Bloomberg L.P."
+],
+[
+"workday",
+47,
+146058,
+"Workday, Inc."
+],
+[
+"arista networks",
+47,
+146479,
+"Arista Networks, Inc."
+],
+[
+"truist bank",
+46,
+120000,
+"Truist Bank"
+],
+[
+"costco wholesale",
+45,
+151100,
+"Costco Wholesale Corporation"
+],
+[
+"intuit",
+45,
+137450,
+"Intuit Inc."
+],
+[
+"barclays",
+44,
+127000,
+"Barclays Services Corp."
+],
+[
+"chewy",
+44,
+150000,
+"Chewy, Inc."
+],
+[
+"autodesk",
+43,
+152880,
+"Autodesk, Inc."
+],
+[
+"resolve ai",
+42,
+213512,
+"Resolve AI, Inc."
+],
+[
+"fis management",
+42,
+144075,
+"FIS Management Services, LLC"
+],
+[
+"mistral ai",
+41,
+280000,
+"Mistral AI, Inc."
+],
+[
+"coinbase",
+39,
+179300,
+"Coinbase, Inc."
+],
+[
+"block",
+39,
+235000,
+"Block, Inc."
+],
+[
+"figma",
+38,
+203084,
+"Figma, Inc."
+],
+[
+"applied intuition",
+38,
+168460,
+"Applied Intuition, Inc."
+],
+[
+"reddit",
+36,
+255029,
+"Reddit, Inc."
+],
+[
+"goldman sachs bank",
+36,
+137000,
+"GOLDMAN SACHS BANK USA"
+],
+[
+"paycom payroll",
+35,
+125000,
+"Paycom Payroll, LLC"
+],
+[
+"mathworks",
+35,
+131082,
+"The MathWorks, Inc."
+],
+[
+"red hat",
+35,
+131082,
+"Red Hat, LLC"
+],
+[
+"scale ai",
+34,
+220000,
+"Scale AI, Inc."
+],
+[
+"environmental systems research institute",
+34,
+128513,
+"Environmental Systems Research Institute, Inc."
+],
+[
+"two sigma investments",
+33,
+200000,
+"TWO SIGMA INVESTMENTS, LP"
+],
+[
+"rubrik",
+33,
+173000,
+"Rubrik, Inc."
+],
+[
+"whatnot",
+31,
+205000,
+"Whatnot Inc."
+],
+[
+"axon enterprise",
+31,
+140000,
+"Axon Enterprise, Inc."
+],
+[
+"qualcomm technologies",
+31,
+130187,
+"Qualcomm Technologies, Inc."
+],
+[
+"nokia of",
+31,
+141750,
+"Nokia of America Corporation"
+],
+[
+"lowe s companies",
+31,
+112424,
+"Lowe's Companies, Inc."
+],
+[
+"relx",
+31,
+95000,
+"RELX, Inc."
+],
+[
+"citadel securities",
+31,
+175000,
+"CITADEL SECURITIES AMERICAS SERVICES LLC"
+],
+[
+"point72",
+30,
+220000,
+"Point72, L.P."
+],
+[
+"aurora operations",
+30,
+139000,
+"Aurora Operations, Inc."
+],
+[
+"social finance",
+30,
+165000,
+"Social Finance, LLC"
+],
+[
+"nike",
+29,
+159438,
+"NIKE, Inc."
+],
+[
+"torc robotics",
+29,
+158000,
+"TORC Robotics, Inc."
+],
+[
+"twilio",
+29,
+165000,
+"Twilio, Inc."
+],
+[
+"schlumberger technology",
+29,
+134680,
+"Schlumberger Technology Corporation"
+],
+[
+"atlassian",
+29,
+180000,
+"Atlassian US, Inc."
+],
+[
+"hubspot",
+29,
+124200,
+"HubSpot, Inc."
+],
+[
+"mpg operations",
+29,
+139506,
+"MPG Operations LLC"
+],
+[
+"amazon advertising",
+28,
+162000,
+"Amazon Advertising LLC"
+],
+[
+"superhuman platform",
+28,
+203518,
+"Superhuman Platform Inc."
+],
+[
+"cotiviti",
+28,
+120000,
+"Cotiviti, Inc."
+],
+[
+"citadel enterprise",
+26,
+200000,
+"CITADEL ENTERPRISE AMERICAS SERVICES LLC"
+],
+[
+"dropbox",
+26,
+175950,
+"Dropbox, Inc."
+],
+[
+"penske truck leasing",
+26,
+122000,
+"Penske Truck Leasing Co LP"
+],
+[
+"susquehanna international",
+26,
+88100,
+"Susquehanna International Group, LLP"
+],
+[
+"affirm",
+25,
+142000,
+"Affirm, Inc."
+],
+[
+"sony interactive entertainment",
+25,
+150100,
+"SONY INTERACTIVE ENTERTAINMENT LLC"
+],
+[
+"home depot management",
+25,
+117450,
+"Home Depot Management Company LLC"
+],
+[
+"mongodb",
+25,
+131997,
+"MONGODB, INC."
+],
+[
+"zappos com",
+25,
+155000,
+"Zappos.com LLC"
+],
+[
+"ramp business",
+25,
+168000,
+"Ramp Business Corporation"
+],
+[
+"roblox",
+24,
+208585,
+"Roblox Corporation"
+],
+[
+"cadence design systems",
+24,
+131082,
+"Cadence Design Systems, Inc."
+],
+[
+"best buy",
+23,
+139326,
+"BEST BUY CO., INC."
+],
+[
+"glean technologies",
+23,
+213500,
+"Glean Technologies, Inc."
+],
+[
+"united automobile association",
+23,
+121706,
+"United Services Automobile Association"
+],
+[
+"ziphq",
+23,
+220000,
+"ZipHQ, Inc."
+],
+[
+"indeed",
+22,
+112913,
+"Indeed, Inc."
+],
+[
+"applied materials",
+22,
+186742,
+"Applied Materials, Inc"
+],
+[
+"caremark",
+21,
+133250,
+"Caremark LLC"
+],
+[
+"united wholesale mortgage",
+21,
+110000,
+"United Wholesale Mortgage, LLC"
+],
+[
+"auger",
+21,
+180000,
+"Auger, Inc."
+],
+[
+"optum",
+21,
+111218,
+"Optum Services, Inc."
+],
+[
+"weride",
+21,
+150000,
+"WeRide CORP"
+],
+[
+"trade desk",
+20,
+151400,
+"THE TRADE DESK, INC."
+],
+[
+"northern trust",
+20,
+139674,
+"The Northern Trust Company"
+],
+[
+"akamai technologies",
+20,
+132870,
+"Akamai Technologies, Inc."
+],
+[
+"veeva systems",
+20,
+137200,
+"Veeva Systems Inc."
+],
+[
+"progressive casualty insurance",
+20,
+148554,
+"Progressive Casualty Insurance Company"
+],
+[
+"asana",
+20,
+171000,
+"Asana, Inc."
+],
+[
+"moloco",
+20,
+161637,
+"Moloco, Inc."
+],
+[
+"goldman sachs wealth",
+20,
+145000,
+"GOLDMAN SACHS WEALTH SERVICES, L.P."
+],
+[
+"hudson river trading",
+20,
+200000,
+"Hudson River Trading LLC"
+],
+[
+"bnsf railway",
+20,
+123750,
+"BNSF Railway Company"
+],
+[
+"qualtrics",
+19,
+187000,
+"Qualtrics, LLC"
+],
+[
+"jane street",
+19,
+300000,
+"Jane Street Group, LLC"
+],
+[
+"amgen",
+19,
+139696,
+"Amgen Inc."
+],
+[
+"lucid",
+19,
+137592,
+"Lucid USA, Inc."
+],
+[
+"intuitive surgical operations",
+19,
+189159,
+"Intuitive Surgical Operations, Inc."
+],
+[
+"genentech",
+19,
+133952,
+"Genentech, Inc."
+],
+[
+"tinder",
+19,
+149365,
+"Tinder LLC"
+],
+[
+"cummins",
+19,
+103667,
+"Cummins Inc."
+],
+[
+"honeywell international",
+18,
+149916,
+"Honeywell International Inc."
+],
+[
+"general motors financial",
+18,
+121946,
+"General Motors Financial Company, Inc."
+],
+[
+"riot games",
+18,
+176134,
+"Riot Games, Inc."
+],
+[
+"twitch interactive",
+18,
+171950,
+"Twitch Interactive, Inc."
+],
+[
+"sk hynix nand product solutions",
+18,
+139724,
+"SK Hynix NAND Product Solutions Corp"
+],
+[
+"tensor auto",
+18,
+149365,
+"TENSOR AUTO INC."
+],
+[
+"cohesity",
+18,
+149240,
+"Cohesity, Inc."
+],
+[
+"yelp",
+17,
+225000,
+"Yelp Inc."
+],
+[
+"chime financial",
+17,
+170000,
+"Chime Financial, Inc."
+],
+[
+"panasonic avionics",
+17,
+140959,
+"Panasonic Avionics Corporation"
+],
+[
+"fortinet",
+17,
+145000,
+"Fortinet, Inc."
+],
+[
+"ss c technologies",
+17,
+120000,
+"SS&C Technologies, Inc."
+],
+[
+"woven by toyota",
+17,
+165000,
+"Woven by Toyota, U.S., Inc."
+],
+[
+"vanguard",
+17,
+164889,
+"The Vanguard Group, Inc."
+],
+[
+"electronic arts",
+17,
+145465,
+"Electronic Arts Inc."
+],
+[
+"people center d b a rippling",
+17,
+220000,
+"People Center, Inc. d/b/a Rippling"
+],
+[
+"liveramp",
+17,
+145000,
+"LiveRamp, Inc."
+],
+[
+"zs associates",
+17,
+151000,
+"ZS Associates, Inc."
+],
+[
+"schweitzer engineering laboratories",
+17,
+117395,
+"Schweitzer Engineering Laboratories, Inc."
+],
+[
+"bank of",
+17,
+113000,
+"BANK OF AMERICA N.A."
+],
+[
+"c3 ai",
+17,
+155000,
+"C3.ai, Inc."
+],
+[
+"7 eleven",
+16,
+108076,
+"7-Eleven, Inc."
+],
+[
+"bayer research development",
+16,
+134950,
+"Bayer Research and Development Services LLC"
+],
+[
+"anysphere",
+16,
+187574,
+"Anysphere, Inc."
+],
+[
+"wayve technologies",
+16,
+280000,
+"Wayve Technologies, Inc"
+],
+[
+"lam research",
+16,
+133952,
+"Lam Research Corporation"
+],
+[
+"federal express",
+16,
+94898,
+"Federal Express Corporation"
+],
+[
+"travelers indemnity",
+16,
+141500,
+"The Travelers Indemnity Company"
+],
+[
+"verkada",
+16,
+205000,
+"Verkada, Inc"
+],
+[
+"melmark",
+16,
+86299,
+"MELMARK INC"
+],
+[
+"elise a i technologies",
+15,
+187574,
+"Elise A.I. Technologies Corp."
+],
+[
+"field ai",
+15,
+160000,
+"Field AI, Inc."
+],
+[
+"team belvedere",
+15,
+180000,
+"Team Belvedere, LLC"
+],
+[
+"nuro",
+15,
+190000,
+"Nuro, Inc"
+],
+[
+"f5",
+15,
+136528,
+"F5, Inc."
+],
+[
+"nextdoor",
+15,
+190000,
+"Nextdoor, Inc."
+],
+[
+"synopsys",
+15,
+175053,
+"Synopsys, Inc."
+],
+[
+"aetna resources",
+15,
+131777,
+"Aetna Resources LLC"
+],
+[
+"first citizens bank trust",
+15,
+157248,
+"First Citizens Bank and Trust Co."
+],
+[
+"polar operations d b a imc markets",
+15,
+200000,
+"Polar Operations LLC d/b/a IMC Markets"
+],
+[
+"moody s investors service",
+15,
+115847,
+"Moody's Investors Service, Inc."
+],
+[
+"memryx",
+15,
+110000,
+"MEMRYX INC."
+],
+[
+"viasat",
+15,
+140867,
+"Viasat Inc."
+],
+[
+"hippocratic ai",
+15,
+240000,
+"Hippocratic AI, Inc"
+],
+[
+"juniper square",
+15,
+135699,
+"JUNIPER SQUARE INC."
+],
+[
+"together computer",
+15,
+209082,
+"Together Computer, Inc."
+],
+[
+"flexport",
+14,
+165724,
+"Flexport, Inc."
+],
+[
+"zions bancorporation",
+14,
+144435,
+"Zions Bancorporation, N.A."
+],
+[
+"northwestern mutual life insurance",
+14,
+122888,
+"Northwestern Mutual Life Insurance Company"
+],
+[
+"humana",
+14,
+112258,
+"Humana Inc."
+],
+[
+"deere",
+14,
+120100,
+"Deere & Company"
+],
+[
+"mufg bank",
+14,
+147206,
+"MUFG Bank, Ltd."
+],
+[
+"grainger management",
+14,
+147210,
+"Grainger Management LLC"
+],
+[
+"jump operations",
+14,
+250000,
+"JUMP OPERATIONS, LLC"
+],
+[
+"emc",
+14,
+145000,
+"EMC CORPORATION"
+],
+[
+"nationwide mutual insurance",
+14,
+140026,
+"Nationwide Mutual Insurance Company"
+],
+[
+"plaid",
+14,
+187574,
+"Plaid, Inc."
+],
+[
+"adp technology",
+14,
+79456,
+"ADP Technology Services, Inc."
+],
+[
+"spotify",
+13,
+183150,
+"SPOTIFY USA, INC."
+],
+[
+"ibg",
+13,
+145000,
+"IBG LLC"
+],
+[
+"notion labs",
+13,
+220000,
+"Notion Labs, Inc."
+],
+[
+"isn software",
+13,
+135000,
+"ISN Software Corporation"
+],
+[
+"micron technology",
+13,
+126939,
+"Micron Technology, Inc."
+],
+[
+"battelle memorial institute",
+13,
+137000,
+"Battelle Memorial Institute"
+],
+[
+"klaviyo",
+13,
+116000,
+"Klaviyo, Inc."
+],
+[
+"citadel",
+13,
+103210,
+"CITADEL AMERICAS SERVICES LLC"
+],
+[
+"avride",
+13,
+124530,
+"Avride, Inc."
+],
+[
+"kai cyber",
+13,
+200000,
+"KAI CYBER INC"
+],
+[
+"asm",
+13,
+111072,
+"ASM AMERICA INC."
+],
+[
+"xmotors",
+13,
+210000,
+"XMotors.USA, Inc."
+],
+[
+"agility robotics",
+13,
+151789,
+"Agility Robotics Inc."
+],
+[
+"tiktok data security",
+12,
+219700,
+"TikTok U.S. Data Security Inc."
+],
+[
+"hm health solutions",
+12,
+115149,
+"HM Health Solutions, Inc."
+],
+[
+"dassault systemes",
+12,
+124697,
+"Dassault Systemes Americas Corp"
+],
+[
+"crusoe energy systems",
+12,
+176538,
+"Crusoe Energy Systems LLC"
+],
+[
+"mercor io",
+12,
+161637,
+"Mercor.io Corporation"
+],
+[
+"citizens financial",
+12,
+102105,
+"Citizens Financial Group, Inc."
+],
+[
+"gusto",
+12,
+205000,
+"Gusto, Inc."
+],
+[
+"siemens medical solutions",
+12,
+162580,
+"Siemens Medical Solutions USA, Inc."
+],
+[
+"ford motor credit",
+12,
+138486,
+"Ford Motor Credit Company LLC"
+],
+[
+"distyl ai",
+12,
+210000,
+"Distyl AI, Inc."
+],
+[
+"lexisnexis risk solutions",
+12,
+89396,
+"LexisNexis Risk Solutions, Inc."
+],
+[
+"gen digital",
+12,
+142243,
+"Gen Digital Inc."
+],
+[
+"ace american insurance",
+12,
+110300,
+"ACE American Insurance Company"
+],
+[
+"gallup",
+12,
+101358,
+"Gallup, Inc."
+],
+[
+"latitude ai",
+12,
+141760,
+"Latitude AI, LLC"
+],
+[
+"fetch rewards",
+12,
+159000,
+"Fetch Rewards, Inc."
+],
+[
+"microchip technology",
+12,
+106000,
+"Microchip Technology Inc."
+],
+[
+"polar operations",
+12,
+200000,
+"Polar Operations LLC"
+],
+[
+"temenos",
+12,
+77251,
+"Temenos USA, Inc."
+],
+[
+"locally compact",
+11,
+170000,
+"Locally Compact, Inc."
+],
+[
+"nxp",
+11,
+157384,
+"NXP USA, Inc."
+],
+[
+"optiver",
+11,
+200000,
+"Optiver Services US LLC"
+],
+[
+"rivian volkswagen technologies",
+11,
+139100,
+"Rivian and Volkswagen Group Technologies, LLC"
+],
+[
+"lnw gaming",
+11,
+124283,
+"LNW Gaming Inc."
+],
+[
+"sigma computing",
+11,
+226138,
+"Sigma Computing, Inc."
+],
+[
+"copart",
+11,
+113000,
+"COPART, INC"
+],
+[
+"zillow",
+11,
+149240,
+"Zillow, Inc."
+],
+[
+"formagrid",
+11,
+250000,
+"Formagrid, Inc. (d/b/a Airtable)"
+],
+[
+"rivian automotive",
+11,
+154130,
+"Rivian Automotive, LLC"
+],
+[
+"ixl learning",
+11,
+138000,
+"IXL Learning, Inc."
+],
+[
+"harvey ai",
+11,
+200000,
+"HARVEY AI CORPORATION"
+],
+[
+"cbre",
+11,
+100000,
+"CBRE, INC."
+],
+[
+"appfolio",
+11,
+155328,
+"AppFolio Inc."
+],
+[
+"healthverity",
+11,
+92186,
+"HealthVerity, Inc."
+],
+[
+"samsara",
+10,
+144075,
+"Samsara Inc."
+],
+[
+"armadin",
+10,
+193870,
+"Armadin, Inc."
+],
+[
+"thumbtack",
+10,
+172500,
+"Thumbtack, Inc."
+],
+[
+"clearwater analytics",
+10,
+131352,
+"Clearwater Analytics, LLC"
+],
+[
+"kroger",
+10,
+154601,
+"The Kroger Company"
+],
+[
+"td bank national association",
+10,
+147225,
+"TD Bank, National Association"
+],
+[
+"fermi forward discovery",
+10,
+79310,
+"Fermi Forward Discovery Group, LLC"
+],
+[
+"arm",
+10,
+135574,
+"Arm, Inc."
+],
+[
+"rokt",
+10,
+142850,
+"Rokt US Corp."
+],
+[
+"circle internet management",
+10,
+132800,
+"Circle Internet Management Services LLC"
+],
+[
+"guidewire software",
+10,
+144300,
+"GUIDEWIRE SOFTWARE, INC."
+],
+[
+"worldpay",
+10,
+148712,
+"Worldpay, LLC"
+],
+[
+"rockwell collins",
+10,
+98883,
+"Rockwell Collins Inc."
+],
+[
+"walgreen",
+10,
+153119,
+"Walgreen Co."
+],
+[
+"paychex",
+10,
+100580,
+"Paychex North America Inc."
+],
+[
+"tempus ai",
+10,
+145000,
+"Tempus AI"
+],
+[
+"blue cross blue shield of kansas",
+10,
+104312,
+"Blue Cross and Blue Shield of Kansas, Inc."
+],
+[
+"drw",
+10,
+153317,
+"DRW Holdings LLC"
+],
+[
+"blue yonder",
+10,
+83961,
+"Blue Yonder, Inc."
+],
+[
+"spectro cloud",
+10,
+187741,
+"Spectro Cloud, Inc."
+],
+[
+"csc investments ii",
+10,
+132246,
+"CSC  Investments II, LLC"
+],
+[
+"mckesson",
+9,
+135163,
+"McKesson Corporation"
+],
+[
+"leland stanford jr university",
+9,
+131879,
+"The Leland Stanford, Jr University"
+],
+[
+"aptiv general partnership",
+9,
+121951,
+"Aptiv US Services General Partnership"
+],
+[
+"siemens industry",
+9,
+148522,
+"Siemens Industry, Inc."
+],
+[
+"fireworks ai",
+9,
+210000,
+"Fireworks.ai, Inc."
+],
+[
+"a9 com",
+9,
+155800,
+"A9.com LLC"
+],
+[
+"particle media",
+9,
+187741,
+"Particle Media, Inc."
+],
+[
+"galileo financial technologies",
+9,
+165000,
+"Galileo Financial Technologies, LLC"
+],
+[
+"qualcomm innovation center",
+9,
+120322,
+"Qualcomm Innovation Center, Inc."
+],
+[
+"ut battelle",
+9,
+144569,
+"UT-BATTELLE, LLC (OAK RIDGE NATIONAL LABORATORY)"
+],
+[
+"medtronic",
+9,
+124883,
+"Medtronic, Inc."
+],
+[
+"s p global market intelligence",
+9,
+138585,
+"S&P Global Market Intelligence Inc."
+],
+[
+"elavon",
+9,
+112923,
+"Elavon, Inc."
+],
+[
+"kikoff",
+9,
+194528,
+"KikOff Inc."
+],
+[
+"government employee insurance",
+9,
+132560,
+"Government Employee Insurance Company (GEICO)"
+],
+[
+"anyscale",
+9,
+180000,
+"Anyscale, Inc."
+],
+[
+"quora",
+9,
+187741,
+"Quora, Inc."
+],
+[
+"imdb com",
+9,
+129667,
+"IMDb.com, Inc."
+],
+[
+"vertex",
+9,
+114652,
+"Vertex, Inc."
+],
+[
+"american credit acceptance",
+9,
+94682,
+"American Credit Acceptance, LLC"
+],
+[
+"hp",
+9,
+135891,
+"HP Inc."
+],
+[
+"modular",
+9,
+242000,
+"Modular, Inc."
+],
+[
+"pony ai",
+9,
+171200,
+"Pony.AI, Inc."
+],
+[
+"egencia",
+9,
+108077,
+"Egencia LLC"
+],
+[
+"bentley systems",
+9,
+109845,
+"Bentley Systems, Incorporated"
+],
+[
+"flextrade systems",
+9,
+118000,
+"FlexTrade Systems, Inc."
+],
+[
+"credit karma",
+9,
+150457,
+"Credit Karma LLC"
+],
+[
+"super micro computer",
+9,
+133000,
+"Super Micro Computer, Inc."
+],
+[
+"memorial sloan kettering cancer center",
+8,
+132500,
+"Memorial Sloan Kettering Cancer Center"
+],
+[
+"cvs pharmacy",
+8,
+122685,
+"CVS Pharmacy Inc."
+],
+[
+"equitable financial life insurance",
+8,
+117846,
+"Equitable Financial Life Insurance Company"
+],
+[
+"regions bank",
+8,
+122557,
+"Regions Bank"
+],
+[
+"adyen n v",
+8,
+108077,
+"Adyen N.V."
+],
+[
+"effective ai",
+8,
+170818,
+"Effective AI, Inc."
+],
+[
+"woot",
+8,
+164620,
+"Woot Services LLC"
+],
+[
+"remitly",
+8,
+155197,
+"Remitly, Inc."
+],
+[
+"university of michigan",
+8,
+80469,
+"University of Michigan"
+],
+[
+"john hancock life insurance",
+8,
+137807,
+"John Hancock Life Insurance Company (USA)"
+],
+[
+"cicero technologies dba eudia",
+8,
+187741,
+"Cicero Technologies, Inc. dba Eudia"
+],
+[
+"lexisnexis risk solutions fl",
+8,
+83500,
+"LexisNexis Risk Solutions FL, Inc."
+],
+[
+"t mobile",
+8,
+125266,
+"T-Mobile USA, Inc."
+],
+[
+"grainger corporate",
+8,
+140934,
+"Grainger Corporate Services LLC"
+],
+[
+"servicelink",
+8,
+128904,
+"SERVICELINK SERVICES, LLC"
+],
+[
+"fedex freight",
+8,
+94946,
+"FedEx Freight, Inc."
+],
+[
+"braze",
+8,
+136350,
+"Braze, Inc."
+],
+[
+"siemens",
+8,
+156929,
+"Siemens Corporation"
+],
+[
+"advanced flow solutions",
+8,
+117659,
+"Advanced Flow Solutions, Inc."
+],
+[
+"western governors university",
+8,
+132650,
+"Western Governors University"
+],
+[
+"maplebear",
+8,
+173000,
+"Maplebear Inc."
+],
+[
+"marqeta",
+8,
+136175,
+"Marqeta, Inc."
+],
+[
+"stubhub",
+8,
+197500,
+"StubHub, Inc."
+],
+[
+"langchain",
+8,
+176287,
+"LangChain Inc."
+],
+[
+"commure",
+8,
+159250,
+"Commure, Inc."
+],
+[
+"box",
+8,
+149365,
+"Box, Inc."
+],
+[
+"eli lilly",
+8,
+108914,
+"Eli Lilly and Company"
+],
+[
+"midland credit management",
+8,
+84200,
+"Midland Credit Management, Inc"
+],
+[
+"navy federal credit union",
+7,
+126256,
+"Navy Federal Credit Union"
+],
+[
+"armada systems",
+7,
+149240,
+"Armada Systems, Inc."
+],
+[
+"university of california los angeles",
+7,
+102187,
+"University of California, Los Angeles"
+],
+[
+"brex",
+7,
+164403,
+"Brex Inc."
+],
+[
+"alo",
+7,
+215000,
+"Alo LLC"
+],
+[
+"global payment",
+7,
+100279,
+"Global Payment Holding Company"
+],
+[
+"blackline systems",
+7,
+160000,
+"BlackLine Systems, Inc."
+],
+[
+"neuralink",
+7,
+170000,
+"Neuralink Corp."
+],
+[
+"nexthop systems",
+7,
+210000,
+"Nexthop Systems Inc"
+],
+[
+"medline industries",
+7,
+144000,
+"Medline Industries, LP."
+],
+[
+"path robotics",
+7,
+170000,
+"PATH ROBOTICS INC."
+],
+[
+"ambience healthcare",
+7,
+260000,
+"Ambience Healthcare, Inc."
+],
+[
+"cedars sinai medical center",
+7,
+94764,
+"Cedars-Sinai Medical Center"
+],
+[
+"rhombus power",
+7,
+149365,
+"Rhombus Power, Inc."
+],
+[
+"travelscape",
+7,
+79248,
+"Travelscape LLC"
+],
+[
+"teradyne",
+7,
+160000,
+"Teradyne, Inc."
+],
+[
+"baseten labs",
+7,
+213512,
+"Baseten Labs, Inc."
+],
+[
+"cruise",
+7,
+200000,
+"Cruise LLC"
+],
+[
+"genesys cloud",
+7,
+122700,
+"Genesys Cloud Services, Inc."
+],
+[
+"zipline international",
+7,
+187574,
+"Zipline International Inc."
+],
+[
+"dk crown",
+7,
+107557,
+"DK Crown Holdings Inc."
+],
+[
+"resmed digital health",
+7,
+134000,
+"ResMed Digital Health Inc."
+],
+[
+"clear street management",
+7,
+131997,
+"Clear Street Management LLC"
+],
+[
+"d e shaw",
+7,
+275000,
+"D. E. Shaw & Co., L.P."
+],
+[
+"medwatchers",
+7,
+105000,
+"MedWatchers, Inc"
+],
+[
+"m t bank",
+7,
+124800,
+"M&T Bank"
+],
+[
+"icahn school of medicine at mount sinai",
+7,
+105500,
+"Icahn School of Medicine at Mount Sinai"
+],
+[
+"blackhawk network",
+7,
+112923,
+"Blackhawk Network, Inc."
+],
+[
+"staples",
+7,
+118356,
+"Staples, Inc."
+],
+[
+"everlaw",
+7,
+161637,
+"Everlaw, Inc."
+],
+[
+"ge energy management",
+7,
+114600,
+"GE ENERGY MANAGEMENT SERVICES, LLC"
+],
+[
+"hark labs",
+7,
+300000,
+"HARK LABS INC."
+],
+[
+"crunchyroll",
+7,
+168000,
+"Crunchyroll, LLC"
+],
+[
+"cresta intelligence",
+7,
+150758,
+"Cresta Intelligence Inc."
+],
+[
+"bill operations",
+7,
+160618,
+"BILL Operations LLC"
+],
+[
+"roku",
+7,
+187741,
+"Roku, Inc."
+],
+[
+"marketaxess",
+7,
+142500,
+"MarketAxess Corporation"
+],
+[
+"ccc intelligent solutions",
+7,
+108077,
+"CCC Intelligent Solutions, Inc"
+],
+[
+"kaseya",
+7,
+88941,
+"Kaseya US LLC"
+],
+[
+"heygen technology",
+7,
+187574,
+"HeyGen Technology Inc."
+],
+[
+"perennial autonomy",
+7,
+100318,
+"Perennial Autonomy LLC"
+],
+[
+"typical set",
+7,
+195000,
+"Typical Set, LLC"
+],
+[
+"benchling",
+6,
+170000,
+"Benchling, Inc."
+],
+[
+"warnermedia",
+6,
+132046,
+"WarnerMedia Services, LLC"
+],
+[
+"tyler technologies",
+6,
+88631,
+"Tyler Technologies, Inc."
+],
+[
+"robotics ai institute",
+6,
+187980,
+"Robotics and AI Institute LLC"
+],
+[
+"paypal data",
+6,
+119571,
+"PayPal Data Services, Inc."
+],
+[
+"upstart network",
+6,
+167100,
+"Upstart Network, Inc."
+],
+[
+"liberty mutual",
+6,
+126017,
+"Liberty Mutual Group Inc."
+],
+[
+"national oilwell varco l p",
+6,
+112750,
+"National Oilwell Varco, L..P"
+],
+[
+"1finity",
+6,
+156998,
+"1Finity Americas, Inc."
+],
+[
+"skwid",
+6,
+193800,
+"Skwid Inc."
+],
+[
+"patreon",
+6,
+250000,
+"PATREON, INC."
+],
+[
+"intelligrated systems",
+6,
+120573,
+"Intelligrated Systems, LLC"
+],
+[
+"delta air lines",
+6,
+132561,
+"Delta Air Lines, Inc."
+],
+[
+"cox automotive corporate",
+6,
+113432,
+"Cox Automotive Corporate Services, LLC"
+],
+[
+"merge api",
+6,
+181000,
+"Merge API, Inc."
+],
+[
+"wgu",
+6,
+139250,
+"WGU Corporation"
+],
+[
+"comcast cable communications",
+6,
+101774,
+"Comcast Cable Communications, LLC"
+],
+[
+"faire wholesale",
+6,
+206500,
+"Faire Wholesale, Inc."
+],
+[
+"i3 verticals",
+6,
+111072,
+"i3 Verticals LLC"
+],
+[
+"stryder",
+6,
+270000,
+"Stryder Corporation"
+],
+[
+"freedom mortgage",
+6,
+128201,
+"Freedom Mortgage Corporation"
+],
+[
+"mayo clinic",
+6,
+101681,
+"Mayo Clinic"
+],
+[
+"vercel",
+6,
+237500,
+"Vercel, Inc."
+],
+[
+"ubs business solutions",
+6,
+121500,
+"UBS Business Solutions US LLC"
+],
+[
+"massachusetts mutual life insurance",
+6,
+149780,
+"Massachusetts Mutual Life Insurance Company"
+],
+[
+"parafin",
+6,
+213512,
+"Parafin, Inc."
+],
+[
+"grubhub",
+6,
+178000,
+"Grubhub Holdings Inc."
+],
+[
+"zebra technologies",
+6,
+150288,
+"Zebra Technologies Corporation"
+],
+[
+"rocket close",
+6,
+103750,
+"Rocket Close, LLC"
+],
+[
+"cooper square technologies",
+6,
+195000,
+"Cooper Square Technologies, Inc."
+]
+]
+}

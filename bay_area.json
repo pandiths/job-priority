@@ -1,0 +1,8595 @@
+[
+ {
+  "employer": "Google LLC",
+  "key": "google",
+  "count": 3431,
+  "median_wage": 197000,
+  "cities": {
+   "Mountain View": 1622,
+   "Sunnyvale": 1375,
+   "San Bruno": 195,
+   "San Jose": 115,
+   "San Francisco": 110
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Data Scientist",
+   "Software Engineer, Site Reliability"
+  ],
+  "name_variants": [
+   "Google LLC"
+  ],
+  "board": "career site"
+ },
+ {
+  "employer": "Meta Platforms, Inc",
+  "key": "meta platforms",
+  "count": 1593,
+  "median_wage": 219801,
+  "cities": {
+   "Menlo Park": 1259,
+   "Burlingame": 139,
+   "Sunnyvale": 129,
+   "San Francisco": 25,
+   "Fremont": 16
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Data Scientist",
+   "Ai Research Scientist"
+  ],
+  "name_variants": [
+   "Meta Platforms, Inc"
+  ],
+  "board": "career site"
+ },
+ {
+  "employer": "Apple Inc.",
+  "key": "apple",
+  "count": 1265,
+  "median_wage": 186142,
+  "cities": {
+   "Cupertino": 831,
+   "Sunnyvale": 359,
+   "Santa Clara": 43,
+   "San Francisco": 20,
+   "San Jose": 9
+  },
+  "top_titles": [
+   "Software Development Engineering",
+   "Software Engineering Applications",
+   "Software Engineering Systems"
+  ],
+  "name_variants": [
+   "Apple Inc."
+  ],
+  "board": "career site"
+ },
+ {
+  "employer": "Amazon.com Services LLC",
+  "key": "amazon com",
+  "count": 755,
+  "median_wage": 185000,
+  "cities": {
+   "Sunnyvale": 331,
+   "Santa Clara": 138,
+   "San Francisco": 122,
+   "Palo Alto": 107,
+   "East Palo Alto": 20
+  },
+  "top_titles": [
+   "Software Dev Engineer Ii",
+   "Software Development Engineer Ii",
+   "Applied Scientist Ii"
+  ],
+  "name_variants": [
+   "Amazon.com Services LLC",
+   "AMAZON.COM SERVICES LLC"
+  ],
+  "board": "career site"
+ },
+ {
+  "employer": "Adobe Inc.",
+  "key": "adobe",
+  "count": 475,
+  "median_wage": 187741,
+  "cities": {
+   "San Jose": 430,
+   "San Francisco": 44,
+   "San J Ose": 1
+  },
+  "top_titles": [
+   "Software Development Engineer",
+   "Machine Learning Engineer",
+   "Data Science Engineer"
+  ],
+  "name_variants": [
+   "Adobe Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Microsoft Corporation",
+  "key": "microsoft",
+  "count": 398,
+  "median_wage": 201203,
+  "cities": {
+   "Mountain View": 292,
+   "San Jose": 26,
+   "San Francisco": 26,
+   "Santa Clara": 15,
+   "Fremont": 11
+  },
+  "top_titles": [
+   "Software Engineering",
+   "Applied Sciences",
+   "Data Science"
+  ],
+  "name_variants": [
+   "Microsoft Corporation"
+  ]
+ },
+ {
+  "employer": "Amazon Development Center U.S., Inc.",
+  "key": "amazon development center",
+  "count": 363,
+  "median_wage": 162000,
+  "cities": {
+   "Santa Clara": 153,
+   "East Palo Alto": 152,
+   "Mountain View": 36,
+   "Sunnyvale": 8,
+   "San Francisco": 7
+  },
+  "top_titles": [
+   "Software Dev Engineer I",
+   "Software Dev Engineer Ii",
+   "Software Development Engineer Ii"
+  ],
+  "name_variants": [
+   "Amazon Development Center U.S., Inc.",
+   "AMAZON DEVELOPMENT CENTER U.S., INC."
+  ],
+  "board": "career site"
+ },
+ {
+  "employer": "Tesla, Inc.",
+  "key": "tesla",
+  "count": 227,
+  "median_wage": 210000,
+  "cities": {
+   "Palo Alto": 150,
+   "Fremont": 75,
+   "Hayward": 1,
+   "Palo Alto,": 1
+  },
+  "top_titles": [
+   "Software Development Engineer",
+   "Autopilot Software Engineer",
+   "Software Development Engineer - Eng"
+  ],
+  "name_variants": [
+   "Tesla, Inc."
+  ]
+ },
+ {
+  "employer": "LinkedIn Corporation",
+  "key": "linkedin",
+  "count": 224,
+  "median_wage": 153493,
+  "cities": {
+   "Sunnyvale": 205,
+   "San Francisco": 18,
+   "Mountain View": 1
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Software Engineer, Systems Infrastructure",
+   "Software Engineer, Machine Learning"
+  ],
+  "name_variants": [
+   "LinkedIn Corporation",
+   "LINKEDIN CORPORATION"
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "BYTEDANCE INC.",
+  "key": "bytedance",
+  "count": 203,
+  "median_wage": 211000,
+  "cities": {
+   "San Jose": 203
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Machine Learning Engineer",
+   "Software Development Engineer"
+  ],
+  "name_variants": [
+   "BYTEDANCE INC.",
+   "ByteDance Inc."
+  ]
+ },
+ {
+  "employer": "NVIDIA Corporation",
+  "key": "nvidia",
+  "count": 194,
+  "median_wage": 204134,
+  "cities": {
+   "Santa Clara": 194
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Data Scientist",
+   "System Software Engineer"
+  ],
+  "name_variants": [
+   "NVIDIA Corporation"
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Waymo LLC",
+  "key": "waymo",
+  "count": 182,
+  "median_wage": 205000,
+  "cities": {
+   "Mountain View": 170,
+   "San Francisco": 12
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Machine Learning Engineer",
+   "Data Scientist"
+  ],
+  "name_variants": [
+   "Waymo LLC"
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Cisco Systems, Inc.",
+  "key": "cisco systems",
+  "count": 178,
+  "median_wage": 187574,
+  "cities": {
+   "San Jose": 85,
+   "Milpitas": 52,
+   "San Francisco": 41
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Software Engineering Technical Leader",
+   "Leader, Software Engineering"
+  ],
+  "name_variants": [
+   "Cisco Systems, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Netflix, Inc.",
+  "key": "netflix",
+  "count": 154,
+  "median_wage": 264514,
+  "cities": {
+   "Los Gatos": 153,
+   "Hayward": 1
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Machine Learning Scientist",
+   "Data Scientist"
+  ],
+  "name_variants": [
+   "Netflix, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Salesforce, Inc.",
+  "key": "salesforce",
+  "count": 153,
+  "median_wage": 174975,
+  "cities": {
+   "San Francisco": 134,
+   "Palo Alto": 13,
+   "Redwood City": 4,
+   "Sunnyvale": 1,
+   "San Jose": 1
+  },
+  "top_titles": [
+   "Software Engineering Mts",
+   "Software Engineering Amts",
+   "Research Scientist, Ai Research"
+  ],
+  "name_variants": [
+   "Salesforce, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "eBay Inc.",
+  "key": "ebay",
+  "count": 125,
+  "median_wage": 216913,
+  "cities": {
+   "San Jose": 121,
+   "San Francisco": 4
+  },
+  "top_titles": [
+   "Mts 1, Software Engineer",
+   "Mts 2, Software Engineer",
+   "Software Engineer 2"
+  ],
+  "name_variants": [
+   "eBay Inc."
+  ]
+ },
+ {
+  "employer": "Databricks, Inc.",
+  "key": "databricks",
+  "count": 109,
+  "median_wage": 149365,
+  "cities": {
+   "San Francisco": 73,
+   "Mountain View": 36
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Data Scientist"
+  ],
+  "name_variants": [
+   "Databricks, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Uber Technologies, Inc.",
+  "key": "uber technologies",
+  "count": 106,
+  "median_wage": 183000,
+  "cities": {
+   "Sunnyvale": 55,
+   "San Francisco": 51
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Data Scientist",
+   "Machine Learning Engineer"
+  ],
+  "name_variants": [
+   "Uber Technologies, Inc."
+  ]
+ },
+ {
+  "employer": "DoorDash, Inc.",
+  "key": "doordash",
+  "count": 104,
+  "median_wage": 187741,
+  "cities": {
+   "San Francisco": 53,
+   "Sunnyvale": 51
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Machine Learning Engineer",
+   "Data Scientist"
+  ],
+  "name_variants": [
+   "DoorDash, Inc.",
+   "DoorDash"
+  ]
+ },
+ {
+  "employer": "TikTok Inc.",
+  "key": "tiktok",
+  "count": 103,
+  "median_wage": 248400,
+  "cities": {
+   "San Jose": 103
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Machine Learning Engineer",
+   "Machine Learning Scientist"
+  ],
+  "name_variants": [
+   "TikTok Inc."
+  ]
+ },
+ {
+  "employer": "Snowflake Inc.",
+  "key": "snowflake",
+  "count": 101,
+  "median_wage": 161637,
+  "cities": {
+   "Menlo Park": 99,
+   "Dublin": 1,
+   "Menlopark": 1
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Data Scientist",
+   "Software Developer - Full Stack"
+  ],
+  "name_variants": [
+   "Snowflake Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Zoox Inc.",
+  "key": "zoox",
+  "count": 87,
+  "median_wage": 188000,
+  "cities": {
+   "Foster City": 87
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Machine Learning Engineer",
+   "Sdet - Ml Automation Engineer"
+  ],
+  "name_variants": [
+   "Zoox Inc.",
+   "Zoox, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Intel Corporation",
+  "key": "intel",
+  "count": 82,
+  "median_wage": 174423,
+  "cities": {
+   "Santa Clara": 80,
+   "San Jose": 1,
+   "San Ramon": 1
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Graphics Software Engineer",
+   "Data Scientist"
+  ],
+  "name_variants": [
+   "Intel Corporation"
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Amazon Web Services, Inc.",
+  "key": "amazon web",
+  "count": 80,
+  "median_wage": 165120,
+  "cities": {
+   "Santa Clara": 35,
+   "East Palo Alto": 20,
+   "Mountain View": 13,
+   "Sunnyvale": 7,
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Software Development Engineer Ii",
+   "Software Development Engineer I",
+   "Software Dev Engineer Ii"
+  ],
+  "name_variants": [
+   "Amazon Web Services, Inc."
+  ],
+  "board": "career site"
+ },
+ {
+  "employer": "Zoom Communications, Inc.",
+  "key": "zoom communications",
+  "count": 59,
+  "median_wage": 162807,
+  "cities": {
+   "San Jose": 59
+  },
+  "top_titles": [
+   "Software Development Engineer",
+   "Software Engineer",
+   "Machine Learning Engineer"
+  ],
+  "name_variants": [
+   "Zoom Communications, Inc."
+  ]
+ },
+ {
+  "employer": "PayPal, Inc.",
+  "key": "paypal",
+  "count": 57,
+  "median_wage": 140658,
+  "cities": {
+   "San Jose": 57
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Machine Learning Engineer",
+   "Software Engineer 2"
+  ],
+  "name_variants": [
+   "PayPal, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Amazon Data Services, Inc",
+  "key": "amazon data",
+  "count": 52,
+  "median_wage": 186800,
+  "cities": {
+   "Santa Clara": 34,
+   "Cupertino": 12,
+   "East Palo Alto": 4,
+   "San Francisco": 1,
+   "Sunnyvale": 1
+  },
+  "top_titles": [
+   "Software Dev Engineer Ii",
+   "Software Development Engineer Ii",
+   "Software Dev Engineer I"
+  ],
+  "name_variants": [
+   "Amazon Data Services, Inc",
+   "Amazon Data Services, Inc."
+  ],
+  "board": "career site"
+ },
+ {
+  "employer": "TikTok USDS Joint Venture LLC",
+  "key": "tiktok usds joint venture",
+  "count": 50,
+  "median_wage": 200000,
+  "cities": {
+   "San Jose": 49,
+   "Floor 3": 1
+  },
+  "top_titles": [
+   "Machine Learning Engineer - Usds",
+   "Software Engineer - Usds",
+   "Software Engineer, Ads Serving And Foundation - Usds"
+  ],
+  "name_variants": [
+   "TikTok USDS Joint Venture LLC"
+  ]
+ },
+ {
+  "employer": "Airbnb, Inc.",
+  "key": "airbnb",
+  "count": 49,
+  "median_wage": 196000,
+  "cities": {
+   "San Francisco": 49
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Data Scientist",
+   "Machine Learning Engineer"
+  ],
+  "name_variants": [
+   "Airbnb, Inc.",
+   "AIRBNB, INC."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Stripe, LLC",
+  "key": "stripe",
+  "count": 47,
+  "median_wage": 161637,
+  "cities": {
+   "South San Francisco": 43,
+   "South  San Francisco": 2,
+   "San Jose": 1,
+   "Newark": 1
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Software Engineer, Bridge",
+   "Machine Learning Engineer"
+  ],
+  "name_variants": [
+   "Stripe, LLC",
+   "Stripe, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Oracle America, Inc.",
+  "key": "oracle",
+  "count": 44,
+  "median_wage": 187574,
+  "cities": {
+   "Santa Clara": 13,
+   "Redwood Shores": 13,
+   "Pleasanton": 12,
+   "Redwood City": 4,
+   "Union City": 1
+  },
+  "top_titles": [
+   "Software Developer",
+   "Applied Scientist",
+   "Data Scientist"
+  ],
+  "name_variants": [
+   "Oracle America, Inc."
+  ],
+  "board": "career site"
+ },
+ {
+  "employer": "Pinterest, Inc.",
+  "key": "pinterest",
+  "count": 43,
+  "median_wage": 187741,
+  "cities": {
+   "San Francisco": 25,
+   "Palo Alto": 15,
+   "San Francsico": 2,
+   "San Franscisco": 1
+  },
+  "top_titles": [
+   "Machine Learning Engineer Ii",
+   "Software Engineer Ii",
+   "Machine Learning Engineer"
+  ],
+  "name_variants": [
+   "Pinterest, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "ServiceNow, Inc.",
+  "key": "servicenow",
+  "count": 42,
+  "median_wage": 144108,
+  "cities": {
+   "Santa Clara": 35,
+   "Mountain View": 5,
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Forward Deployed Solution Engineer \u2013 Applied Ai Fde",
+   "Machine Learning Engineer"
+  ],
+  "name_variants": [
+   "ServiceNow, Inc."
+  ]
+ },
+ {
+  "employer": "Resolve AI, Inc.",
+  "key": "resolve ai",
+  "count": 42,
+  "median_wage": 213512,
+  "cities": {
+   "San Francisco": 42
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Software Engineer - Ai Research"
+  ],
+  "name_variants": [
+   "Resolve AI, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Annapurna Labs (U.S.) Inc.",
+  "key": "annapurna labs",
+  "count": 40,
+  "median_wage": 187741,
+  "cities": {
+   "Cupertino": 37,
+   "Santa Clara": 2,
+   "Palo Alto": 1
+  },
+  "top_titles": [
+   "Software Development Engineer Ii",
+   "Software Dev Engineer I",
+   "Software Dev Engineer Ii"
+  ],
+  "name_variants": [
+   "Annapurna Labs (U.S.) Inc.",
+   "ANNAPURNA LABS (U.S.) INC."
+  ]
+ },
+ {
+  "employer": "KLA Corporation",
+  "key": "kla",
+  "count": 39,
+  "median_wage": 178069,
+  "cities": {
+   "Milpitas": 39
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Artificial Intelligence Engineer",
+   "Ai Engineer"
+  ],
+  "name_variants": [
+   "KLA Corporation"
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Applied Intuition, Inc.",
+  "key": "applied intuition",
+  "count": 38,
+  "median_wage": 168460,
+  "cities": {
+   "Sunnyvale": 37,
+   "Mountain View": 1
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Software Engineer - Telematics",
+   "Embedded Software Engineer - Core Os"
+  ],
+  "name_variants": [
+   "Applied Intuition, Inc."
+  ]
+ },
+ {
+  "employer": "Mistral AI, Inc.",
+  "key": "mistral ai",
+  "count": 35,
+  "median_wage": 280000,
+  "cities": {
+   "Palo Alto": 35
+  },
+  "top_titles": [
+   "Ai Scientist",
+   "Applied Scientist",
+   "Applied Ai Engineer"
+  ],
+  "name_variants": [
+   "Mistral AI, Inc."
+  ]
+ },
+ {
+  "employer": "NetApp, Inc.",
+  "key": "netapp",
+  "count": 35,
+  "median_wage": 150080,
+  "cities": {
+   "San Jose": 34,
+   "San Francisco": 1
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Software Engineer 2",
+   "Applied Scientist"
+  ],
+  "name_variants": [
+   "NetApp, Inc."
+  ]
+ },
+ {
+  "employer": "Hewlett Packard Enterprise Company",
+  "key": "hewlett packard enterprise",
+  "count": 33,
+  "median_wage": 144390,
+  "cities": {
+   "Sunnyvale": 28,
+   "San Jose": 4,
+   "Fremont": 1
+  },
+  "top_titles": [
+   "Systems/Software Engineer Ii",
+   "Systems/Software Engineer I",
+   "Software Engineer-Ui/Ux Engineer"
+  ],
+  "name_variants": [
+   "Hewlett Packard Enterprise Company"
+  ]
+ },
+ {
+  "employer": "Rubrik, Inc.",
+  "key": "rubrik",
+  "count": 32,
+  "median_wage": 171500,
+  "cities": {
+   "Palo Alto": 31,
+   "San Mateo": 1
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Rubrik, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Lyft, Inc.",
+  "key": "lyft",
+  "count": 29,
+  "median_wage": 165000,
+  "cities": {
+   "San Francisco": 27,
+   "San Francsico": 1,
+   "Seattle": 1
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Data Scientist"
+  ],
+  "name_variants": [
+   "Lyft, Inc.",
+   "LYFT, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Robinhood Markets, Inc.",
+  "key": "robinhood markets",
+  "count": 28,
+  "median_wage": 166000,
+  "cities": {
+   "Menlo Park": 28
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Software Engineer, Fincrimes",
+   "Data Scientist"
+  ],
+  "name_variants": [
+   "Robinhood Markets, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Arista Networks, Inc.",
+  "key": "arista networks",
+  "count": 28,
+  "median_wage": 157460,
+  "cities": {
+   "Santa Clara": 28
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Arista Networks, Inc."
+  ]
+ },
+ {
+  "employer": "Scale AI, Inc.",
+  "key": "scale ai",
+  "count": 26,
+  "median_wage": 220000,
+  "cities": {
+   "San Francisco": 25,
+   "Lincoln": 1
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Machine Learning Research Scientist",
+   "Software Engineer - Developer Experience"
+  ],
+  "name_variants": [
+   "Scale AI, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "IBM Corporation",
+  "key": "ibm",
+  "count": 26,
+  "median_wage": 206029,
+  "cities": {
+   "San Jose": 24,
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Software Developer",
+   "Software Engineer",
+   "Research Software Engineer"
+  ],
+  "name_variants": [
+   "IBM Corporation"
+  ]
+ },
+ {
+  "employer": "Superhuman Platform Inc.",
+  "key": "superhuman platform",
+  "count": 25,
+  "median_wage": 213512,
+  "cities": {
+   "San Francisco": 25
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Machine Learning Engineer",
+   "Data Scientist"
+  ],
+  "name_variants": [
+   "Superhuman Platform Inc."
+  ]
+ },
+ {
+  "employer": "Roblox Corporation",
+  "key": "roblox",
+  "count": 24,
+  "median_wage": 208585,
+  "cities": {
+   "San Mateo": 24
+  },
+  "top_titles": [
+   "Software Engineer",
+   "People Data Scientist",
+   "Data Scientist"
+  ],
+  "name_variants": [
+   "Roblox Corporation"
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "ZipHQ, Inc.",
+  "key": "ziphq",
+  "count": 23,
+  "median_wage": 220000,
+  "cities": {
+   "San Francisco": 18,
+   "San Carlos": 2,
+   "Sunnyvale": 1,
+   "San Jose": 1,
+   "San Mateo": 1
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "ZipHQ, Inc."
+  ]
+ },
+ {
+  "employer": "Aurora Operations, Inc.",
+  "key": "aurora operations",
+  "count": 21,
+  "median_wage": 139000,
+  "cities": {
+   "Mountain View": 19,
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Software Engineer Ii",
+   "Software Engineer I"
+  ],
+  "name_variants": [
+   "Aurora Operations, Inc."
+  ]
+ },
+ {
+  "employer": "WeRide CORP",
+  "key": "weride",
+  "count": 21,
+  "median_wage": 150000,
+  "cities": {
+   "San Jose": 21
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "WeRide CORP",
+   "WeRide Corp",
+   "WeRide Corp."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Block, Inc.",
+  "key": "block",
+  "count": 20,
+  "median_wage": 230000,
+  "cities": {
+   "Oakland": 15,
+   "San Francisco": 3,
+   "Milpitas": 1,
+   "Mountain View": 1
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Data Scientist",
+   "Machine Learning Engineer (Modeling)"
+  ],
+  "name_variants": [
+   "Block, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Glean Technologies, Inc.",
+  "key": "glean technologies",
+  "count": 20,
+  "median_wage": 214250,
+  "cities": {
+   "San Francisco": 12,
+   "Palo Alto": 4,
+   "Mountain View": 4
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Data Scientist, Growth & Enterprise",
+   "Software Engineering, Machine Learning"
+  ],
+  "name_variants": [
+   "Glean Technologies, Inc."
+  ]
+ },
+ {
+  "employer": "Workday, Inc.",
+  "key": "workday",
+  "count": 19,
+  "median_wage": 161637,
+  "cities": {
+   "Pleasanton": 18,
+   "Santa Clara": 1
+  },
+  "top_titles": [
+   "Software Development Engineer",
+   "Data Scientist",
+   "Machine Learning Engineer - Devops"
+  ],
+  "name_variants": [
+   "Workday, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Docusign Inc.",
+  "key": "docusign",
+  "count": 18,
+  "median_wage": 186490,
+  "cities": {
+   "San Francisco": 8,
+   "San Jose": 2,
+   "Fremont": 1,
+   "Redwood City": 1,
+   "Dublin": 1
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Machine Learning Engineer",
+   "Ai Enterprise Security Engineers"
+  ],
+  "name_variants": [
+   "Docusign Inc.",
+   "Docusign, Inc.",
+   "DocuSign Inc.",
+   "DocuSign, Inc."
+  ]
+ },
+ {
+  "employer": "Nokia of America Corporation",
+  "key": "nokia of",
+  "count": 18,
+  "median_wage": 184110,
+  "cities": {
+   "Sunnyvale": 17,
+   "Foster City": 1
+  },
+  "top_titles": [
+   "Software Development Engineer",
+   "Software Dev Engineer",
+   "Software Developer Engineer"
+  ],
+  "name_variants": [
+   "Nokia of America Corporation"
+  ]
+ },
+ {
+  "employer": "Intuit Inc.",
+  "key": "intuit",
+  "count": 18,
+  "median_wage": 153010,
+  "cities": {
+   "Mountain View": 13,
+   "Oakland": 4,
+   "San Francisco": 1
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Ai Scientist",
+   "Data Scientist"
+  ],
+  "name_variants": [
+   "Intuit Inc."
+  ]
+ },
+ {
+  "employer": "Intuitive Surgical Operations, Inc.",
+  "key": "intuitive surgical operations",
+  "count": 18,
+  "median_wage": 190930,
+  "cities": {
+   "Sunnyvale": 17,
+   "Santa Clara": 1
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Software Development Engineer",
+   "Machine Learning Scientist"
+  ],
+  "name_variants": [
+   "Intuitive Surgical Operations, Inc."
+  ]
+ },
+ {
+  "employer": "TENSOR AUTO INC.",
+  "key": "tensor auto",
+  "count": 18,
+  "median_wage": 149365,
+  "cities": {
+   "San Jose": 18
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Machine Learning Engineer"
+  ],
+  "name_variants": [
+   "TENSOR AUTO INC."
+  ]
+ },
+ {
+  "employer": "Autodesk, Inc.",
+  "key": "autodesk",
+  "count": 17,
+  "median_wage": 168991,
+  "cities": {
+   "San Francisco": 13,
+   "Richmond": 2,
+   "Antioch": 1,
+   "Santa Clara": 1
+  },
+  "top_titles": [
+   "Software Development Engineer",
+   "Ai Research Scientist",
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Autodesk, Inc."
+  ]
+ },
+ {
+  "employer": "C3.ai, Inc.",
+  "key": "c3 ai",
+  "count": 17,
+  "median_wage": 155000,
+  "cities": {
+   "Redwood City": 17
+  },
+  "top_titles": [
+   "Data Scientist",
+   "Software Engineer, Platform",
+   "Software Engineer, Applications"
+  ],
+  "name_variants": [
+   "C3.ai, Inc."
+  ]
+ },
+ {
+  "employer": "Fortinet, Inc.",
+  "key": "fortinet",
+  "count": 16,
+  "median_wage": 144600,
+  "cities": {
+   "Sunnyvale": 8,
+   "Santa Clara": 7,
+   "Fremont": 1
+  },
+  "top_titles": [
+   "Software Development Engineer",
+   "Principle Software Engineer"
+  ],
+  "name_variants": [
+   "Fortinet, Inc."
+  ]
+ },
+ {
+  "employer": "Social Finance, LLC",
+  "key": "social finance",
+  "count": 16,
+  "median_wage": 168465,
+  "cities": {
+   "San Francisco": 16
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Software Engineer, Measurement & Ads",
+   "Software Engineer, Crypto"
+  ],
+  "name_variants": [
+   "Social Finance, LLC"
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Verkada, Inc",
+  "key": "verkada",
+  "count": 16,
+  "median_wage": 205000,
+  "cities": {
+   "San Mateo": 16
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Software Engineer, L3",
+   "Software Engineer, L2"
+  ],
+  "name_variants": [
+   "Verkada, Inc",
+   "Verkada Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Nuro, Inc",
+  "key": "nuro",
+  "count": 15,
+  "median_wage": 190000,
+  "cities": {
+   "Mountain View": 15
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Machine Learning Research Scientist",
+   "Software Engineer, Engineering Productivity"
+  ],
+  "name_variants": [
+   "Nuro, Inc"
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Reddit, Inc.",
+  "key": "reddit",
+  "count": 15,
+  "median_wage": 260000,
+  "cities": {
+   "San Francisco": 10,
+   "Sunnyvale": 3,
+   "Santa Clara": 2
+  },
+  "top_titles": [
+   "Machine Learning Engineer",
+   "Software Engineer",
+   "Backend Engineer, Feeds Experience"
+  ],
+  "name_variants": [
+   "Reddit, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Atlassian US, Inc.",
+  "key": "atlassian",
+  "count": 15,
+  "median_wage": 190000,
+  "cities": {
+   "San Francisco": 4,
+   "Mountain View": 2,
+   "Fremont": 2,
+   "Milpitas": 2,
+   "San Jose": 2
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Machine Learning System Engineer",
+   "Front End Software Engineer, Design System, Accessibility"
+  ],
+  "name_variants": [
+   "Atlassian US, Inc."
+  ]
+ },
+ {
+  "employer": "Wayve Technologies, Inc",
+  "key": "wayve technologies",
+  "count": 15,
+  "median_wage": 280000,
+  "cities": {
+   "Sunnyvale": 15
+  },
+  "top_titles": [
+   "Machine Learning Engineer",
+   "Software Engineer",
+   "Applied Scientist"
+  ],
+  "name_variants": [
+   "Wayve Technologies, Inc"
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Applied Materials, Inc",
+  "key": "applied materials",
+  "count": 15,
+  "median_wage": 187091,
+  "cities": {
+   "Santa Clara": 15
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Data Scientist"
+  ],
+  "name_variants": [
+   "Applied Materials, Inc",
+   "Applied Materials, Inc."
+  ]
+ },
+ {
+  "employer": "Genentech, Inc.",
+  "key": "genentech",
+  "count": 15,
+  "median_wage": 133952,
+  "cities": {
+   "South San Francisco": 15
+  },
+  "top_titles": [
+   "Analytical Data Science Analyst",
+   "Data Scientist",
+   "Data Scientist (Data Science Acceleration)"
+  ],
+  "name_variants": [
+   "Genentech, Inc.",
+   "Genentech USA, Inc."
+  ]
+ },
+ {
+  "employer": "Asana, Inc.",
+  "key": "asana",
+  "count": 15,
+  "median_wage": 171000,
+  "cities": {
+   "San Francisco": 15
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Data Scientist"
+  ],
+  "name_variants": [
+   "Asana, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Hippocratic AI, Inc",
+  "key": "hippocratic ai",
+  "count": 15,
+  "median_wage": 240000,
+  "cities": {
+   "Palo Alto": 15
+  },
+  "top_titles": [
+   "Applied Scientist",
+   "Applied Scientist, Llm",
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Hippocratic AI, Inc"
+  ]
+ },
+ {
+  "employer": "Yahoo Holdings Inc.",
+  "key": "yahoo",
+  "count": 14,
+  "median_wage": 153699,
+  "cities": {
+   "San Jose": 5,
+   "Sunnyvale": 5,
+   "Santa Clara": 2,
+   "San Francisco": 1,
+   "San Mateo": 1
+  },
+  "top_titles": [
+   "Software Dev Engineer Ii",
+   "Machine Learning Engineer Ii",
+   "Software Dev Engineer I"
+  ],
+  "name_variants": [
+   "Yahoo Holdings Inc."
+  ]
+ },
+ {
+  "employer": "Figma, Inc.",
+  "key": "figma",
+  "count": 14,
+  "median_wage": 216900,
+  "cities": {
+   "San Francisco": 14
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Data Scientist",
+   "Software Engineer - Infrastructure"
+  ],
+  "name_variants": [
+   "Figma, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Anysphere, Inc.",
+  "key": "anysphere",
+  "count": 13,
+  "median_wage": 187574,
+  "cities": {
+   "San Francisco": 12,
+   "Campbell": 1
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Data Scientist"
+  ],
+  "name_variants": [
+   "Anysphere, Inc."
+  ]
+ },
+ {
+  "employer": "Lucid USA, Inc.",
+  "key": "lucid",
+  "count": 13,
+  "median_wage": 153434,
+  "cities": {
+   "Newark": 13
+  },
+  "top_titles": [
+   "Machine Learning Engineer - Autonomous Driving",
+   "Front End Developer",
+   "Data Scientist, Powertrain Data"
+  ],
+  "name_variants": [
+   "Lucid USA, Inc."
+  ]
+ },
+ {
+  "employer": "General Motors",
+  "key": "general motors",
+  "count": 13,
+  "median_wage": 200000,
+  "cities": {
+   "Mountain View": 12,
+   "Sunnyvale": 1
+  },
+  "top_titles": [
+   "Artificial Intelligence Machine Learning Scientist",
+   "Machine Learning Engineer",
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "General Motors"
+  ]
+ },
+ {
+  "employer": "KAI CYBER INC",
+  "key": "kai cyber",
+  "count": 13,
+  "median_wage": 200000,
+  "cities": {
+   "San Jose": 13
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Data Scientist Machine Learning"
+  ],
+  "name_variants": [
+   "KAI CYBER INC"
+  ]
+ },
+ {
+  "employer": "Veeva Systems Inc.",
+  "key": "veeva systems",
+  "count": 13,
+  "median_wage": 136900,
+  "cities": {
+   "Pleasanton": 12,
+   "Santa Cruz": 1
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Associate Software Engineer"
+  ],
+  "name_variants": [
+   "Veeva Systems Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Together Computer, Inc.",
+  "key": "together computer",
+  "count": 13,
+  "median_wage": 187574,
+  "cities": {
+   "San Francisco": 12,
+   "Suite 205": 1
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Ai Software Engineer",
+   "Machine Learning Engineer"
+  ],
+  "name_variants": [
+   "Together Computer, Inc."
+  ]
+ },
+ {
+  "employer": "Crusoe Energy Systems LLC",
+  "key": "crusoe energy systems",
+  "count": 12,
+  "median_wage": 176538,
+  "cities": {
+   "San Francisco": 11,
+   "Sunnyvale": 1
+  },
+  "top_titles": [
+   "Software Engineer Ii",
+   "Software Engineer",
+   "Software Engineer I"
+  ],
+  "name_variants": [
+   "Crusoe Energy Systems LLC",
+   "Crusoe Energy Systems, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Mercor.io Corporation",
+  "key": "mercor io",
+  "count": 12,
+  "median_wage": 161637,
+  "cities": {
+   "San Francisco": 12
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Mercor.io Corporation"
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Notion Labs, Inc.",
+  "key": "notion labs",
+  "count": 12,
+  "median_wage": 210000,
+  "cities": {
+   "San Francisco": 12
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Notion Labs, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Woven by Toyota, U.S., Inc.",
+  "key": "woven by toyota",
+  "count": 12,
+  "median_wage": 175000,
+  "cities": {
+   "Palo Alto": 10,
+   "Sunnyvale": 2
+  },
+  "top_titles": [
+   "Software Engineer Ii",
+   "Software Engineer",
+   "Machine Learning Engineer, Behavior"
+  ],
+  "name_variants": [
+   "Woven by Toyota, U.S., Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "XMotors.USA, Inc.",
+  "key": "xmotors",
+  "count": 12,
+  "median_wage": 220000,
+  "cities": {
+   "Santa Clara": 12
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Machine Learning Engineer",
+   "Machine Learning Infrastructure Engineer"
+  ],
+  "name_variants": [
+   "XMotors.USA, Inc."
+  ]
+ },
+ {
+  "employer": "Chime Financial, Inc.",
+  "key": "chime financial",
+  "count": 11,
+  "median_wage": 175000,
+  "cities": {
+   "San Francisco": 10,
+   "San Franciso": 1
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Data Scientist"
+  ],
+  "name_variants": [
+   "Chime Financial, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Yelp Inc.",
+  "key": "yelp",
+  "count": 11,
+  "median_wage": 230000,
+  "cities": {
+   "San Francisco": 8,
+   "Sunnyvale": 2,
+   "San Jose": 1
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Yelp Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Expedia, Inc.",
+  "key": "expedia",
+  "count": 11,
+  "median_wage": 162763,
+  "cities": {
+   "San Jose": 9,
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Software Development Engineer",
+   "Data Scientist, Analytics",
+   "Machine Learning Engineer"
+  ],
+  "name_variants": [
+   "Expedia, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Lam Research Corporation",
+  "key": "lam research",
+  "count": 11,
+  "median_wage": 150405,
+  "cities": {
+   "Fremont": 11
+  },
+  "top_titles": [
+   "Data Scientist",
+   "Software Engineer Systems",
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Lam Research Corporation"
+  ]
+ },
+ {
+  "employer": "Twitch Interactive, Inc.",
+  "key": "twitch interactive",
+  "count": 11,
+  "median_wage": 181500,
+  "cities": {
+   "San Francisco": 11
+  },
+  "top_titles": [
+   "Applied Scientist Ii",
+   "Software Development Engineer I",
+   "Software Dev Engineer Ii"
+  ],
+  "name_variants": [
+   "Twitch Interactive, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Rivian Automotive, LLC",
+  "key": "rivian automotive",
+  "count": 11,
+  "median_wage": 154130,
+  "cities": {
+   "Palo Alto": 11
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Software Engineer Ii",
+   "Embedded Software Engineer Ii"
+  ],
+  "name_variants": [
+   "Rivian Automotive, LLC",
+   "RIVIAN AUTOMOTIVE, LLC"
+  ]
+ },
+ {
+  "employer": "HARVEY AI CORPORATION",
+  "key": "harvey ai",
+  "count": 11,
+  "median_wage": 200000,
+  "cities": {
+   "San Francisco": 11
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Software Engineer, Backend",
+   "Software Engineer, Sre"
+  ],
+  "name_variants": [
+   "HARVEY AI CORPORATION",
+   "Harvey AI Corporation"
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Armadin, Inc.",
+  "key": "armadin",
+  "count": 10,
+  "median_wage": 193870,
+  "cities": {
+   "Menlo Park": 5,
+   "Palo Alto": 5
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Software Engineer (Devops, Infrastructure & Automation)"
+  ],
+  "name_variants": [
+   "Armadin, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Thumbtack, Inc.",
+  "key": "thumbtack",
+  "count": 10,
+  "median_wage": 172500,
+  "cities": {
+   "San Francisco": 10
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Applied Scientist",
+   "Data Scientist, Product"
+  ],
+  "name_variants": [
+   "Thumbtack, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Tinder LLC",
+  "key": "tinder",
+  "count": 10,
+  "median_wage": 151997,
+  "cities": {
+   "Palo Alto": 10
+  },
+  "top_titles": [
+   "Software Engineer, Backend",
+   "Software Engineer, Machine Learning",
+   "Software Engineer, Cloud Infrastructure"
+  ],
+  "name_variants": [
+   "Tinder LLC"
+  ]
+ },
+ {
+  "employer": "People Center, Inc. d/b/a Rippling",
+  "key": "people center d b a rippling",
+  "count": 10,
+  "median_wage": 217500,
+  "cities": {
+   "San Francisco": 10
+  },
+  "top_titles": [
+   "Software Engineer Ii",
+   "Software Engineer 2",
+   "Data Scientist Ii"
+  ],
+  "name_variants": [
+   "People Center, Inc. d/b/a Rippling"
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Cadence Design Systems, Inc.",
+  "key": "cadence design systems",
+  "count": 10,
+  "median_wage": 153493,
+  "cities": {
+   "San Jose": 10
+  },
+  "top_titles": [
+   "Software Engineer Ii",
+   "Software Engineer (Mechatronics)"
+  ],
+  "name_variants": [
+   "Cadence Design Systems, Inc."
+  ]
+ },
+ {
+  "employer": "JUNIPER SQUARE INC.",
+  "key": "juniper square",
+  "count": 10,
+  "median_wage": 174606,
+  "cities": {
+   "San Francisco": 9,
+   "Mountain View": 1
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "JUNIPER SQUARE INC."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "TikTok U.S. Data Security Inc.",
+  "key": "tiktok data security",
+  "count": 9,
+  "median_wage": 213800,
+  "cities": {
+   "San Jose": 9
+  },
+  "top_titles": [
+   "Software Engineer, Ads Serving And Foundation - Usds",
+   "Software Engineer, Ads Ml Infrastructure - Usds",
+   "Machine Learning Engineer, Risk Data Mining - Usds"
+  ],
+  "name_variants": [
+   "TikTok U.S. Data Security Inc."
+  ]
+ },
+ {
+  "employer": "The Leland Stanford, Jr University",
+  "key": "leland stanford jr university",
+  "count": 9,
+  "median_wage": 131879,
+  "cities": {
+   "Redwood City": 4,
+   "Palo Alto": 3,
+   "Stanford": 2
+  },
+  "top_titles": [
+   "Software Developer 1",
+   "Software Developer 2",
+   "Science Eng Assoc 2/Machine Learning Eng"
+  ],
+  "name_variants": [
+   "The Leland Stanford, Jr University"
+  ]
+ },
+ {
+  "employer": "Dropbox, Inc.",
+  "key": "dropbox",
+  "count": 9,
+  "median_wage": 225300,
+  "cities": {
+   "San Francisco": 9
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Machine Learning Engineer",
+   "Data Scientist"
+  ],
+  "name_variants": [
+   "Dropbox, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "A9.com LLC",
+  "key": "a9 com",
+  "count": 9,
+  "median_wage": 155800,
+  "cities": {
+   "Palo Alto": 9
+  },
+  "top_titles": [
+   "Software Dev Engineer I",
+   "Applied Scientist Ii",
+   "Software Dev Engineer Ii"
+  ],
+  "name_variants": [
+   "A9.com LLC"
+  ]
+ },
+ {
+  "employer": "Synopsys, Inc.",
+  "key": "synopsys",
+  "count": 9,
+  "median_wage": 177539,
+  "cities": {
+   "Sunnyvale": 9
+  },
+  "top_titles": [
+   "Ai Engineer",
+   "Software Engineering",
+   "Data Science"
+  ],
+  "name_variants": [
+   "Synopsys, Inc.",
+   "SYNOPSYS, INC."
+  ]
+ },
+ {
+  "employer": "Anyscale, Inc.",
+  "key": "anyscale",
+  "count": 9,
+  "median_wage": 180000,
+  "cities": {
+   "San Francisco": 7,
+   "Palo Alto": 2
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Software Engineer, Release",
+   "Software Engineer, Infrastructure"
+  ],
+  "name_variants": [
+   "Anyscale, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "SONY INTERACTIVE ENTERTAINMENT LLC",
+  "key": "sony interactive entertainment",
+  "count": 9,
+  "median_wage": 163700,
+  "cities": {
+   "San Mateo": 9
+  },
+  "top_titles": [
+   "Software Engineer Ii",
+   "Software Engineer I"
+  ],
+  "name_variants": [
+   "SONY INTERACTIVE ENTERTAINMENT LLC"
+  ]
+ },
+ {
+  "employer": "Plaid, Inc.",
+  "key": "plaid",
+  "count": 9,
+  "median_wage": 187574,
+  "cities": {
+   "San Francisco": 8,
+   "Newark": 1
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Machine Learning Engineer",
+   "Data Scientist"
+  ],
+  "name_variants": [
+   "Plaid, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Pony.AI, Inc.",
+  "key": "pony ai",
+  "count": 9,
+  "median_wage": 171200,
+  "cities": {
+   "Fremont": 9
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Pony.AI, Inc."
+  ]
+ },
+ {
+  "employer": "Cohesity, Inc.",
+  "key": "cohesity",
+  "count": 9,
+  "median_wage": 176356,
+  "cities": {
+   "Santa Clara": 9
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Software Engineer 2 (Mts 2)",
+   "Software Engineer Ii"
+  ],
+  "name_variants": [
+   "Cohesity, Inc."
+  ]
+ },
+ {
+  "employer": "Spectro Cloud, Inc.",
+  "key": "spectro cloud",
+  "count": 9,
+  "median_wage": 187741,
+  "cities": {
+   "San Jose": 9
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Spectro Cloud, Inc."
+  ]
+ },
+ {
+  "employer": "Moloco, Inc.",
+  "key": "moloco",
+  "count": 9,
+  "median_wage": 161637,
+  "cities": {
+   "Menlo Park": 8,
+   "Palo Alto": 1
+  },
+  "top_titles": [
+   "Machine Learning Engineer",
+   "Software Engineer",
+   "Software Engineer Ii"
+  ],
+  "name_variants": [
+   "Moloco, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Super Micro Computer, Inc.",
+  "key": "super micro computer",
+  "count": 9,
+  "median_wage": 133000,
+  "cities": {
+   "San Jose": 9
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Super Micro Computer, Inc."
+  ]
+ },
+ {
+  "employer": "Effective AI, Inc.",
+  "key": "effective ai",
+  "count": 8,
+  "median_wage": 170818,
+  "cities": {
+   "San Francisco": 8
+  },
+  "top_titles": [
+   "Founding Software Engineer",
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Effective AI, Inc."
+  ]
+ },
+ {
+  "employer": "Fireworks.ai, Inc.",
+  "key": "fireworks ai",
+  "count": 8,
+  "median_wage": 220000,
+  "cities": {
+   "San Mateo": 8
+  },
+  "top_titles": [
+   "Applied Machine Learning Engineer",
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Fireworks.ai, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Sigma Computing, Inc.",
+  "key": "sigma computing",
+  "count": 8,
+  "median_wage": 219825,
+  "cities": {
+   "San Francisco": 8
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Ai/Ml Engineer"
+  ],
+  "name_variants": [
+   "Sigma Computing, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Electronic Arts Inc.",
+  "key": "electronic arts",
+  "count": 8,
+  "median_wage": 155682,
+  "cities": {
+   "Redwood City": 8
+  },
+  "top_titles": [
+   "Software Engineer Ii"
+  ],
+  "name_variants": [
+   "Electronic Arts Inc."
+  ]
+ },
+ {
+  "employer": "Affirm, Inc.",
+  "key": "affirm",
+  "count": 8,
+  "median_wage": 139350,
+  "cities": {
+   "San Francisco": 3,
+   "Santa Clara": 2,
+   "Sunnyvale": 1,
+   "Mountain View": 1,
+   "San Mateo": 1
+  },
+  "top_titles": [
+   "Software Engineer I",
+   "Machine Learning Engineer I",
+   "Software Engineer Ii"
+  ],
+  "name_variants": [
+   "Affirm, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Cicero Technologies, Inc. dba Eudia",
+  "key": "cicero technologies dba eudia",
+  "count": 8,
+  "median_wage": 187741,
+  "cities": {
+   "Palo Alto": 8
+  },
+  "top_titles": [
+   "Ai Engineer",
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Cicero Technologies, Inc. dba Eudia"
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Distyl AI, Inc.",
+  "key": "distyl ai",
+  "count": 8,
+  "median_wage": 215000,
+  "cities": {
+   "San Francisco": 8
+  },
+  "top_titles": [
+   "Ai Engineer",
+   "Applied Ai Researcher",
+   "Ai Strategist"
+  ],
+  "name_variants": [
+   "Distyl AI, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "IXL Learning, Inc.",
+  "key": "ixl learning",
+  "count": 8,
+  "median_wage": 153318,
+  "cities": {
+   "San Mateo": 8
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "IXL Learning, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "PALANTIR TECHNOLOGIES INC.",
+  "key": "palantir technologies",
+  "count": 8,
+  "median_wage": 170000,
+  "cities": {
+   "Palo Alto": 8
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "PALANTIR TECHNOLOGIES INC."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Box, Inc.",
+  "key": "box",
+  "count": 8,
+  "median_wage": 149365,
+  "cities": {
+   "Redwood City": 6,
+   "Santa Clara": 1,
+   "San Jose": 1
+  },
+  "top_titles": [
+   "Software Engineer Ii",
+   "Software Engineer",
+   "Software Engineer Ii, Frontend Quality Tools"
+  ],
+  "name_variants": [
+   "Box, Inc."
+  ]
+ },
+ {
+  "employer": "F5, Inc.",
+  "key": "f5",
+  "count": 8,
+  "median_wage": 134044,
+  "cities": {
+   "San Jose": 7,
+   "San Francisco": 1
+  },
+  "top_titles": [
+   "Software Development Engineer I",
+   "Software Development Engineer Ii",
+   "Ai/Ml Engineer Ii"
+  ],
+  "name_variants": [
+   "F5, Inc."
+  ]
+ },
+ {
+  "employer": "Elise A.I. Technologies Corp.",
+  "key": "elise a i technologies",
+  "count": 7,
+  "median_wage": 213512,
+  "cities": {
+   "San Francisco": 7
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Elise A.I. Technologies Corp."
+  ]
+ },
+ {
+  "employer": "Rivian and Volkswagen Group Technologies, LLC",
+  "key": "rivian volkswagen technologies",
+  "count": 7,
+  "median_wage": 140000,
+  "cities": {
+   "Palo Alto": 7
+  },
+  "top_titles": [
+   "Software Engineer Ii",
+   "Software Engineer Ii, Telematics",
+   "Embedded Software Engineer"
+  ],
+  "name_variants": [
+   "Rivian and Volkswagen Group Technologies, LLC"
+  ]
+ },
+ {
+  "employer": "Coinbase, Inc.",
+  "key": "coinbase",
+  "count": 7,
+  "median_wage": 179300,
+  "cities": {
+   "San Francisco": 2,
+   "Palo Alto": 2,
+   "Mountain View": 1,
+   "San Jose": 1,
+   "Berkeley": 1
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Coinbase, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "SK Hynix NAND Product Solutions Corp",
+  "key": "sk hynix nand product solutions",
+  "count": 7,
+  "median_wage": 158995,
+  "cities": {
+   "San Jose": 7
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Deep Learning Software Engineer",
+   "Machine Learning Engineer"
+  ],
+  "name_variants": [
+   "SK Hynix NAND Product Solutions Corp"
+  ]
+ },
+ {
+  "employer": "Advanced Micro Devices, Inc.",
+  "key": "advanced micro devices",
+  "count": 7,
+  "median_wage": 174015,
+  "cities": {
+   "Santa Clara": 7
+  },
+  "top_titles": [
+   "Mts Software Development Engineer",
+   "Software Development Engineer"
+  ],
+  "name_variants": [
+   "Advanced Micro Devices, Inc."
+  ]
+ },
+ {
+  "employer": "Gusto, Inc.",
+  "key": "gusto",
+  "count": 7,
+  "median_wage": 210000,
+  "cities": {
+   "San Francisco": 7
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Software Developer",
+   "Go To Market Ai Agent Builder"
+  ],
+  "name_variants": [
+   "Gusto, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "KikOff Inc.",
+  "key": "kikoff",
+  "count": 7,
+  "median_wage": 197025,
+  "cities": {
+   "San Francisco": 7
+  },
+  "top_titles": [
+   "Software Developer",
+   "Data Scientist",
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "KikOff Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Formagrid, Inc. (d/b/a Airtable)",
+  "key": "formagrid",
+  "count": 7,
+  "median_wage": 230000,
+  "cities": {
+   "San Francisco": 6,
+   "Mountain View": 1
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Software Engineer, Infrastructure",
+   "Data Scientist, Analytics"
+  ],
+  "name_variants": [
+   "Formagrid, Inc. (d/b/a Airtable)"
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Everlaw, Inc.",
+  "key": "everlaw",
+  "count": 7,
+  "median_wage": 161637,
+  "cities": {
+   "Oakland": 7
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Everlaw, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "HARK LABS INC.",
+  "key": "hark labs",
+  "count": 7,
+  "median_wage": 300000,
+  "cities": {
+   "San Jose": 7
+  },
+  "top_titles": [
+   "Machine Learning Engineer",
+   "Ai Engineer",
+   "Ai Infrastructure Engineer"
+  ],
+  "name_variants": [
+   "HARK LABS INC."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Crunchyroll, LLC",
+  "key": "crunchyroll",
+  "count": 7,
+  "median_wage": 168000,
+  "cities": {
+   "San Francisco": 7
+  },
+  "top_titles": [
+   "Software Engineer Ii",
+   "Software Engineer Ii, Memberships",
+   "Software Engineer Ii, Engineering: Service Monetization"
+  ],
+  "name_variants": [
+   "Crunchyroll, LLC"
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Modular, Inc.",
+  "key": "modular",
+  "count": 7,
+  "median_wage": 260000,
+  "cities": {
+   "Los Altos": 5,
+   "Sunnyvale": 2
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Ai Compiler Engineer",
+   "Ai Performance Engineer, L05"
+  ],
+  "name_variants": [
+   "Modular, Inc."
+  ]
+ },
+ {
+  "employer": "Perennial Autonomy LLC",
+  "key": "perennial autonomy",
+  "count": 7,
+  "median_wage": 100318,
+  "cities": {
+   "Mountain View": 5,
+   "Menlo Park": 1,
+   "Oakland": 1
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Drone Software Engineer - Computer Vision And Robotics"
+  ],
+  "name_variants": [
+   "Perennial Autonomy LLC",
+   "Perennial Autonomy, LLC"
+  ]
+ },
+ {
+  "employer": "Typical Set, LLC",
+  "key": "typical set",
+  "count": 7,
+  "median_wage": 195000,
+  "cities": {
+   "Berkeley": 7
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Data Scientist",
+   "Data Scientist 2"
+  ],
+  "name_variants": [
+   "Typical Set, LLC",
+   "Typical Set, LLC."
+  ]
+ },
+ {
+  "employer": "Skwid Inc.",
+  "key": "skwid",
+  "count": 6,
+  "median_wage": 193800,
+  "cities": {
+   "San Francisco": 6
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Full-Stack Engineer",
+   "Forward Deployed Software Engineer"
+  ],
+  "name_variants": [
+   "Skwid Inc."
+  ]
+ },
+ {
+  "employer": "PATREON, INC.",
+  "key": "patreon",
+  "count": 6,
+  "median_wage": 250000,
+  "cities": {
+   "San Francisco": 6
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Machine Learning Engineer"
+  ],
+  "name_variants": [
+   "PATREON, INC."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Faire Wholesale, Inc.",
+  "key": "faire wholesale",
+  "count": 6,
+  "median_wage": 206500,
+  "cities": {
+   "San Francisco": 5,
+   "Newark": 1
+  },
+  "top_titles": [
+   "Ai Platform Engineer",
+   "Applied Ai/Ml Scientist",
+   "Ml Platform Engineer"
+  ],
+  "name_variants": [
+   "Faire Wholesale, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Brex Inc.",
+  "key": "brex",
+  "count": 6,
+  "median_wage": 175988,
+  "cities": {
+   "San Francisco": 6
+  },
+  "top_titles": [
+   "Software Engineer Ii",
+   "Data Scientist Ii",
+   "Ai Engineer"
+  ],
+  "name_variants": [
+   "Brex Inc.",
+   "Brex LLC"
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Particle Media, Inc.",
+  "key": "particle media",
+  "count": 6,
+  "median_wage": 190000,
+  "cities": {
+   "Mountain View": 6
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Particle Media, Inc."
+  ]
+ },
+ {
+  "employer": "Nexthop Systems Inc",
+  "key": "nexthop systems",
+  "count": 6,
+  "median_wage": 225000,
+  "cities": {
+   "Santa Clara": 6
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Nexthop Systems Inc"
+  ]
+ },
+ {
+  "employer": "Parafin, Inc.",
+  "key": "parafin",
+  "count": 6,
+  "median_wage": 213512,
+  "cities": {
+   "San Francisco": 6
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Parafin, Inc.",
+   "Parafin"
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Ambience Healthcare, Inc.",
+  "key": "ambience healthcare",
+  "count": 6,
+  "median_wage": 262257,
+  "cities": {
+   "San Francisco": 6
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Machine Learning Engineer"
+  ],
+  "name_variants": [
+   "Ambience Healthcare, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Rhombus Power, Inc.",
+  "key": "rhombus power",
+  "count": 6,
+  "median_wage": 149365,
+  "cities": {
+   "Palo Alto": 6
+  },
+  "top_titles": [
+   "Data Scientist",
+   "Software Engineer Ii",
+   "Full Stack Developer"
+  ],
+  "name_variants": [
+   "Rhombus Power, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Qualified Health PBC",
+  "key": "qualified health pbc",
+  "count": 6,
+  "median_wage": 184000,
+  "cities": {
+   "Palo Alto": 4,
+   "Fremont": 1,
+   "Alameda": 1
+  },
+  "top_titles": [
+   "Backend Engineer",
+   "Applied Ai Engineer",
+   "Backend Software Engineer"
+  ],
+  "name_variants": [
+   "Qualified Health PBC"
+  ]
+ },
+ {
+  "employer": "Nooks Communications, Inc.",
+  "key": "nooks communications",
+  "count": 6,
+  "median_wage": 200000,
+  "cities": {
+   "San Francisco": 6
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Software Engineer (Product Engineer)",
+   "Machine Learning Engineer"
+  ],
+  "name_variants": [
+   "Nooks Communications, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Nextdoor, Inc.",
+  "key": "nextdoor",
+  "count": 6,
+  "median_wage": 190300,
+  "cities": {
+   "San Francisco": 6
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Data Scientist",
+   "Machine Learning Engineer"
+  ],
+  "name_variants": [
+   "Nextdoor, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "FIGURE AI INC.",
+  "key": "figure ai",
+  "count": 6,
+  "median_wage": 226000,
+  "cities": {
+   "San Jose": 6
+  },
+  "top_titles": [
+   "Ai Training Infrastructure Engineer",
+   "Helix Ai Engineer, Data Infrastructure",
+   "Ai Robotics Engineer"
+  ],
+  "name_variants": [
+   "FIGURE AI INC."
+  ]
+ },
+ {
+  "employer": "Gen Digital Inc.",
+  "key": "gen digital",
+  "count": 6,
+  "median_wage": 172500,
+  "cities": {
+   "Mountain View": 6
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Member Of Ai & Innovation"
+  ],
+  "name_variants": [
+   "Gen Digital Inc."
+  ]
+ },
+ {
+  "employer": "Sunday Robotics, Inc.",
+  "key": "sunday robotics",
+  "count": 6,
+  "median_wage": 347500,
+  "cities": {
+   "Mountain View": 6
+  },
+  "top_titles": [
+   "Machine Learning Research Engineer",
+   "Software Engineer, Systems",
+   "Full Stacks Robotics Software Engineer"
+  ],
+  "name_variants": [
+   "Sunday Robotics, Inc."
+  ]
+ },
+ {
+  "employer": "Wing Aviation LLC",
+  "key": "wing aviation",
+  "count": 6,
+  "median_wage": 175750,
+  "cities": {
+   "Palo Alto": 5,
+   "San Francisco": 1
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Perception Software Engineer"
+  ],
+  "name_variants": [
+   "Wing Aviation LLC"
+  ],
+  "board": "greenhouse:wing"
+ },
+ {
+  "employer": "Twilio, Inc.",
+  "key": "twilio",
+  "count": 6,
+  "median_wage": 203843,
+  "cities": {
+   "San Francisco": 3,
+   "Los Altos": 1,
+   "Santa Clara": 1,
+   "Fremont": 1
+  },
+  "top_titles": [
+   "Software Engineer (L3)",
+   "Software Engineer (L2)"
+  ],
+  "name_variants": [
+   "Twilio, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Quora, Inc.",
+  "key": "quora",
+  "count": 6,
+  "median_wage": 185394,
+  "cities": {
+   "Sunnyvale": 2,
+   "Santa Clara": 2,
+   "Mountain View": 1,
+   "San Bruno": 1
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Quora, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "HP Inc.",
+  "key": "hp",
+  "count": 6,
+  "median_wage": 160786,
+  "cities": {
+   "Palo Alto": 4,
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Machine Learning Engineer 2",
+   "Machine Learning Engineer 1",
+   "Software Engineer, Tooling And Development Infrastructure"
+  ],
+  "name_variants": [
+   "HP Inc."
+  ]
+ },
+ {
+  "employer": "LangChain Inc.",
+  "key": "langchain",
+  "count": 6,
+  "median_wage": 187574,
+  "cities": {
+   "San Francisco": 6
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Backend Software Engineer"
+  ],
+  "name_variants": [
+   "LangChain Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "BILL Operations LLC",
+  "key": "bill operations",
+  "count": 6,
+  "median_wage": 164817,
+  "cities": {
+   "San Jose": 6
+  },
+  "top_titles": [
+   "Software Engineer Ii",
+   "Risk Strategy Data Scientist",
+   "Machine Learning Engineer Ii"
+  ],
+  "name_variants": [
+   "BILL Operations LLC"
+  ]
+ },
+ {
+  "employer": "Persona Identities, Inc.",
+  "key": "persona identities",
+  "count": 6,
+  "median_wage": 161637,
+  "cities": {
+   "San Francisco": 6
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Persona Identities, Inc."
+  ]
+ },
+ {
+  "employer": "Replit, Inc.",
+  "key": "replit",
+  "count": 6,
+  "median_wage": 187658,
+  "cities": {
+   "Foster City": 6
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Associate Software Engineer"
+  ],
+  "name_variants": [
+   "Replit, Inc.",
+   "Replit Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "LiveRamp, Inc.",
+  "key": "liveramp",
+  "count": 6,
+  "median_wage": 145000,
+  "cities": {
+   "San Francisco": 6
+  },
+  "top_titles": [
+   "Data Scientist",
+   "Software Development Engineer",
+   "Associate Software Development Engineer"
+  ],
+  "name_variants": [
+   "LiveRamp, Inc."
+  ]
+ },
+ {
+  "employer": "Aven Financial, Inc.",
+  "key": "aven financial",
+  "count": 6,
+  "median_wage": 165000,
+  "cities": {
+   "Campbell": 6
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Aven Financial, Inc."
+  ]
+ },
+ {
+  "employer": "Agility Robotics Inc.",
+  "key": "agility robotics",
+  "count": 6,
+  "median_wage": 199180,
+  "cities": {
+   "San Jose": 5,
+   "Fremont": 1
+  },
+  "top_titles": [
+   "Software Engineer, Robotics Ml",
+   "Software Engineer, Autonomy",
+   "Ai Research Engineer Ii"
+  ],
+  "name_variants": [
+   "Agility Robotics Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Morpheus AI, LLC",
+  "key": "morpheus ai",
+  "count": 6,
+  "median_wage": 312970,
+  "cities": {
+   "San Mateo": 6
+  },
+  "top_titles": [
+   "Ai Scientist"
+  ],
+  "name_variants": [
+   "Morpheus AI, LLC"
+  ]
+ },
+ {
+  "employer": "OTTER.AI, INC.",
+  "key": "otter ai",
+  "count": 5,
+  "median_wage": 188000,
+  "cities": {
+   "Mountain View": 5
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "OTTER.AI, INC."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Benchling, Inc.",
+  "key": "benchling",
+  "count": 5,
+  "median_wage": 170000,
+  "cities": {
+   "San Francisco": 5
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Benchling, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Postman, Inc.",
+  "key": "postman",
+  "count": 5,
+  "median_wage": 187741,
+  "cities": {
+   "San Francisco": 3,
+   "Cupertino": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Postman, Inc."
+  ]
+ },
+ {
+  "employer": "Skild AI, Inc.",
+  "key": "skild ai",
+  "count": 5,
+  "median_wage": 225000,
+  "cities": {
+   "San Mateo": 5
+  },
+  "top_titles": [
+   "Robotics Software Engineer",
+   "Machine Learning Engineer",
+   "Machine Learning, Robotics Engineer"
+  ],
+  "name_variants": [
+   "Skild AI, Inc.",
+   "Skild AI"
+  ]
+ },
+ {
+  "employer": "Neuralink Corp.",
+  "key": "neuralink",
+  "count": 5,
+  "median_wage": 190250,
+  "cities": {
+   "Fremont": 5
+  },
+  "top_titles": [
+   "Machine Learning Engineer",
+   "Software Engineer",
+   "Software Engineer, Hippocampus"
+  ],
+  "name_variants": [
+   "Neuralink Corp."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Nclusion, Inc.",
+  "key": "nclusion",
+  "count": 5,
+  "median_wage": 167000,
+  "cities": {
+   "East Palo Alto": 5
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Nclusion, Inc."
+  ]
+ },
+ {
+  "employer": "Sierra Technologies, Inc.",
+  "key": "sierra technologies",
+  "count": 5,
+  "median_wage": 230000,
+  "cities": {
+   "San Francisco": 5
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Sierra Technologies, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Galileo Financial Technologies, LLC",
+  "key": "galileo financial technologies",
+  "count": 5,
+  "median_wage": 165397,
+  "cities": {
+   "San Francisco": 4,
+   "Milpitas": 1
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Galileo Financial Technologies, LLC"
+  ]
+ },
+ {
+  "employer": "Motive Technologies, Inc.",
+  "key": "motive technologies",
+  "count": 5,
+  "median_wage": 225000,
+  "cities": {
+   "San Francisco": 5
+  },
+  "top_titles": [
+   "Software Engineer, Backend",
+   "Software Engineer, Mobile"
+  ],
+  "name_variants": [
+   "Motive Technologies, Inc."
+  ]
+ },
+ {
+  "employer": "Baseten Labs, Inc.",
+  "key": "baseten labs",
+  "count": 5,
+  "median_wage": 213512,
+  "cities": {
+   "San Francisco": 5
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Software Engineer, Model Performance",
+   "Software Engineer, New Products"
+  ],
+  "name_variants": [
+   "Baseten Labs, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "GUIDEWIRE SOFTWARE, INC.",
+  "key": "guidewire software",
+  "count": 5,
+  "median_wage": 168991,
+  "cities": {
+   "San Mateo": 5
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Machine Learning Engineer"
+  ],
+  "name_variants": [
+   "GUIDEWIRE SOFTWARE, INC.",
+   "Guidewire Software, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Zipline International Inc.",
+  "key": "zipline international",
+  "count": 5,
+  "median_wage": 180000,
+  "cities": {
+   "South San Francisco": 5
+  },
+  "top_titles": [
+   "Embedded Software Engineer",
+   "Software Engineer - Mapping"
+  ],
+  "name_variants": [
+   "Zipline International Inc."
+  ]
+ },
+ {
+  "employer": "Defaked, Inc.",
+  "key": "defaked",
+  "count": 5,
+  "median_wage": 265000,
+  "cities": {
+   "San Francisco": 4,
+   "Fremont": 1
+  },
+  "top_titles": [
+   "Ai Engineer"
+  ],
+  "name_variants": [
+   "Defaked, Inc."
+  ]
+ },
+ {
+  "employer": "ZS Associates, Inc.",
+  "key": "zs associates",
+  "count": 5,
+  "median_wage": 160600,
+  "cities": {
+   "South San Francisco": 5
+  },
+  "top_titles": [
+   "Advanced Data Science Associate Consultant",
+   "Advanced Data Science Consultant"
+  ],
+  "name_variants": [
+   "ZS Associates, Inc."
+  ]
+ },
+ {
+  "employer": "MONGODB, INC.",
+  "key": "mongodb",
+  "count": 5,
+  "median_wage": 161637,
+  "cities": {
+   "San Francisco": 3,
+   "Palo Alto": 2
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Software Engineer, Data Migration"
+  ],
+  "name_variants": [
+   "MONGODB, INC."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Wayfair LLC",
+  "key": "wayfair",
+  "count": 5,
+  "median_wage": 181500,
+  "cities": {
+   "Mountain View": 5
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Machine Learning Scientist Ii",
+   "Software Engineer Ii"
+  ],
+  "name_variants": [
+   "Wayfair LLC"
+  ]
+ },
+ {
+  "employer": "IFS North America, Inc",
+  "key": "ifs",
+  "count": 5,
+  "median_wage": 162580,
+  "cities": {
+   "Palo Alto": 5
+  },
+  "top_titles": [
+   "Forward Deployed Ai Engineer",
+   "Machine Learning Engineer",
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "IFS North America, Inc",
+   "IFS North America, Inc."
+  ]
+ },
+ {
+  "employer": "Niantic, Inc.",
+  "key": "niantic",
+  "count": 5,
+  "median_wage": 183650,
+  "cities": {
+   "San Francisco": 3,
+   "Sunnyvale": 2
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Machine Learning Scientist",
+   "Data Scientist"
+  ],
+  "name_variants": [
+   "Niantic, Inc."
+  ]
+ },
+ {
+  "employer": "Afterpay US, Inc.",
+  "key": "afterpay",
+  "count": 5,
+  "median_wage": 230800,
+  "cities": {
+   "Oakland": 2,
+   "Foster City": 1,
+   "Pleasanton": 1,
+   "Cupertino": 1
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Data Scientist",
+   "Machine Learning Engineer (Systems)"
+  ],
+  "name_variants": [
+   "Afterpay US, Inc."
+  ]
+ },
+ {
+  "employer": "BlackLine Systems, Inc.",
+  "key": "blackline systems",
+  "count": 5,
+  "median_wage": 178500,
+  "cities": {
+   "Pleasanton": 5
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Software Engineer Ai/Ml Ops"
+  ],
+  "name_variants": [
+   "BlackLine Systems, Inc."
+  ]
+ },
+ {
+  "employer": "Luma AI, Inc.",
+  "key": "luma ai",
+  "count": 5,
+  "median_wage": 188000,
+  "cities": {
+   "Redwood City": 4,
+   "Palo Alto": 1
+  },
+  "top_titles": [
+   "Software Engineer, Data Infrastructure",
+   "Software Engineer- Reliability",
+   "Software Engineer-Product"
+  ],
+  "name_variants": [
+   "Luma AI, Inc."
+  ],
+  "board": "ashby:lumaai"
+ },
+ {
+  "employer": "Test Corporation LLC",
+  "key": "test",
+  "count": 5,
+  "median_wage": 130000,
+  "cities": {
+   "San Francisco": 5
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Test Corporation LLC"
+  ]
+ },
+ {
+  "employer": "Unika Health Inc",
+  "key": "unika health",
+  "count": 5,
+  "median_wage": 140000,
+  "cities": {
+   "Sunnyvale": 5
+  },
+  "top_titles": [
+   "Software Engineer Ii",
+   "Data Scientist",
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Unika Health Inc"
+  ]
+ },
+ {
+  "employer": "Fundamental ai",
+  "key": "fundamental ai",
+  "count": 5,
+  "median_wage": 164403,
+  "cities": {
+   "San Jose": 2,
+   "Fremont": 1,
+   "Redwood City": 1,
+   "Santa Clara": 1
+  },
+  "top_titles": [
+   "Ai Engineer"
+  ],
+  "name_variants": [
+   "Fundamental ai"
+  ]
+ },
+ {
+  "employer": "ALGORIZED, INC.",
+  "key": "algorized",
+  "count": 5,
+  "median_wage": 139500,
+  "cities": {
+   "Campbell": 5
+  },
+  "top_titles": [
+   "Machine Learning Software Engineer",
+   "Machine Software Engineer"
+  ],
+  "name_variants": [
+   "ALGORIZED, INC."
+  ],
+  "board": "lever:algorized"
+ },
+ {
+  "employer": "Uniphore Technologies North America, Inc.",
+  "key": "uniphore technologies",
+  "count": 5,
+  "median_wage": 165000,
+  "cities": {
+   "Palo Alto": 5
+  },
+  "top_titles": [
+   "Ai Scientist",
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Uniphore Technologies North America, Inc."
+  ]
+ },
+ {
+  "employer": "DiDi Research America, LLC",
+  "key": "didi research",
+  "count": 5,
+  "median_wage": 129459,
+  "cities": {
+   "San Jose": 5
+  },
+  "top_titles": [
+   "Software Engineer Ii"
+  ],
+  "name_variants": [
+   "DiDi Research America, LLC"
+  ],
+  "board": "greenhouse:didi"
+ },
+ {
+  "employer": "Stryder Corporation",
+  "key": "stryder",
+  "count": 5,
+  "median_wage": 270000,
+  "cities": {
+   "San Francisco": 5
+  },
+  "top_titles": [
+   "Founding Engineer, Handshake Ai Enterprise",
+   "Ai Research Engineer",
+   "Machine Learning Engineer I"
+  ],
+  "name_variants": [
+   "Stryder Corporation"
+  ]
+ },
+ {
+  "employer": "Indeed, Inc.",
+  "key": "indeed",
+  "count": 4,
+  "median_wage": 148668,
+  "cities": {
+   "Foster City": 3,
+   "Burlingame": 1
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Data Scientist"
+  ],
+  "name_variants": [
+   "Indeed, Inc.",
+   "INDEED, INC."
+  ]
+ },
+ {
+  "employer": "Navan, Inc.",
+  "key": "navan",
+  "count": 4,
+  "median_wage": 140426,
+  "cities": {
+   "Palo Alto": 4
+  },
+  "top_titles": [
+   "Software Engineer - L2",
+   "Software Engineer 2",
+   "Software Engineer - 2"
+  ],
+  "name_variants": [
+   "Navan, Inc."
+  ]
+ },
+ {
+  "employer": "Upstart Network, Inc.",
+  "key": "upstart network",
+  "count": 4,
+  "median_wage": 167100,
+  "cities": {
+   "San Jose": 2,
+   "Mountain View": 1,
+   "San Mateo": 1
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Ml Model Risk Specialist"
+  ],
+  "name_variants": [
+   "Upstart Network, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Discord, Inc.",
+  "key": "discord",
+  "count": 4,
+  "median_wage": 205000,
+  "cities": {
+   "San Francisco": 4
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Data Scientist"
+  ],
+  "name_variants": [
+   "Discord, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "ROX DATA CORP",
+  "key": "rox data",
+  "count": 4,
+  "median_wage": 172500,
+  "cities": {
+   "San Francisco": 4
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "ROX DATA CORP",
+   "Rox Data Corp."
+  ]
+ },
+ {
+  "employer": "Akamai Technologies, Inc.",
+  "key": "akamai technologies",
+  "count": 4,
+  "median_wage": 145564,
+  "cities": {
+   "San Jose": 2,
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Software Engineer Ii",
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Akamai Technologies, Inc."
+  ]
+ },
+ {
+  "employer": "Kodiak Robotics, Inc.",
+  "key": "kodiak robotics",
+  "count": 4,
+  "median_wage": 189000,
+  "cities": {
+   "Mountain View": 4
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Software Engineer, Motion Planning"
+  ],
+  "name_variants": [
+   "Kodiak Robotics, Inc.",
+   "Kodiak Robotics, Inc",
+   "Kodiak Robotics, inc."
+  ],
+  "board": "greenhouse:kodiak"
+ },
+ {
+  "employer": "Exto Inc.",
+  "key": "exto",
+  "count": 4,
+  "median_wage": 162000,
+  "cities": {
+   "San Francisco": 4
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Data Scientist",
+   "Software Developer"
+  ],
+  "name_variants": [
+   "Exto Inc."
+  ]
+ },
+ {
+  "employer": "Visa U.S.A. Inc.",
+  "key": "visa a",
+  "count": 4,
+  "median_wage": 137400,
+  "cities": {
+   "Foster City": 4
+  },
+  "top_titles": [
+   "Data Scientist"
+  ],
+  "name_variants": [
+   "Visa U.S.A. Inc."
+  ]
+ },
+ {
+  "employer": "Decagon AI, Inc.",
+  "key": "decagon ai",
+  "count": 4,
+  "median_wage": 280000,
+  "cities": {
+   "San Francisco": 4
+  },
+  "top_titles": [
+   "Data Scientist",
+   "Software Engineer, Agent Orchestration",
+   "Software Engineer, Aswe"
+  ],
+  "name_variants": [
+   "Decagon AI, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Stanford Health Care",
+  "key": "stanford health care",
+  "count": 4,
+  "median_wage": 146500,
+  "cities": {
+   "Palo Alto": 4
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Data Scientist Ai/Ml"
+  ],
+  "name_variants": [
+   "Stanford Health Care"
+  ]
+ },
+ {
+  "employer": "U.S. Bank National Association",
+  "key": "bank national association",
+  "count": 4,
+  "median_wage": 130253,
+  "cities": {
+   "Cupertino": 2,
+   "Fremont": 1,
+   "San Francisco": 1
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Software Engineer - Aem Adobe Experience"
+  ],
+  "name_variants": [
+   "U.S. Bank National Association",
+   "U.S. BANK NATIONAL ASSOCIATION"
+  ]
+ },
+ {
+  "employer": "Lawrence Berkeley National Laboratory",
+  "key": "lawrence berkeley national laboratory",
+  "count": 4,
+  "median_wage": 148500,
+  "cities": {
+   "Berkeley": 4
+  },
+  "top_titles": [
+   "Controls Software Engineer",
+   "Data Scientist",
+   "Hpc System Software Engineer"
+  ],
+  "name_variants": [
+   "Lawrence Berkeley National Laboratory"
+  ]
+ },
+ {
+  "employer": "Delta Dental Of California",
+  "key": "delta dental of california",
+  "count": 4,
+  "median_wage": 184267,
+  "cities": {
+   "Oakland": 3,
+   "San Francisco": 1
+  },
+  "top_titles": [
+   "Expert Software Engineer",
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Delta Dental Of California"
+  ]
+ },
+ {
+  "employer": "Liberate Innovations, Inc.",
+  "key": "liberate innovations",
+  "count": 4,
+  "median_wage": 180050,
+  "cities": {
+   "Berkeley": 4
+  },
+  "top_titles": [
+   "Ai Agent Engineer"
+  ],
+  "name_variants": [
+   "Liberate Innovations, Inc."
+  ],
+  "board": "greenhouse:liberate"
+ },
+ {
+  "employer": "VERSA NETWORKS, INC.",
+  "key": "versa networks",
+  "count": 4,
+  "median_wage": 206940,
+  "cities": {
+   "Santa Clara": 4
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "VERSA NETWORKS, INC."
+  ]
+ },
+ {
+  "employer": "Kumo.ai, Inc.",
+  "key": "kumo ai",
+  "count": 4,
+  "median_wage": 160000,
+  "cities": {
+   "Mountain View": 4
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Data Scientist"
+  ],
+  "name_variants": [
+   "Kumo.ai, Inc."
+  ]
+ },
+ {
+  "employer": "Sciforium",
+  "key": "sciforium",
+  "count": 4,
+  "median_wage": 187741,
+  "cities": {
+   "Los Altos": 3,
+   "San Francisco": 1
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Machine Learning Engineer"
+  ],
+  "name_variants": [
+   "Sciforium"
+  ],
+  "board": "ashby:sciforium"
+ },
+ {
+  "employer": "AC Wellness Network LLC",
+  "key": "ac wellness network",
+  "count": 4,
+  "median_wage": 201870,
+  "cities": {
+   "Cupertino": 3,
+   "San Carlos": 1
+  },
+  "top_titles": [
+   "Software Development Engineering",
+   "Data Scientist"
+  ],
+  "name_variants": [
+   "AC Wellness Network LLC"
+  ]
+ },
+ {
+  "employer": "Siemens Industry Software Inc.",
+  "key": "siemens industry software",
+  "count": 4,
+  "median_wage": 169796,
+  "cities": {
+   "Santa Clara": 4
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Corporate Verification Consultant (Software Developer)",
+   "Software Engineer - Tcad Research"
+  ],
+  "name_variants": [
+   "Siemens Industry Software Inc."
+  ]
+ },
+ {
+  "employer": "Chai Research Corp",
+  "key": "chai research",
+  "count": 4,
+  "median_wage": 264514,
+  "cities": {
+   "Palo Alto": 4
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Ai Research Scientist"
+  ],
+  "name_variants": [
+   "Chai Research Corp"
+  ]
+ },
+ {
+  "employer": "Samsung Electronics America, Inc.",
+  "key": "samsung electronics",
+  "count": 4,
+  "median_wage": 187741,
+  "cities": {
+   "Mountain View": 4
+  },
+  "top_titles": [
+   "Engineer Ii, Machine Learning Software",
+   "Software Engineer I"
+  ],
+  "name_variants": [
+   "Samsung Electronics America, Inc."
+  ]
+ },
+ {
+  "employer": "SAP Labs, LLC",
+  "key": "sap labs",
+  "count": 4,
+  "median_wage": 161554,
+  "cities": {
+   "Palo Alto": 3,
+   "San Ramon": 1
+  },
+  "top_titles": [
+   "Data Scientist",
+   "Machine Learning Engineer",
+   "Machine Learning Engineer Expert"
+  ],
+  "name_variants": [
+   "SAP Labs, LLC"
+  ]
+ },
+ {
+  "employer": "Amplitude, Inc.",
+  "key": "amplitude",
+  "count": 4,
+  "median_wage": 160818,
+  "cities": {
+   "San Francisco": 4
+  },
+  "top_titles": [
+   "Software Engineer I",
+   "Software Engineer",
+   "Software Engineer Ii"
+  ],
+  "name_variants": [
+   "Amplitude, Inc."
+  ],
+  "board": "ashby:amplitude"
+ },
+ {
+  "employer": "SnapLogic, Inc.",
+  "key": "snaplogic",
+  "count": 4,
+  "median_wage": 135699,
+  "cities": {
+   "San Francisco": 2,
+   "San Mateo": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "SnapLogic, Inc."
+  ],
+  "board": "lever:snaplogic"
+ },
+ {
+  "employer": "Clockwork Systems, Inc.",
+  "key": "clockwork systems",
+  "count": 4,
+  "median_wage": 150000,
+  "cities": {
+   "Palo Alto": 4
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Clockwork Systems, Inc."
+  ],
+  "board": "greenhouse:clockworksystems"
+ },
+ {
+  "employer": "Claris International Inc.",
+  "key": "claris international",
+  "count": 4,
+  "median_wage": 147400,
+  "cities": {
+   "Sunnyvale": 2,
+   "Cupertino": 2
+  },
+  "top_titles": [
+   "Software Engineering Applications",
+   "Software Developer"
+  ],
+  "name_variants": [
+   "Claris International Inc."
+  ]
+ },
+ {
+  "employer": "Viasat Inc.",
+  "key": "viasat",
+  "count": 4,
+  "median_wage": 159065,
+  "cities": {
+   "San Jose": 3,
+   "Fremont": 1
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Viasat Inc."
+  ]
+ },
+ {
+  "employer": "Roku, Inc.",
+  "key": "roku",
+  "count": 4,
+  "median_wage": 195120,
+  "cities": {
+   "San Jose": 4
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Roku, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Proofpoint, Inc.",
+  "key": "proofpoint",
+  "count": 4,
+  "median_wage": 163898,
+  "cities": {
+   "Sunnyvale": 4
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Ai Engineer"
+  ],
+  "name_variants": [
+   "Proofpoint, Inc."
+  ]
+ },
+ {
+  "employer": "AiNaDoctor Inc.",
+  "key": "ainadoctor",
+  "count": 4,
+  "median_wage": 150000,
+  "cities": {
+   "San Jose": 4
+  },
+  "top_titles": [
+   "Software Engineer, Mobile Ai"
+  ],
+  "name_variants": [
+   "AiNaDoctor Inc."
+  ]
+ },
+ {
+  "employer": "FORD MOTOR COMPANY",
+  "key": "ford motor",
+  "count": 4,
+  "median_wage": 161150,
+  "cities": {
+   "Dublin": 1,
+   "Fremont": 1,
+   "Milpitas": 1,
+   "San Jose": 1
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Embedded Software Engineer"
+  ],
+  "name_variants": [
+   "FORD MOTOR COMPANY"
+  ]
+ },
+ {
+  "employer": "Lambda, Inc.",
+  "key": "lambda",
+  "count": 4,
+  "median_wage": 265000,
+  "cities": {
+   "San Francisco": 3,
+   "San Jose": 1
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Frontend Developer"
+  ],
+  "name_variants": [
+   "Lambda, Inc."
+  ],
+  "board": "ashby:lambda"
+ },
+ {
+  "employer": "EvenUp Inc.",
+  "key": "evenup",
+  "count": 4,
+  "median_wage": 172500,
+  "cities": {
+   "San Francisco": 4
+  },
+  "top_titles": [
+   "Machine Learning Engineer I",
+   "Machine Learning Engineer Ii",
+   "Data Science Engineer"
+  ],
+  "name_variants": [
+   "EvenUp Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "ASTRABRIGHT ANALYTICS & KNOWLEDGE ALLIANCE, INC.",
+  "key": "astrabright analytics knowledge alliance",
+  "count": 4,
+  "median_wage": 150000,
+  "cities": {
+   "Mountain View": 4
+  },
+  "top_titles": [
+   "Pm - Ai Research And Training",
+   "Machine Learning Engineer"
+  ],
+  "name_variants": [
+   "ASTRABRIGHT ANALYTICS & KNOWLEDGE ALLIANCE, INC.",
+   "ASTRABRIGHT ANALYTICS & KNOWLEDGE ALLIANCE, INC"
+  ]
+ },
+ {
+  "employer": "HeyGen Technology Inc.",
+  "key": "heygen technology",
+  "count": 4,
+  "median_wage": 213512,
+  "cities": {
+   "San Francisco": 3,
+   "Palo Alto": 1
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "HeyGen Technology Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Plaud Inc.",
+  "key": "plaud",
+  "count": 4,
+  "median_wage": 175000,
+  "cities": {
+   "San Francisco": 4
+  },
+  "top_titles": [
+   "Backend Engineer",
+   "Full Stack Engineer"
+  ],
+  "name_variants": [
+   "Plaud Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "RETOOL, INC.",
+  "key": "retool",
+  "count": 4,
+  "median_wage": 187574,
+  "cities": {
+   "San Francisco": 4
+  },
+  "top_titles": [
+   "Software Engineer Ii"
+  ],
+  "name_variants": [
+   "RETOOL, INC.",
+   "Retool, Inc."
+  ]
+ },
+ {
+  "employer": "Fluidstack Inc.",
+  "key": "fluidstack",
+  "count": 4,
+  "median_wage": 250000,
+  "cities": {
+   "San Francisco": 3,
+   "California": 1
+  },
+  "top_titles": [
+   "Software Engineer, Infrastructure Platform"
+  ],
+  "name_variants": [
+   "Fluidstack Inc."
+  ],
+  "board": "ashby:fluidstack"
+ },
+ {
+  "employer": "CogniSort LLC",
+  "key": "cognisort",
+  "count": 4,
+  "median_wage": 174304,
+  "cities": {
+   "Sunnyvale": 4
+  },
+  "top_titles": [
+   "Data Scientist"
+  ],
+  "name_variants": [
+   "CogniSort LLC"
+  ]
+ },
+ {
+  "employer": "Cognichip, Inc.",
+  "key": "cognichip",
+  "count": 3,
+  "median_wage": 200000,
+  "cities": {
+   "Redwood City": 3
+  },
+  "top_titles": [
+   "Applied Scientist - Ai & Chip Design",
+   "Software Engineer I (Backend)"
+  ],
+  "name_variants": [
+   "Cognichip, Inc."
+  ]
+ },
+ {
+  "employer": "NXP USA, Inc.",
+  "key": "nxp",
+  "count": 3,
+  "median_wage": 190194,
+  "cities": {
+   "San Jose": 3
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Secure Software Engineer"
+  ],
+  "name_variants": [
+   "NXP USA, Inc."
+  ]
+ },
+ {
+  "employer": "Verily Life Sciences LLC",
+  "key": "verily life sciences",
+  "count": 3,
+  "median_wage": 181545,
+  "cities": {
+   "Mountain View": 2,
+   "San Bruno": 1
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Data Scientist"
+  ],
+  "name_variants": [
+   "Verily Life Sciences LLC"
+  ]
+ },
+ {
+  "employer": "Sandbox Inc.",
+  "key": "sandbox",
+  "count": 3,
+  "median_wage": 135699,
+  "cities": {
+   "San Francisco": 3
+  },
+  "top_titles": [
+   "Full Stack Engineer",
+   "Machine Learning Engineer"
+  ],
+  "name_variants": [
+   "Sandbox Inc."
+  ]
+ },
+ {
+  "employer": "Counter Inc.",
+  "key": "counter",
+  "count": 3,
+  "median_wage": 150000,
+  "cities": {
+   "San Francisco": 3
+  },
+  "top_titles": [
+   "Backend Engineer",
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Counter Inc."
+  ]
+ },
+ {
+  "employer": "Character Technologies Inc.",
+  "key": "character technologies",
+  "count": 3,
+  "median_wage": 260000,
+  "cities": {
+   "Redwood City": 3
+  },
+  "top_titles": [
+   "Software Engineer, Backend",
+   "Data Scientist"
+  ],
+  "name_variants": [
+   "Character Technologies Inc.",
+   "Character Technologies, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Included Health Inc.",
+  "key": "included health",
+  "count": 3,
+  "median_wage": 145000,
+  "cities": {
+   "San Francisco": 3
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Backend Software Engineer"
+  ],
+  "name_variants": [
+   "Included Health Inc."
+  ],
+  "board": "lever:includedhealth"
+ },
+ {
+  "employer": "Greenlite Inc.",
+  "key": "greenlite",
+  "count": 3,
+  "median_wage": 193000,
+  "cities": {
+   "San Francisco": 3
+  },
+  "top_titles": [
+   "Software Engineer, Platform",
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Greenlite Inc."
+  ]
+ },
+ {
+  "employer": "Xilinx, Inc.",
+  "key": "xilinx",
+  "count": 3,
+  "median_wage": 185453,
+  "cities": {
+   "San Jose": 3
+  },
+  "top_titles": [
+   "Mts Software Development Engineer",
+   "Software Development Engineer"
+  ],
+  "name_variants": [
+   "Xilinx, Inc."
+  ]
+ },
+ {
+  "employer": "Skydio, Inc.",
+  "key": "skydio",
+  "count": 3,
+  "median_wage": 210000,
+  "cities": {
+   "San Mateo": 3
+  },
+  "top_titles": [
+   "Autonomy Software Engineer",
+   "Autonomy Engineer - Deep Learning"
+  ],
+  "name_variants": [
+   "Skydio, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Avenue Code, LLC.",
+  "key": "avenue code",
+  "count": 3,
+  "median_wage": 130853,
+  "cities": {
+   "San Jose": 2,
+   "San Francisco": 1
+  },
+  "top_titles": [
+   "Full Stack Engineer",
+   "Software Developer"
+  ],
+  "name_variants": [
+   "Avenue Code, LLC."
+  ]
+ },
+ {
+  "employer": "Unity Technologies SF",
+  "key": "unity technologies sf",
+  "count": 3,
+  "median_wage": 165000,
+  "cities": {
+   "San Francisco": 2,
+   "Mountain View": 1
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Ai Applied Research Scientist"
+  ],
+  "name_variants": [
+   "Unity Technologies SF"
+  ]
+ },
+ {
+  "employer": "FL2024-008, Inc.",
+  "key": "fl2024 008",
+  "count": 3,
+  "median_wage": 340000,
+  "cities": {
+   "San Francisco": 3
+  },
+  "top_titles": [
+   "Ai Researcher"
+  ],
+  "name_variants": [
+   "FL2024-008, Inc."
+  ]
+ },
+ {
+  "employer": "Genspark Inc.",
+  "key": "genspark",
+  "count": 3,
+  "median_wage": 149365,
+  "cities": {
+   "Palo Alto": 3
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Data Scientist"
+  ],
+  "name_variants": [
+   "Genspark Inc."
+  ],
+  "board": "ashby:genspark"
+ },
+ {
+  "employer": "Alpha Design AI, Inc.",
+  "key": "alpha design ai",
+  "count": 3,
+  "median_wage": 150000,
+  "cities": {
+   "San Jose": 3
+  },
+  "top_titles": [
+   "Application Engineer, Agentic Ai",
+   "Full-Stack Ai Engineer"
+  ],
+  "name_variants": [
+   "Alpha Design AI, Inc."
+  ]
+ },
+ {
+  "employer": "First Citizens Bank and Trust Co.",
+  "key": "first citizens bank trust",
+  "count": 3,
+  "median_wage": 185587,
+  "cities": {
+   "Santa Clara": 3
+  },
+  "top_titles": [
+   "Software Engineer Consultant"
+  ],
+  "name_variants": [
+   "First Citizens Bank and Trust Co."
+  ]
+ },
+ {
+  "employer": "4Wall AI Inc.",
+  "key": "4wall ai",
+  "count": 3,
+  "median_wage": 120000,
+  "cities": {
+   "San Francisco": 3
+  },
+  "top_titles": [
+   "Founding Software Engineer",
+   "Data Scientist",
+   "Data Scientist I"
+  ],
+  "name_variants": [
+   "4Wall AI Inc."
+  ]
+ },
+ {
+  "employer": "Wisdom AI, Inc.",
+  "key": "wisdom ai",
+  "count": 3,
+  "median_wage": 250000,
+  "cities": {
+   "San Mateo": 3
+  },
+  "top_titles": [
+   "Machine Learning Engineer",
+   "Software Engineer",
+   "Software Engineer, Backend"
+  ],
+  "name_variants": [
+   "Wisdom AI, Inc."
+  ]
+ },
+ {
+  "employer": "Vercel, Inc.",
+  "key": "vercel",
+  "count": 3,
+  "median_wage": 201750,
+  "cities": {
+   "San Francisco": 3
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Full Stack Engineer"
+  ],
+  "name_variants": [
+   "Vercel, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Government Employee Insurance Company (GEICO)",
+  "key": "government employee insurance",
+  "count": 3,
+  "median_wage": 170000,
+  "cities": {
+   "Pleasanton": 1,
+   "Oakland": 1,
+   "Palo Alto": 1
+  },
+  "top_titles": [
+   "Machine Learning Engineer Ii",
+   "Tdp Software Engineer I"
+  ],
+  "name_variants": [
+   "Government Employee Insurance Company (GEICO)"
+  ]
+ },
+ {
+  "employer": "Sybill Inc.",
+  "key": "sybill",
+  "count": 3,
+  "median_wage": 187741,
+  "cities": {
+   "Mountain View": 3
+  },
+  "top_titles": [
+   "Founding Software Engineer",
+   "Software Engineer (Support)",
+   "Software Engineer (Go-To-Market Systems)"
+  ],
+  "name_variants": [
+   "Sybill Inc."
+  ]
+ },
+ {
+  "employer": "Qualcomm Technologies, Inc.",
+  "key": "qualcomm technologies",
+  "count": 3,
+  "median_wage": 143504,
+  "cities": {
+   "Santa Clara": 3
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Machine Learning Engineer",
+   "Modem Software Engineer"
+  ],
+  "name_variants": [
+   "Qualcomm Technologies, Inc."
+  ]
+ },
+ {
+  "employer": "Render Services, Inc.",
+  "key": "render",
+  "count": 3,
+  "median_wage": 270000,
+  "cities": {
+   "San Francisco": 3
+  },
+  "top_titles": [
+   "Data Scientist",
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Render Services, Inc."
+  ],
+  "board": "ashby:render"
+ },
+ {
+  "employer": "Ramp Business Corporation",
+  "key": "ramp business",
+  "count": 3,
+  "median_wage": 168000,
+  "cities": {
+   "San Francisco": 3
+  },
+  "top_titles": [
+   "Software Engineer, Backend",
+   "Software Engineer, Backend L4",
+   "Software Engineer, Backend L4 No Tier"
+  ],
+  "name_variants": [
+   "Ramp Business Corporation"
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Attentive Mobile, Inc.",
+  "key": "attentive mobile",
+  "count": 3,
+  "median_wage": 260000,
+  "cities": {
+   "San Francisco": 3
+  },
+  "top_titles": [
+   "Data Scientist Ii",
+   "Software Engineer I"
+  ],
+  "name_variants": [
+   "Attentive Mobile, Inc."
+  ],
+  "board": "greenhouse:attentive"
+ },
+ {
+  "employer": "Trackonomy Systems, Inc.",
+  "key": "trackonomy systems",
+  "count": 3,
+  "median_wage": 149365,
+  "cities": {
+   "San Jose": 3
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Full Stack Engineer"
+  ],
+  "name_variants": [
+   "Trackonomy Systems, Inc."
+  ],
+  "board": "greenhouse:trackonomysystems"
+ },
+ {
+  "employer": "Shepherd Labs, Inc.",
+  "key": "shepherd labs",
+  "count": 3,
+  "median_wage": 170000,
+  "cities": {
+   "San Francisco": 3
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Shepherd Labs, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "zaimler, Inc.",
+  "key": "zaimler",
+  "count": 3,
+  "median_wage": 195000,
+  "cities": {
+   "San Mateo": 3
+  },
+  "top_titles": [
+   "Machine Learning Engineer",
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "zaimler, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "BackOps-ai Inc.",
+  "key": "backops ai",
+  "count": 3,
+  "median_wage": 149365,
+  "cities": {
+   "San Francisco": 2,
+   "San Jose": 1
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Full Stack Engineer"
+  ],
+  "name_variants": [
+   "BackOps-ai Inc."
+  ]
+ },
+ {
+  "employer": "Obvio Inc",
+  "key": "obvio",
+  "count": 3,
+  "median_wage": 161637,
+  "cities": {
+   "San Carlos": 3
+  },
+  "top_titles": [
+   "Machine Learning Engineer",
+   "Software Engineer",
+   "Software Engineer I"
+  ],
+  "name_variants": [
+   "Obvio Inc",
+   "Obvio, Inc."
+  ],
+  "board": "ashby:obvio"
+ },
+ {
+  "employer": "Palo Alto Networks, Inc.",
+  "key": "palo alto networks",
+  "count": 3,
+  "median_wage": 126708,
+  "cities": {
+   "Santa Clara": 3
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Ai Finance Analyst"
+  ],
+  "name_variants": [
+   "Palo Alto Networks, Inc."
+  ]
+ },
+ {
+  "employer": "Cresta Intelligence Inc.",
+  "key": "cresta intelligence",
+  "count": 3,
+  "median_wage": 270000,
+  "cities": {
+   "Sunnyvale": 3
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Cresta Intelligence Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "RoboForce Inc.",
+  "key": "roboforce",
+  "count": 3,
+  "median_wage": 190000,
+  "cities": {
+   "Milpitas": 3
+  },
+  "top_titles": [
+   "Ml Robotics Engineer",
+   "Simulation Software Engineer"
+  ],
+  "name_variants": [
+   "RoboForce Inc.",
+   "RoboForce Inc"
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Daniel L. Sun, Inc.",
+  "key": "daniel l sun",
+  "count": 3,
+  "median_wage": 150000,
+  "cities": {
+   "San Jose": 3
+  },
+  "top_titles": [
+   "Software Developer",
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Daniel L. Sun, Inc."
+  ]
+ },
+ {
+  "employer": "Console Systems, Inc.",
+  "key": "console systems",
+  "count": 3,
+  "median_wage": 190000,
+  "cities": {
+   "San Francisco": 2,
+   "San Franciso": 1
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Forward Deployed Software Engineer"
+  ],
+  "name_variants": [
+   "Console Systems, Inc."
+  ]
+ },
+ {
+  "employer": "APPLE PAYMENTS SERVICES LLC",
+  "key": "apple payments",
+  "count": 3,
+  "median_wage": 205621,
+  "cities": {
+   "Cupertino": 3
+  },
+  "top_titles": [
+   "Software Engineering Applications",
+   "Data Scientist"
+  ],
+  "name_variants": [
+   "APPLE PAYMENTS SERVICES LLC"
+  ],
+  "board": "career site"
+ },
+ {
+  "employer": "Riot Games, Inc.",
+  "key": "riot games",
+  "count": 3,
+  "median_wage": 213512,
+  "cities": {
+   "Redwood City": 1,
+   "Sunnyvale": 1,
+   "Los Angeles": 1
+  },
+  "top_titles": [
+   "Machine Learning Engineer Ii",
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Riot Games, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Straiker, Inc.",
+  "key": "straiker",
+  "count": 3,
+  "median_wage": 260000,
+  "cities": {
+   "Sunnyvale": 3
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Straiker, Inc."
+  ]
+ },
+ {
+  "employer": "Bobyard, Inc.",
+  "key": "bobyard",
+  "count": 3,
+  "median_wage": 160000,
+  "cities": {
+   "San Francisco": 3
+  },
+  "top_titles": [
+   "Computer Vision Research Engineer"
+  ],
+  "name_variants": [
+   "Bobyard, Inc."
+  ],
+  "board": "ashby:bobyard"
+ },
+ {
+  "employer": "Lila Sciences, Inc.",
+  "key": "lila sciences",
+  "count": 3,
+  "median_wage": 210000,
+  "cities": {
+   "San Francisco": 3
+  },
+  "top_titles": [
+   "Ml Research Scientist I, Biomolecule Design",
+   "Ai Research Scientist I, In Silico Materials Discovery"
+  ],
+  "name_variants": [
+   "Lila Sciences, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Joby Aero, Inc.",
+  "key": "joby aero",
+  "count": 3,
+  "median_wage": 160000,
+  "cities": {
+   "Santa Cruz": 2,
+   "San Carlos": 1
+  },
+  "top_titles": [
+   "Ai Applied Research Scientist",
+   "Navigation Algorithm Software Engineer",
+   "Software Engineer, Flight Systems"
+  ],
+  "name_variants": [
+   "Joby Aero, Inc."
+  ]
+ },
+ {
+  "employer": "YugabyteDB, Inc.",
+  "key": "yugabytedb",
+  "count": 3,
+  "median_wage": 150000,
+  "cities": {
+   "Sunnyvale": 3
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "YugabyteDB, Inc."
+  ]
+ },
+ {
+  "employer": "Align Technology, Inc.",
+  "key": "align technology",
+  "count": 3,
+  "median_wage": 206700,
+  "cities": {
+   "San Jose": 3
+  },
+  "top_titles": [
+   "Expert Software Engineer",
+   "Expert Full-Stack Engineer",
+   "3D C Software Engineer"
+  ],
+  "name_variants": [
+   "Align Technology, Inc.",
+   "Align Technology Inc"
+  ]
+ },
+ {
+  "employer": "Ampere Computing LLC",
+  "key": "ampere computing",
+  "count": 3,
+  "median_wage": 164007,
+  "cities": {
+   "Santa Clara": 3
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Ampere Computing LLC"
+  ]
+ },
+ {
+  "employer": "Glass Imaging, Inc.",
+  "key": "glass imaging",
+  "count": 3,
+  "median_wage": 165000,
+  "cities": {
+   "San Mateo": 3
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Glass Imaging, Inc."
+  ]
+ },
+ {
+  "employer": "Cognitiv Corp",
+  "key": "cognitiv",
+  "count": 3,
+  "median_wage": 172000,
+  "cities": {
+   "San Mateo": 3
+  },
+  "top_titles": [
+   "Machine Learning Engineer Ii"
+  ],
+  "name_variants": [
+   "Cognitiv Corp"
+  ],
+  "board": "greenhouse:cognitiv"
+ },
+ {
+  "employer": "Ambient AI, Inc.",
+  "key": "ambient ai",
+  "count": 3,
+  "median_wage": 165000,
+  "cities": {
+   "Redwood City": 3
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Applied Research Scientist - Computer Vision"
+  ],
+  "name_variants": [
+   "Ambient AI, Inc."
+  ]
+ },
+ {
+  "employer": "Assemble Platforms Inc.",
+  "key": "assemble platforms",
+  "count": 3,
+  "median_wage": 215000,
+  "cities": {
+   "San Mateo": 2,
+   "Sam Mateo": 1
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Assemble Platforms Inc."
+  ]
+ },
+ {
+  "employer": "Bear Robotics, Inc.",
+  "key": "bear robotics",
+  "count": 3,
+  "median_wage": 166566,
+  "cities": {
+   "Redwood City": 3
+  },
+  "top_titles": [
+   "Robotics Software Engineer I",
+   "Robotics Software Engineer Ii"
+  ],
+  "name_variants": [
+   "Bear Robotics, Inc."
+  ]
+ },
+ {
+  "employer": "Genesis Intelligence Inc.",
+  "key": "genesis intelligence",
+  "count": 3,
+  "median_wage": 161637,
+  "cities": {
+   "San Carlos": 3
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Genesis Intelligence Inc.",
+   "Genesis Intelligence, Inc."
+  ]
+ },
+ {
+  "employer": "Vanta Inc.",
+  "key": "vanta",
+  "count": 3,
+  "median_wage": 169000,
+  "cities": {
+   "San Francisco": 2,
+   "Santa Clara": 1
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Vanta Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Gem Software, Inc.",
+  "key": "gem software",
+  "count": 3,
+  "median_wage": 188000,
+  "cities": {
+   "San Francisco": 3
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Gem Software, Inc."
+  ]
+ },
+ {
+  "employer": "Forcepoint LLC",
+  "key": "forcepoint",
+  "count": 3,
+  "median_wage": 178584,
+  "cities": {
+   "San Jose": 3
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Forcepoint LLC"
+  ]
+ },
+ {
+  "employer": "SK hynix America inc.",
+  "key": "sk hynix",
+  "count": 3,
+  "median_wage": 187068,
+  "cities": {
+   "San Jose": 3
+  },
+  "top_titles": [
+   "Ai Systems Engineer",
+   "Ai/Hpc System Engineer"
+  ],
+  "name_variants": [
+   "SK hynix America inc."
+  ]
+ },
+ {
+  "employer": "Samsung Research America, Inc.",
+  "key": "samsung research",
+  "count": 3,
+  "median_wage": 174304,
+  "cities": {
+   "Mountain View": 3
+  },
+  "top_titles": [
+   "Engineer, Machine Learning",
+   "Engineer, Ai Research"
+  ],
+  "name_variants": [
+   "Samsung Research America, Inc."
+  ]
+ },
+ {
+  "employer": "Collaborative Robotics, Inc.",
+  "key": "collaborative robotics",
+  "count": 3,
+  "median_wage": 150000,
+  "cities": {
+   "Santa Clara": 3
+  },
+  "top_titles": [
+   "Software Engineer, Robotics"
+  ],
+  "name_variants": [
+   "Collaborative Robotics, Inc."
+  ]
+ },
+ {
+  "employer": "Modern Treasury Corporation",
+  "key": "modern treasury",
+  "count": 3,
+  "median_wage": 190000,
+  "cities": {
+   "San Francisco": 3
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Modern Treasury Corporation"
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Workato Inc.",
+  "key": "workato",
+  "count": 3,
+  "median_wage": 360000,
+  "cities": {
+   "San Francisco": 2,
+   "Palo Alto": 1
+  },
+  "top_titles": [
+   "Ai Researcher"
+  ],
+  "name_variants": [
+   "Workato Inc."
+  ],
+  "board": "greenhouse:workato"
+ },
+ {
+  "employer": "Zendesk, Inc.",
+  "key": "zendesk",
+  "count": 3,
+  "median_wage": 138300,
+  "cities": {
+   "San Jose": 2,
+   "San Francisco": 1
+  },
+  "top_titles": [
+   "Software Engineer Ii"
+  ],
+  "name_variants": [
+   "Zendesk, Inc."
+  ]
+ },
+ {
+  "employer": "Nextpower LLC",
+  "key": "nextpower",
+  "count": 3,
+  "median_wage": 161637,
+  "cities": {
+   "Fremont": 3
+  },
+  "top_titles": [
+   "Backend Software Developer",
+   "Full Stack Software Engineer"
+  ],
+  "name_variants": [
+   "Nextpower LLC"
+  ]
+ },
+ {
+  "employer": "Bay Area Founders Club Inc.",
+  "key": "bay area founders club",
+  "count": 3,
+  "median_wage": 189280,
+  "cities": {
+   "Palo Alto": 3
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Data Scientist"
+  ],
+  "name_variants": [
+   "Bay Area Founders Club Inc.",
+   "Bay Area Founders Club Inc"
+  ]
+ },
+ {
+  "employer": "AA Solutions Inc",
+  "key": "aa solutions",
+  "count": 3,
+  "median_wage": 161637,
+  "cities": {
+   "Fremont": 2,
+   "Dublin": 1
+  },
+  "top_titles": [
+   "Software Developer",
+   "Software Engineer",
+   "Data Scientist"
+  ],
+  "name_variants": [
+   "AA Solutions Inc"
+  ]
+ },
+ {
+  "employer": "Gridmatic Inc.",
+  "key": "gridmatic",
+  "count": 3,
+  "median_wage": 215000,
+  "cities": {
+   "Cupertino": 3
+  },
+  "top_titles": [
+   "Machine Learning Engineer",
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Gridmatic Inc."
+  ]
+ },
+ {
+  "employer": "SB Telecom America Corp.",
+  "key": "sb telecom",
+  "count": 3,
+  "median_wage": 225750,
+  "cities": {
+   "Sunnyvale": 3
+  },
+  "top_titles": [
+   "Ai System Engineer",
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "SB Telecom America Corp."
+  ]
+ },
+ {
+  "employer": "Xage Security, Inc.",
+  "key": "xage security",
+  "count": 3,
+  "median_wage": 110000,
+  "cities": {
+   "Palo Alto": 3
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Xage Security, Inc."
+  ]
+ },
+ {
+  "employer": "Boson AI USA Inc.",
+  "key": "boson ai",
+  "count": 3,
+  "median_wage": 300000,
+  "cities": {
+   "Santa Clara": 3
+  },
+  "top_titles": [
+   "Machine Learning Engineer"
+  ],
+  "name_variants": [
+   "Boson AI USA Inc."
+  ],
+  "board": "lever:bosonai"
+ },
+ {
+  "employer": "Aura Global Solutions Inc",
+  "key": "aura global solutions",
+  "count": 3,
+  "median_wage": 135699,
+  "cities": {
+   "Hayward": 1,
+   "Fremont": 1,
+   "Pleasanton": 1
+  },
+  "top_titles": [
+   "Software Developer",
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Aura Global Solutions Inc"
+  ]
+ },
+ {
+  "employer": "Jeeva AI, Inc.",
+  "key": "jeeva ai",
+  "count": 3,
+  "median_wage": 136000,
+  "cities": {
+   "San Francisco": 2,
+   "San Franacisco": 1
+  },
+  "top_titles": [
+   "Ai Engineer"
+  ],
+  "name_variants": [
+   "Jeeva AI, Inc."
+  ]
+ },
+ {
+  "employer": "Sonilo Inc.",
+  "key": "sonilo",
+  "count": 3,
+  "median_wage": 225000,
+  "cities": {
+   "Menlo Park": 3
+  },
+  "top_titles": [
+   "Data Scientists",
+   "Data Scientist"
+  ],
+  "name_variants": [
+   "Sonilo Inc."
+  ]
+ },
+ {
+  "employer": "Tessera Labs Corporation",
+  "key": "tessera labs",
+  "count": 3,
+  "median_wage": 150000,
+  "cities": {
+   "San Jose": 3
+  },
+  "top_titles": [
+   "Ai Agent Engineer",
+   "Software Engineer, Backend"
+  ],
+  "name_variants": [
+   "Tessera Labs Corporation"
+  ]
+ },
+ {
+  "employer": "Carl Zeiss Meditec, Inc.",
+  "key": "carl zeiss meditec",
+  "count": 3,
+  "median_wage": 157056,
+  "cities": {
+   "Dublin": 3
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Data Scientist",
+   "Data Scientist \u2013 Ai Programs"
+  ],
+  "name_variants": [
+   "Carl Zeiss Meditec, Inc."
+  ]
+ },
+ {
+  "employer": "AIRRIVED INC.",
+  "key": "airrived",
+  "count": 3,
+  "median_wage": 149365,
+  "cities": {
+   "Sunnyvale": 2,
+   "San Jose": 1
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "AIRRIVED INC."
+  ]
+ },
+ {
+  "employer": "Leopard Imaging Inc",
+  "key": "leopard imaging",
+  "count": 2,
+  "median_wage": 161637,
+  "cities": {
+   "Fremont": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Leopard Imaging Inc"
+  ]
+ },
+ {
+  "employer": "BitGo, Inc.",
+  "key": "bitgo",
+  "count": 2,
+  "median_wage": 190000,
+  "cities": {
+   "San Francisco": 1,
+   "Palo Alto": 1
+  },
+  "top_titles": [
+   "Software Engineer - E2"
+  ],
+  "name_variants": [
+   "BitGo, Inc."
+  ],
+  "board": "greenhouse:bitgo"
+ },
+ {
+  "employer": "NexHealth Inc.",
+  "key": "nexhealth",
+  "count": 2,
+  "median_wage": 216756,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "NexHealth Inc."
+  ],
+  "board": "greenhouse:nexhealth"
+ },
+ {
+  "employer": "Quantifind, Inc.",
+  "key": "quantifind",
+  "count": 2,
+  "median_wage": 125000,
+  "cities": {
+   "Palo Alto": 2
+  },
+  "top_titles": [
+   "Associate Data Scientist"
+  ],
+  "name_variants": [
+   "Quantifind, Inc."
+  ],
+  "board": "greenhouse:quantifind"
+ },
+ {
+  "employer": "Pave Financial, Inc.",
+  "key": "pave financial",
+  "count": 2,
+  "median_wage": 162000,
+  "cities": {
+   "San Jose": 1,
+   "Fremont": 1
+  },
+  "top_titles": [
+   "Software Engineer, Backend",
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Pave Financial, Inc."
+  ]
+ },
+ {
+  "employer": "Matonee Inc. d/b/a Aptos Labs",
+  "key": "matonee d b a aptos labs",
+  "count": 2,
+  "median_wage": 230884,
+  "cities": {
+   "Ca": 1,
+   "Palo Alto": 1
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Software Engineer, Blockchain Core"
+  ],
+  "name_variants": [
+   "Matonee Inc. d/b/a Aptos Labs"
+  ],
+  "board": "greenhouse:aptoslabs"
+ },
+ {
+  "employer": "Infinitus Systems, Inc.",
+  "key": "infinitus systems",
+  "count": 2,
+  "median_wage": 187574,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Member Of Technical Team, Backend Engineer",
+   "Member Technical Team, Backend Engineer"
+  ],
+  "name_variants": [
+   "Infinitus Systems, Inc."
+  ],
+  "board": "ashby:infinitus"
+ },
+ {
+  "employer": "Atomic Machines, Inc.",
+  "key": "atomic machines",
+  "count": 2,
+  "median_wage": 167202,
+  "cities": {
+   "Santa Clara": 1,
+   "Emeryville": 1
+  },
+  "top_titles": [
+   "Motions Controls Software Engineer",
+   "Artificial Intelligence Engineer"
+  ],
+  "name_variants": [
+   "Atomic Machines, Inc."
+  ],
+  "board": "greenhouse:atomicmachines"
+ },
+ {
+  "employer": "ERICSSON ENTERPRISE WIRELESS SOLUTIONS, INC.",
+  "key": "ericsson enterprise wireless solutions",
+  "count": 2,
+  "median_wage": 151000,
+  "cities": {
+   "Santa Clara": 2
+  },
+  "top_titles": [
+   "Developer (Software Development Engineer)9819053",
+   "Developer (Software Development Engineer)10053222"
+  ],
+  "name_variants": [
+   "ERICSSON ENTERPRISE WIRELESS SOLUTIONS, INC."
+  ]
+ },
+ {
+  "employer": "Merge API, Inc.",
+  "key": "merge api",
+  "count": 2,
+  "median_wage": 190000,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Merge API, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Gimlet Labs, Inc.",
+  "key": "gimlet labs",
+  "count": 2,
+  "median_wage": 255000,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Gimlet Labs, Inc."
+  ],
+  "board": "ashby:gimlet"
+ },
+ {
+  "employer": "Ema Unlimited Inc.",
+  "key": "ema unlimited",
+  "count": 2,
+  "median_wage": 180000,
+  "cities": {
+   "Mountain View": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Ema Unlimited Inc."
+  ]
+ },
+ {
+  "employer": "Doppel Inc.",
+  "key": "doppel",
+  "count": 2,
+  "median_wage": 235000,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Doppel Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Archer Aviation Inc.",
+  "key": "archer aviation",
+  "count": 2,
+  "median_wage": 245326,
+  "cities": {
+   "San Jose": 2
+  },
+  "top_titles": [
+   "Electric Engine Software Engineer\u00bf",
+   "Aerospace Electric Engine Embedded Software Engineer"
+  ],
+  "name_variants": [
+   "Archer Aviation Inc."
+  ]
+ },
+ {
+  "employer": "HYR GLOBAL SOURCE INC",
+  "key": "hyr global source",
+  "count": 2,
+  "median_wage": 128750,
+  "cities": {
+   "Fremont": 1,
+   "Sunnyvale": 1
+  },
+  "top_titles": [
+   "Ai/Ml Programmer - Ii",
+   "Ai/Ml Full Stack Developer"
+  ],
+  "name_variants": [
+   "HYR GLOBAL SOURCE INC"
+  ]
+ },
+ {
+  "employer": "DriveWealth Technologies LLC",
+  "key": "drivewealth technologies",
+  "count": 2,
+  "median_wage": 179500,
+  "cities": {
+   "South San Francisco": 1,
+   "Santa Clara": 1
+  },
+  "top_titles": [
+   "Software Development Engineer 2"
+  ],
+  "name_variants": [
+   "DriveWealth Technologies LLC"
+  ],
+  "board": "greenhouse:drivewealth"
+ },
+ {
+  "employer": "WitnessAI, Inc.",
+  "key": "witnessai",
+  "count": 2,
+  "median_wage": 140000,
+  "cities": {
+   "Mountain View": 2
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Machine Learning Engineer"
+  ],
+  "name_variants": [
+   "WitnessAI, Inc."
+  ],
+  "board": "ashby:witnessai"
+ },
+ {
+  "employer": "Almaca, Inc.",
+  "key": "almaca",
+  "count": 2,
+  "median_wage": 158500,
+  "cities": {
+   "Palo Alto": 2
+  },
+  "top_titles": [
+   "Backend Engineer",
+   "Ai Engineer"
+  ],
+  "name_variants": [
+   "Almaca, Inc."
+  ]
+ },
+ {
+  "employer": "SERVE OPERATING CO.",
+  "key": "serve operating",
+  "count": 2,
+  "median_wage": 215000,
+  "cities": {
+   "Redwood City": 2
+  },
+  "top_titles": [
+   "Machine Learning Engineer",
+   "Software Engineer, Machine Learning"
+  ],
+  "name_variants": [
+   "SERVE OPERATING CO.",
+   "SERVE OPERATING CO"
+  ]
+ },
+ {
+  "employer": "BRANTA GROUP INC",
+  "key": "branta",
+  "count": 2,
+  "median_wage": 135699,
+  "cities": {
+   "Pleasanton": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "BRANTA GROUP INC"
+  ]
+ },
+ {
+  "employer": "ABBOTT DIABETES CARE INC.",
+  "key": "abbott diabetes care",
+  "count": 2,
+  "median_wage": 188602,
+  "cities": {
+   "Union City": 1,
+   "Alameda": 1
+  },
+  "top_titles": [
+   "Global Product Owner, Ai & Ml",
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "ABBOTT DIABETES CARE INC."
+  ]
+ },
+ {
+  "employer": "Adenza, Inc.",
+  "key": "adenza",
+  "count": 2,
+  "median_wage": 179425,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Specialist - Software Engineering"
+  ],
+  "name_variants": [
+   "Adenza, Inc."
+  ]
+ },
+ {
+  "employer": "Waabi Innovation (US) Inc.",
+  "key": "waabi innovation",
+  "count": 2,
+  "median_wage": 160590,
+  "cities": {
+   "Santa Clara": 1,
+   "San Francisco": 1
+  },
+  "top_titles": [
+   "Software Developer Ii",
+   "Software Developer Ii Web Tools"
+  ],
+  "name_variants": [
+   "Waabi Innovation (US) Inc.",
+   "Waabi Innovation US Inc."
+  ],
+  "board": "lever:waabi"
+ },
+ {
+  "employer": "Virtue AI, Inc.",
+  "key": "virtue ai",
+  "count": 2,
+  "median_wage": 168318,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Full-Stack/Backend Engineer - Virtue Ai",
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Virtue AI, Inc."
+  ]
+ },
+ {
+  "employer": "Hippo Employee Services Inc.",
+  "key": "hippo employee",
+  "count": 2,
+  "median_wage": 168620,
+  "cities": {
+   "San Jose": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Hippo Employee Services Inc."
+  ]
+ },
+ {
+  "employer": "Walter P. Moore & Associates, Inc.",
+  "key": "walter p moore associates",
+  "count": 2,
+  "median_wage": 134566,
+  "cities": {
+   "San Francisco": 1,
+   "Santa Clara": 1
+  },
+  "top_titles": [
+   "Data Scientist",
+   "Ai Engineer I"
+  ],
+  "name_variants": [
+   "Walter P. Moore & Associates, Inc.",
+   "Walter P. Moore and Associates, Inc."
+  ]
+ },
+ {
+  "employer": "Solidroad Inc.",
+  "key": "solidroad",
+  "count": 2,
+  "median_wage": 200000,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Ai Software Development Engineer"
+  ],
+  "name_variants": [
+   "Solidroad Inc."
+  ],
+  "board": "ashby:solidroad"
+ },
+ {
+  "employer": "Multiscale Technologies, Inc.",
+  "key": "multiscale technologies",
+  "count": 2,
+  "median_wage": 200000,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Multiscale Technologies, Inc."
+  ]
+ },
+ {
+  "employer": "ROE.AI Inc.",
+  "key": "roe ai",
+  "count": 2,
+  "median_wage": 161637,
+  "cities": {
+   "San Mateo": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "ROE.AI Inc."
+  ]
+ },
+ {
+  "employer": "SCALEFLUX, INC.",
+  "key": "scaleflux",
+  "count": 2,
+  "median_wage": 137682,
+  "cities": {
+   "Milpitas": 2
+  },
+  "top_titles": [
+   "System Software Engineer"
+  ],
+  "name_variants": [
+   "SCALEFLUX, INC."
+  ]
+ },
+ {
+  "employer": "RIVIAN, LLC",
+  "key": "rivian",
+  "count": 2,
+  "median_wage": 156065,
+  "cities": {
+   "Palo Alto": 2
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Software Engineer Ii"
+  ],
+  "name_variants": [
+   "RIVIAN, LLC",
+   "Rivian LLC"
+  ]
+ },
+ {
+  "employer": "Aochi AI LLC",
+  "key": "aochi ai",
+  "count": 2,
+  "median_wage": 79040,
+  "cities": {
+   "South San Francisco": 2
+  },
+  "top_titles": [
+   "Digital Transformation & Ai Adoption Specialist"
+  ],
+  "name_variants": [
+   "Aochi AI LLC"
+  ]
+ },
+ {
+  "employer": "Gatik AI Inc.",
+  "key": "gatik ai",
+  "count": 2,
+  "median_wage": 145000,
+  "cities": {
+   "Mountain View": 2
+  },
+  "top_titles": [
+   "Machine Learning Engineer",
+   "Ai Research Engineer"
+  ],
+  "name_variants": [
+   "Gatik AI Inc."
+  ]
+ },
+ {
+  "employer": "Amazon Media Venture LLC",
+  "key": "amazon media venture",
+  "count": 2,
+  "median_wage": 178300,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Software Dev Engineer Ii"
+  ],
+  "name_variants": [
+   "Amazon Media Venture LLC"
+  ],
+  "board": "career site"
+ },
+ {
+  "employer": "Nimble Robotics, Inc.",
+  "key": "nimble robotics",
+  "count": 2,
+  "median_wage": 197500,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Computer Vision Engineer",
+   "Ai Software Engineer"
+  ],
+  "name_variants": [
+   "Nimble Robotics, Inc."
+  ],
+  "board": "greenhouse:nimblerobotics"
+ },
+ {
+  "employer": "Etleap Inc.",
+  "key": "etleap",
+  "count": 2,
+  "median_wage": 161637,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Etleap Inc."
+  ]
+ },
+ {
+  "employer": "Altera Corporation",
+  "key": "altera",
+  "count": 2,
+  "median_wage": 149368,
+  "cities": {
+   "San Jose": 2
+  },
+  "top_titles": [
+   "Fpga Ip Software Development Engineer"
+  ],
+  "name_variants": [
+   "Altera Corporation"
+  ]
+ },
+ {
+  "employer": "Qualcomm Atheros, Inc.",
+  "key": "qualcomm atheros",
+  "count": 2,
+  "median_wage": 139722,
+  "cities": {
+   "Santa Clara": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Qualcomm Atheros, Inc."
+  ]
+ },
+ {
+  "employer": "Augment Technologies Inc.",
+  "key": "augment technologies",
+  "count": 2,
+  "median_wage": 257500,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Backend Software Engineer"
+  ],
+  "name_variants": [
+   "Augment Technologies Inc."
+  ]
+ },
+ {
+  "employer": "MEMX, LLC",
+  "key": "memx",
+  "count": 2,
+  "median_wage": 185000,
+  "cities": {
+   "Sunnyvale": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "MEMX, LLC"
+  ],
+  "board": "greenhouse:memx"
+ },
+ {
+  "employer": "mPulse Mobile, Inc.",
+  "key": "mpulse mobile",
+  "count": 2,
+  "median_wage": 128742,
+  "cities": {
+   "Foster City": 1,
+   "Santa Clara": 1
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "mPulse Mobile, Inc."
+  ]
+ },
+ {
+  "employer": "AIVY Inc.",
+  "key": "aivy",
+  "count": 2,
+  "median_wage": 149365,
+  "cities": {
+   "San Jose": 2
+  },
+  "top_titles": [
+   "Software Developer"
+  ],
+  "name_variants": [
+   "AIVY Inc."
+  ]
+ },
+ {
+  "employer": "Duplex AI Inc.",
+  "key": "duplex ai",
+  "count": 2,
+  "median_wage": 161637,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Software Developer"
+  ],
+  "name_variants": [
+   "Duplex AI Inc."
+  ]
+ },
+ {
+  "employer": "Sensormatic Electronics, LLC",
+  "key": "sensormatic electronics",
+  "count": 2,
+  "median_wage": 113204,
+  "cities": {
+   "Campbell": 1,
+   "Santa Clara": 1
+  },
+  "top_titles": [
+   "Long Term Evolution Software Engineer",
+   "Software Engineer - Data Science"
+  ],
+  "name_variants": [
+   "Sensormatic Electronics, LLC"
+  ]
+ },
+ {
+  "employer": "Bold North America LLC",
+  "key": "bold",
+  "count": 2,
+  "median_wage": 125102,
+  "cities": {
+   "San Jose": 1,
+   "San Ramon": 1
+  },
+  "top_titles": [
+   "Data Scientist Ii, Product Analytics"
+  ],
+  "name_variants": [
+   "Bold North America LLC"
+  ]
+ },
+ {
+  "employer": "Reve AI, Inc.",
+  "key": "reve ai",
+  "count": 2,
+  "median_wage": 327500,
+  "cities": {
+   "Palo Alto": 2
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Machine Learning Engineer"
+  ],
+  "name_variants": [
+   "Reve AI, Inc."
+  ]
+ },
+ {
+  "employer": "JITX Inc.",
+  "key": "jitx",
+  "count": 2,
+  "median_wage": 168553,
+  "cities": {
+   "Berkeley": 2
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Software Engineer (Algorithms And Geometry)"
+  ],
+  "name_variants": [
+   "JITX Inc."
+  ]
+ },
+ {
+  "employer": "Sprig Technologies Inc.",
+  "key": "sprig technologies",
+  "count": 2,
+  "median_wage": 165000,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Software Engineer, Full Stack",
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Sprig Technologies Inc."
+  ],
+  "board": "ashby:sprig"
+ },
+ {
+  "employer": "BrainCo Technologies, Inc.",
+  "key": "brainco technologies",
+  "count": 2,
+  "median_wage": 200626,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Ai Platform Engineer"
+  ],
+  "name_variants": [
+   "BrainCo Technologies, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Aitist, Inc.",
+  "key": "aitist",
+  "count": 2,
+  "median_wage": 103522,
+  "cities": {
+   "Oakland": 2
+  },
+  "top_titles": [
+   "Data Scientist"
+  ],
+  "name_variants": [
+   "Aitist, Inc."
+  ]
+ },
+ {
+  "employer": "FAR AI, Inc.",
+  "key": "far ai",
+  "count": 2,
+  "median_wage": 205000,
+  "cities": {
+   "Berkeley": 2
+  },
+  "top_titles": [
+   "Machine Learning Researcher"
+  ],
+  "name_variants": [
+   "FAR AI, Inc."
+  ]
+ },
+ {
+  "employer": "Dexmate Inc.",
+  "key": "dexmate",
+  "count": 2,
+  "median_wage": 187752,
+  "cities": {
+   "Santa Clara": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Dexmate Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Operand Inc.",
+  "key": "operand",
+  "count": 2,
+  "median_wage": 275000,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Founding Data Scientist"
+  ],
+  "name_variants": [
+   "Operand Inc."
+  ]
+ },
+ {
+  "employer": "LATTICE SEMICONDUCTOR CORPORATION",
+  "key": "lattice semiconductor",
+  "count": 2,
+  "median_wage": 151494,
+  "cities": {
+   "San Jose": 2
+  },
+  "top_titles": [
+   "Software Development Engineer"
+  ],
+  "name_variants": [
+   "LATTICE SEMICONDUCTOR CORPORATION"
+  ]
+ },
+ {
+  "employer": "Articul8, Inc.",
+  "key": "articul8",
+  "count": 2,
+  "median_wage": 161287,
+  "cities": {
+   "Dublin": 2
+  },
+  "top_titles": [
+   "Ai/Ml Engineer",
+   "Frontend Engineer"
+  ],
+  "name_variants": [
+   "Articul8, Inc."
+  ],
+  "board": "ashby:articul8"
+ },
+ {
+  "employer": "MATTSON TECHNOLOGY, INC.",
+  "key": "mattson technology",
+  "count": 2,
+  "median_wage": 113277,
+  "cities": {
+   "Fremont": 1,
+   "Newark": 1
+  },
+  "top_titles": [
+   "Software Engineer 2"
+  ],
+  "name_variants": [
+   "MATTSON TECHNOLOGY, INC."
+  ]
+ },
+ {
+  "employer": "Amazon Advertising LLC",
+  "key": "amazon advertising",
+  "count": 2,
+  "median_wage": 174960,
+  "cities": {
+   "Palo Alto": 2
+  },
+  "top_titles": [
+   "Software Dev Engineer Ii",
+   "Software Development Engineer Ii"
+  ],
+  "name_variants": [
+   "Amazon Advertising LLC"
+  ],
+  "board": "career site"
+ },
+ {
+  "employer": "MuseLink Studio Technologies Inc.",
+  "key": "muselink studio technologies",
+  "count": 2,
+  "median_wage": 127462,
+  "cities": {
+   "Napa": 2
+  },
+  "top_titles": [
+   "Software Developer"
+  ],
+  "name_variants": [
+   "MuseLink Studio Technologies Inc."
+  ]
+ },
+ {
+  "employer": "Netskope, Inc.",
+  "key": "netskope",
+  "count": 2,
+  "median_wage": 148100,
+  "cities": {
+   "Santa Clara": 2
+  },
+  "top_titles": [
+   "Software Engineer Ii"
+  ],
+  "name_variants": [
+   "Netskope, Inc."
+  ],
+  "board": "greenhouse:netskope"
+ },
+ {
+  "employer": "Whatnot Inc.",
+  "key": "whatnot",
+  "count": 2,
+  "median_wage": 247500,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Whatnot Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Niantic Spatial, Inc.",
+  "key": "niantic spatial",
+  "count": 2,
+  "median_wage": 177000,
+  "cities": {
+   "Sunnyvale": 1,
+   "San Francisco": 1
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Data Scientist"
+  ],
+  "name_variants": [
+   "Niantic Spatial, Inc."
+  ]
+ },
+ {
+  "employer": "Magic Leap, Inc.",
+  "key": "magic leap",
+  "count": 2,
+  "median_wage": 171710,
+  "cities": {
+   "Sunnyvale": 1,
+   "San Jose": 1
+  },
+  "top_titles": [
+   "Software Engineer, Computer Vision",
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Magic Leap, Inc."
+  ]
+ },
+ {
+  "employer": "Payactiv, Inc.",
+  "key": "payactiv",
+  "count": 2,
+  "median_wage": 141766,
+  "cities": {
+   "Milpitas": 2
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Data Scientist"
+  ],
+  "name_variants": [
+   "Payactiv, Inc."
+  ],
+  "board": "lever:payactiv"
+ },
+ {
+  "employer": "Frec Markets Inc",
+  "key": "frec markets",
+  "count": 2,
+  "median_wage": 205000,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Frec Markets Inc"
+  ]
+ },
+ {
+  "employer": "FLEXIBLE FINANCE, INC.",
+  "key": "flexible finance",
+  "count": 2,
+  "median_wage": 173700,
+  "cities": {
+   "Cupertino": 1,
+   "Fremont": 1
+  },
+  "top_titles": [
+   "Software Engineer Ii, Backend",
+   "Software Engineer I"
+  ],
+  "name_variants": [
+   "FLEXIBLE FINANCE, INC.",
+   "Flexible Finance, Inc."
+  ]
+ },
+ {
+  "employer": "Irwin, Inc.",
+  "key": "irwin",
+  "count": 2,
+  "median_wage": 207500,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Irwin, Inc."
+  ]
+ },
+ {
+  "employer": "Okta, Inc.",
+  "key": "okta",
+  "count": 2,
+  "median_wage": 141520,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Okta, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Freshworks Inc.",
+  "key": "freshworks",
+  "count": 2,
+  "median_wage": 187574,
+  "cities": {
+   "San Mateo": 2
+  },
+  "top_titles": [
+   "Backend Ai Planform Engineer",
+   "Frontend Ai Ui Engineer"
+  ],
+  "name_variants": [
+   "Freshworks Inc."
+  ]
+ },
+ {
+  "employer": "WorkCo International LLC",
+  "key": "workco international",
+  "count": 2,
+  "median_wage": 170000,
+  "cities": {
+   "Sunnyvale": 1,
+   "San Francisco": 1
+  },
+  "top_titles": [
+   "Ai Researcher"
+  ],
+  "name_variants": [
+   "WorkCo International LLC"
+  ]
+ },
+ {
+  "employer": "Noscen Inc.",
+  "key": "noscen",
+  "count": 2,
+  "median_wage": 193870,
+  "cities": {
+   "Mountain View": 2
+  },
+  "top_titles": [
+   "Software Engineer/Ceo",
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Noscen Inc."
+  ]
+ },
+ {
+  "employer": "Toyota Research Institute, Inc.",
+  "key": "toyota research institute",
+  "count": 2,
+  "median_wage": 200000,
+  "cities": {
+   "Los Altos": 2
+  },
+  "top_titles": [
+   "Computer Vision Engineer"
+  ],
+  "name_variants": [
+   "Toyota Research Institute, Inc."
+  ]
+ },
+ {
+  "employer": "Allstate Insurance Company",
+  "key": "allstate insurance",
+  "count": 2,
+  "median_wage": 180737,
+  "cities": {
+   "Brentwood": 2
+  },
+  "top_titles": [
+   "Software Engineer Expert"
+  ],
+  "name_variants": [
+   "Allstate Insurance Company"
+  ]
+ },
+ {
+  "employer": "Ironclad, Inc.",
+  "key": "ironclad",
+  "count": 2,
+  "median_wage": 167250,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Ironclad, Inc."
+  ]
+ },
+ {
+  "employer": "MBZUAI Labs USA Inc.",
+  "key": "mbzuai labs",
+  "count": 2,
+  "median_wage": 315000,
+  "cities": {
+   "Sunnyvale": 2
+  },
+  "top_titles": [
+   "Machine Learning Engineer"
+  ],
+  "name_variants": [
+   "MBZUAI Labs USA Inc."
+  ]
+ },
+ {
+  "employer": "Billennium, Inc.",
+  "key": "billennium",
+  "count": 2,
+  "median_wage": 192500,
+  "cities": {
+   "South San Francisco": 2
+  },
+  "top_titles": [
+   "Software Developer"
+  ],
+  "name_variants": [
+   "Billennium, Inc."
+  ]
+ },
+ {
+  "employer": "Action State Inc.",
+  "key": "action state",
+  "count": 2,
+  "median_wage": 143500,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Action State Inc."
+  ]
+ },
+ {
+  "employer": "Mariana Minerals Co.",
+  "key": "mariana minerals",
+  "count": 2,
+  "median_wage": 166000,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Mariana Minerals Co."
+  ],
+  "board": "ashby:marianaminerals"
+ },
+ {
+  "employer": "AppLovin Corporation",
+  "key": "applovin",
+  "count": 2,
+  "median_wage": 175000,
+  "cities": {
+   "Palo Alto": 2
+  },
+  "top_titles": [
+   "Software Engineer I",
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "AppLovin Corporation"
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "AJACE INC",
+  "key": "ajace",
+  "count": 2,
+  "median_wage": 158800,
+  "cities": {
+   "Milpitas": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "AJACE INC"
+  ]
+ },
+ {
+  "employer": "Gap Inc.",
+  "key": "gap",
+  "count": 2,
+  "median_wage": 136198,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Java Software Engineer \u2013 Price Engines",
+   "Data Scientist Ii"
+  ],
+  "name_variants": [
+   "Gap Inc."
+  ]
+ },
+ {
+  "employer": "Bio-Rad Laboratories, Inc.",
+  "key": "bio rad laboratories",
+  "count": 2,
+  "median_wage": 107900,
+  "cities": {
+   "Hercules": 2
+  },
+  "top_titles": [
+   "Software Developer I"
+  ],
+  "name_variants": [
+   "Bio-Rad Laboratories, Inc."
+  ]
+ },
+ {
+  "employer": "KEYSIGHT TECHNOLOGIES, INC.",
+  "key": "keysight technologies",
+  "count": 2,
+  "median_wage": 115920,
+  "cities": {
+   "Santa Rosa": 1,
+   "Santa Clara": 1
+  },
+  "top_titles": [
+   "Data Scientist, Intermediate",
+   "Data Scientist"
+  ],
+  "name_variants": [
+   "KEYSIGHT TECHNOLOGIES, INC."
+  ]
+ },
+ {
+  "employer": "Axon Enterprise, Inc.",
+  "key": "axon enterprise",
+  "count": 2,
+  "median_wage": 137750,
+  "cities": {
+   "Redwood City": 1,
+   "San Jose": 1
+  },
+  "top_titles": [
+   "Software Engineer Ii",
+   "Software Engineer I"
+  ],
+  "name_variants": [
+   "Axon Enterprise, Inc.",
+   "Axon Enterprise, Inc"
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Dandelion Health Inc.",
+  "key": "dandelion health",
+  "count": 2,
+  "median_wage": 155000,
+  "cities": {
+   "Foster City": 2
+  },
+  "top_titles": [
+   "Nlp / Llm Data Scientist"
+  ],
+  "name_variants": [
+   "Dandelion Health Inc."
+  ],
+  "board": "ashby:dandelionhealth"
+ },
+ {
+  "employer": "Truveta, Inc.",
+  "key": "truveta",
+  "count": 2,
+  "median_wage": 165000,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Truveta, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Warp Drive, Inc.",
+  "key": "warp drive",
+  "count": 2,
+  "median_wage": 190000,
+  "cities": {
+   "San Mateo": 2
+  },
+  "top_titles": [
+   "Software Engineer 2"
+  ],
+  "name_variants": [
+   "Warp Drive, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Amari AI Inc.",
+  "key": "amari ai",
+  "count": 2,
+  "median_wage": 175000,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Amari AI Inc."
+  ]
+ },
+ {
+  "employer": "Samsung Semiconductor, Inc.",
+  "key": "samsung semiconductor",
+  "count": 2,
+  "median_wage": 120358,
+  "cities": {
+   "San Jose": 2
+  },
+  "top_titles": [
+   "Ai/Ml Hardware/Software Validation"
+  ],
+  "name_variants": [
+   "Samsung Semiconductor, Inc."
+  ],
+  "board": "greenhouse:samsungsemiconductor"
+ },
+ {
+  "employer": "Perplexity AI, Inc.",
+  "key": "perplexity ai",
+  "count": 2,
+  "median_wage": 239013,
+  "cities": {
+   "Mountain View": 1,
+   "San Francisco": 1
+  },
+  "top_titles": [
+   "Ai Engineer, Applied Ml",
+   "Ai Inference Engineer"
+  ],
+  "name_variants": [
+   "Perplexity AI, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Watershed Technology, Inc.",
+  "key": "watershed technology",
+  "count": 2,
+  "median_wage": 219500,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Data Scientist",
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Watershed Technology, Inc."
+  ]
+ },
+ {
+  "employer": "Latitude AI, LLC",
+  "key": "latitude ai",
+  "count": 2,
+  "median_wage": 187741,
+  "cities": {
+   "Palo Alto": 2
+  },
+  "top_titles": [
+   "Software Engineer Ii"
+  ],
+  "name_variants": [
+   "Latitude AI, LLC"
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Alo LLC",
+  "key": "alo",
+  "count": 2,
+  "median_wage": 215000,
+  "cities": {
+   "San Ramon": 2
+  },
+  "top_titles": [
+   "Software Developer \u2013 Retail Systems (Omni)",
+   "Software Engineer, Wms"
+  ],
+  "name_variants": [
+   "Alo LLC"
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Scry Analytics, Inc.",
+  "key": "scry analytics",
+  "count": 2,
+  "median_wage": 174304,
+  "cities": {
+   "San Jose": 2
+  },
+  "top_titles": [
+   "Data Scientist & Engineer"
+  ],
+  "name_variants": [
+   "Scry Analytics, Inc."
+  ]
+ },
+ {
+  "employer": "Spotnana Technology, Inc.",
+  "key": "spotnana technology",
+  "count": 2,
+  "median_wage": 163500,
+  "cities": {
+   "Palo Alto": 2
+  },
+  "top_titles": [
+   "Software Engineer, Backend",
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Spotnana Technology, Inc."
+  ]
+ },
+ {
+  "employer": "E & E Co., Ltd.",
+  "key": "e e",
+  "count": 2,
+  "median_wage": 150000,
+  "cities": {
+   "Fremont": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "E & E Co., Ltd."
+  ]
+ },
+ {
+  "employer": "Celonis, Inc.",
+  "key": "celonis",
+  "count": 2,
+  "median_wage": 163000,
+  "cities": {
+   "Redwood City": 2
+  },
+  "top_titles": [
+   "Software Engineer - Machine Learning",
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Celonis, Inc."
+  ],
+  "board": "greenhouse:celonis"
+ },
+ {
+  "employer": "Quadric, Inc.",
+  "key": "quadric",
+  "count": 2,
+  "median_wage": 150350,
+  "cities": {
+   "Burlingame": 2
+  },
+  "top_titles": [
+   "Ai Applications Engineer",
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Quadric, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Open Nature, Inc.",
+  "key": "open nature",
+  "count": 2,
+  "median_wage": 134850,
+  "cities": {
+   "Dublin": 2
+  },
+  "top_titles": [
+   "Applied Ai Scientist"
+  ],
+  "name_variants": [
+   "Open Nature, Inc."
+  ]
+ },
+ {
+  "employer": "Onehouse Inc.",
+  "key": "onehouse",
+  "count": 2,
+  "median_wage": 183870,
+  "cities": {
+   "Sunnyvale": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Onehouse Inc."
+  ]
+ },
+ {
+  "employer": "Nutanix, Inc.",
+  "key": "nutanix",
+  "count": 2,
+  "median_wage": 186142,
+  "cities": {
+   "San Jose": 2
+  },
+  "top_titles": [
+   "Full Stack Engineer"
+  ],
+  "name_variants": [
+   "Nutanix, Inc."
+  ]
+ },
+ {
+  "employer": "Cruise LLC",
+  "key": "cruise",
+  "count": 2,
+  "median_wage": 205324,
+  "cities": {
+   "Sunnyvale": 2
+  },
+  "top_titles": [
+   "Ai/Ml Engineer - Av System Performance",
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Cruise LLC"
+  ]
+ },
+ {
+  "employer": "IntelligentSystems Corp.",
+  "key": "intelligentsystems",
+  "count": 2,
+  "median_wage": 230000,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Full Stack Engineer (Software Engineer)"
+  ],
+  "name_variants": [
+   "IntelligentSystems Corp."
+  ]
+ },
+ {
+  "employer": "Anthropic, PBC",
+  "key": "anthropic pbc",
+  "count": 2,
+  "median_wage": 190414,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Data Science",
+   "Applied Ai Technical Deployment"
+  ],
+  "name_variants": [
+   "Anthropic, PBC"
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "ZoomLogi, Inc.",
+  "key": "zoomlogi",
+  "count": 2,
+  "median_wage": 215000,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Founding Software Engineer"
+  ],
+  "name_variants": [
+   "ZoomLogi, Inc."
+  ],
+  "board": "ashby:zoomlogi"
+ },
+ {
+  "employer": "Circle Internet Financial, LLC",
+  "key": "circle internet financial",
+  "count": 2,
+  "median_wage": 166500,
+  "cities": {
+   "Redwood City": 1,
+   "Santa Clara": 1
+  },
+  "top_titles": [
+   "Software Engineer Ii",
+   "Data Scientist Ii"
+  ],
+  "name_variants": [
+   "Circle Internet Financial, LLC"
+  ]
+ },
+ {
+  "employer": "Abstract Security Inc.",
+  "key": "abstract security",
+  "count": 2,
+  "median_wage": 150000,
+  "cities": {
+   "Dublin": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Abstract Security Inc."
+  ]
+ },
+ {
+  "employer": "Doss Inc.",
+  "key": "doss",
+  "count": 2,
+  "median_wage": 215000,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Backend Engineer"
+  ],
+  "name_variants": [
+   "Doss Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Perma Security Inc.",
+  "key": "perma security",
+  "count": 2,
+  "median_wage": 232500,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Perma Security Inc."
+  ]
+ },
+ {
+  "employer": "UNLEARN.AI, INC.",
+  "key": "unlearn ai",
+  "count": 2,
+  "median_wage": 148720,
+  "cities": {
+   "San Mateo": 1,
+   "San Francisco": 1
+  },
+  "top_titles": [
+   "Clinical Data Scientist"
+  ],
+  "name_variants": [
+   "UNLEARN.AI, INC."
+  ],
+  "board": "ashby:unlearn"
+ },
+ {
+  "employer": "Checkr, Inc.",
+  "key": "checkr",
+  "count": 2,
+  "median_wage": 178000,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Checkr, Inc."
+  ],
+  "board": "greenhouse:checkr"
+ },
+ {
+  "employer": "Hayden AI Technologies, Inc.",
+  "key": "hayden ai technologies",
+  "count": 2,
+  "median_wage": 187574,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Software Engineer, Infrastructure Ii",
+   "Deep Learning Engineer Ii"
+  ],
+  "name_variants": [
+   "Hayden AI Technologies, Inc."
+  ]
+ },
+ {
+  "employer": "Zscaler, Inc.",
+  "key": "zscaler",
+  "count": 2,
+  "median_wage": 135898,
+  "cities": {
+   "San Jose": 2
+  },
+  "top_titles": [
+   "Software Development Engineer"
+  ],
+  "name_variants": [
+   "Zscaler, Inc."
+  ],
+  "board": "greenhouse:zscaler"
+ },
+ {
+  "employer": "Northstar Security, Inc.",
+  "key": "northstar security",
+  "count": 2,
+  "median_wage": 180000,
+  "cities": {
+   "San Mateo": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Northstar Security, Inc."
+  ]
+ },
+ {
+  "employer": "TabaPay, Inc.",
+  "key": "tabapay",
+  "count": 2,
+  "median_wage": 187752,
+  "cities": {
+   "Palo Alto": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "TabaPay, Inc."
+  ],
+  "board": "greenhouse:tabapay"
+ },
+ {
+  "employer": "Maplebear Inc.",
+  "key": "maplebear",
+  "count": 2,
+  "median_wage": 192500,
+  "cities": {
+   "San Francisco": 1,
+   "Emeryville": 1
+  },
+  "top_titles": [
+   "Machine Learning Engineer"
+  ],
+  "name_variants": [
+   "Maplebear Inc."
+  ]
+ },
+ {
+  "employer": "Zeromatter Technologies, Inc.",
+  "key": "zeromatter technologies",
+  "count": 2,
+  "median_wage": 232500,
+  "cities": {
+   "Mountain View": 2
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Machine Learning Engineer"
+  ],
+  "name_variants": [
+   "Zeromatter Technologies, Inc."
+  ],
+  "board": "ashby:zeromatter"
+ },
+ {
+  "employer": "Apiphany Corporation",
+  "key": "apiphany",
+  "count": 2,
+  "median_wage": 129500,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Ai Engineer",
+   "Ai Engineer - Data Scientist"
+  ],
+  "name_variants": [
+   "Apiphany Corporation"
+  ],
+  "board": "ashby:apiphany"
+ },
+ {
+  "employer": "Tatva Labs, Inc.",
+  "key": "tatva labs",
+  "count": 2,
+  "median_wage": 161637,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Founding Ai Engineer"
+  ],
+  "name_variants": [
+   "Tatva Labs, Inc."
+  ]
+ },
+ {
+  "employer": "Trek Health, Inc.",
+  "key": "trek health",
+  "count": 2,
+  "median_wage": 90000,
+  "cities": {
+   "San Ramon": 2
+  },
+  "top_titles": [
+   "Ai/Ml Engineer Level 1"
+  ],
+  "name_variants": [
+   "Trek Health, Inc."
+  ]
+ },
+ {
+  "employer": "Matroid, Inc.",
+  "key": "matroid",
+  "count": 2,
+  "median_wage": 175000,
+  "cities": {
+   "Palo Alto": 2
+  },
+  "top_titles": [
+   "Software Engineer, Infrastructure",
+   "Software Engineer, Systems And Infrastructure"
+  ],
+  "name_variants": [
+   "Matroid, Inc."
+  ]
+ },
+ {
+  "employer": "Axion Labs Inc.",
+  "key": "axion labs",
+  "count": 2,
+  "median_wage": 215000,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Founding Software Engineer"
+  ],
+  "name_variants": [
+   "Axion Labs Inc."
+  ],
+  "board": "ashby:axion"
+ },
+ {
+  "employer": "Black Sesame Technologies Inc",
+  "key": "black sesame technologies",
+  "count": 2,
+  "median_wage": 152940,
+  "cities": {
+   "San Jose": 2
+  },
+  "top_titles": [
+   "Software Engineer, Ai Perception",
+   "Engineer, Ai Computing"
+  ],
+  "name_variants": [
+   "Black Sesame Technologies Inc"
+  ]
+ },
+ {
+  "employer": "Exa Labs Inc.",
+  "key": "exa labs",
+  "count": 2,
+  "median_wage": 213512,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Exa Labs Inc."
+  ],
+  "board": "ashby:exa"
+ },
+ {
+  "employer": "Caremark LLC",
+  "key": "caremark",
+  "count": 2,
+  "median_wage": 124618,
+  "cities": {
+   "San Francisco": 1,
+   "San Jose": 1
+  },
+  "top_titles": [
+   "Data Scientist"
+  ],
+  "name_variants": [
+   "Caremark LLC"
+  ]
+ },
+ {
+  "employer": "Tubi, Inc",
+  "key": "tubi",
+  "count": 2,
+  "median_wage": 236900,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Software Engineer, Ml Infra & Distributed Systems",
+   "Associate Machine Learning Engineer"
+  ],
+  "name_variants": [
+   "Tubi, Inc"
+  ]
+ },
+ {
+  "employer": "Bolster, Inc.",
+  "key": "bolster",
+  "count": 2,
+  "median_wage": 152578,
+  "cities": {
+   "Santa Clara": 2
+  },
+  "top_titles": [
+   "Software Engineer, Backend",
+   "Machine Learning Engineer"
+  ],
+  "name_variants": [
+   "Bolster, Inc."
+  ]
+ },
+ {
+  "employer": "BD TikTok USA LLC",
+  "key": "bd tiktok",
+  "count": 2,
+  "median_wage": 162500,
+  "cities": {
+   "San Jose": 2
+  },
+  "top_titles": [
+   "Data Scientist, Prod. Trust & Access Gov. - Global Sec. Org.",
+   "Security Analytics Data Scientist"
+  ],
+  "name_variants": [
+   "BD TikTok USA LLC"
+  ]
+ },
+ {
+  "employer": "cPacket Networks, Inc.",
+  "key": "cpacket networks",
+  "count": 2,
+  "median_wage": 135606,
+  "cities": {
+   "Milpitas": 2
+  },
+  "top_titles": [
+   "Software Engineer - Back End",
+   "Machine Learning Engineer"
+  ],
+  "name_variants": [
+   "cPacket Networks, Inc."
+  ]
+ },
+ {
+  "employer": "Ciroos, Inc.",
+  "key": "ciroos",
+  "count": 2,
+  "median_wage": 149500,
+  "cities": {
+   "Pleasanton": 2
+  },
+  "top_titles": [
+   "Frontend Engineer",
+   "Ai Engineer"
+  ],
+  "name_variants": [
+   "Ciroos, Inc."
+  ],
+  "board": "ashby:ciroos"
+ },
+ {
+  "employer": "Airbyte, Inc.",
+  "key": "airbyte",
+  "count": 2,
+  "median_wage": 200543,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Ai Engineer",
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Airbyte, Inc."
+  ],
+  "board": "ashby:airbyte"
+ },
+ {
+  "employer": "SiMa Technologies, Inc.",
+  "key": "sima technologies",
+  "count": 2,
+  "median_wage": 157100,
+  "cities": {
+   "San Jose": 2
+  },
+  "top_titles": [
+   "Embedded Ai Applications Developer",
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "SiMa Technologies, Inc."
+  ]
+ },
+ {
+  "employer": "Ebates Performance Marketing, Inc.",
+  "key": "ebates performance marketing",
+  "count": 2,
+  "median_wage": 141170,
+  "cities": {
+   "San Mateo": 2
+  },
+  "top_titles": [
+   "Software Engineer Ii",
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Ebates Performance Marketing, Inc."
+  ]
+ },
+ {
+  "employer": "Safeway Inc.",
+  "key": "safeway",
+  "count": 2,
+  "median_wage": 162032,
+  "cities": {
+   "Pleasanton": 2
+  },
+  "top_titles": [
+   "Data Scientist",
+   "Advanced Software Engineer"
+  ],
+  "name_variants": [
+   "Safeway Inc."
+  ]
+ },
+ {
+  "employer": "Illumio, Inc.",
+  "key": "illumio",
+  "count": 2,
+  "median_wage": 144404,
+  "cities": {
+   "Sunnyvale": 2
+  },
+  "top_titles": [
+   "Machine Learning Engineer"
+  ],
+  "name_variants": [
+   "Illumio, Inc."
+  ],
+  "board": "ashby:illumio"
+ },
+ {
+  "employer": "Ambarella Corp.",
+  "key": "ambarella",
+  "count": 2,
+  "median_wage": 149365,
+  "cities": {
+   "Santa Clara": 2
+  },
+  "top_titles": [
+   "Software Engineer Ii"
+  ],
+  "name_variants": [
+   "Ambarella Corp."
+  ]
+ },
+ {
+  "employer": "CODERABBIT INC",
+  "key": "coderabbit",
+  "count": 2,
+  "median_wage": 188500,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Software Engineer (Applied Ai)",
+   "Software Engineer - Enterprise"
+  ],
+  "name_variants": [
+   "CODERABBIT INC"
+  ],
+  "board": "ashby:coderabbit"
+ },
+ {
+  "employer": "Commure, Inc.",
+  "key": "commure",
+  "count": 2,
+  "median_wage": 162250,
+  "cities": {
+   "Mountain View": 2
+  },
+  "top_titles": [
+   "Software Engineer Ii"
+  ],
+  "name_variants": [
+   "Commure, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Loop Payments, Inc.",
+  "key": "loop payments",
+  "count": 2,
+  "median_wage": 151500,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Software Engineer 2"
+  ],
+  "name_variants": [
+   "Loop Payments, Inc."
+  ]
+ },
+ {
+  "employer": "Unit21, Inc.",
+  "key": "unit21",
+  "count": 2,
+  "median_wage": 161500,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Seo & Ai Search Strategist",
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Unit21, Inc."
+  ]
+ },
+ {
+  "employer": "Qurrent, Inc.",
+  "key": "qurrent",
+  "count": 2,
+  "median_wage": 135502,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Ai Strategist"
+  ],
+  "name_variants": [
+   "Qurrent, Inc."
+  ],
+  "board": "ashby:qurrent"
+ },
+ {
+  "employer": "Auditoria.AI, Inc.",
+  "key": "auditoria ai",
+  "count": 2,
+  "median_wage": 123531,
+  "cities": {
+   "Santa Clara": 2
+  },
+  "top_titles": [
+   "Data And Ai Analyst",
+   "Data Scientist"
+  ],
+  "name_variants": [
+   "Auditoria.AI, Inc."
+  ]
+ },
+ {
+  "employer": "SAP America, Inc.",
+  "key": "sap",
+  "count": 2,
+  "median_wage": 207778,
+  "cities": {
+   "Palo Alto": 2
+  },
+  "top_titles": [
+   "Data Science Expert"
+  ],
+  "name_variants": [
+   "SAP America, Inc."
+  ]
+ },
+ {
+  "employer": "PDDN INC.",
+  "key": "pddn",
+  "count": 2,
+  "median_wage": 141000,
+  "cities": {
+   "Fremont": 2
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Front End Developer"
+  ],
+  "name_variants": [
+   "PDDN INC."
+  ]
+ },
+ {
+  "employer": "Fiserv Solutions, LLC",
+  "key": "fiserv solutions",
+  "count": 2,
+  "median_wage": 130504,
+  "cities": {
+   "Sunnyvale": 2
+  },
+  "top_titles": [
+   "Software Development Engineering",
+   "Software Development Engineer Ii"
+  ],
+  "name_variants": [
+   "Fiserv Solutions, LLC"
+  ]
+ },
+ {
+  "employer": "Integration Appliance, Inc. (DBA Intapp, Inc.)",
+  "key": "integration appliance",
+  "count": 2,
+  "median_wage": 149365,
+  "cities": {
+   "Palo Alto": 2
+  },
+  "top_titles": [
+   "Associate Ai Engineer"
+  ],
+  "name_variants": [
+   "Integration Appliance, Inc. (DBA Intapp, Inc.)"
+  ]
+ },
+ {
+  "employer": "Eigen Incorporated",
+  "key": "eigen",
+  "count": 2,
+  "median_wage": 187500,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Backend Engineer"
+  ],
+  "name_variants": [
+   "Eigen Incorporated"
+  ]
+ },
+ {
+  "employer": "Bretton AI Inc.",
+  "key": "bretton ai",
+  "count": 2,
+  "median_wage": 209500,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Bretton AI Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Western Digital Technologies, Inc.",
+  "key": "western digital technologies",
+  "count": 2,
+  "median_wage": 120182,
+  "cities": {
+   "San Jose": 2
+  },
+  "top_titles": [
+   "Scientist 2, Data Science"
+  ],
+  "name_variants": [
+   "Western Digital Technologies, Inc."
+  ]
+ },
+ {
+  "employer": "Airwallex US, LLC",
+  "key": "airwallex",
+  "count": 2,
+  "median_wage": 204100,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Data Scientist Ii, Algorithm - Growth",
+   "Ai Engineer Ii"
+  ],
+  "name_variants": [
+   "Airwallex US, LLC"
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Levelpath, Inc.",
+  "key": "levelpath",
+  "count": 2,
+  "median_wage": 230000,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Levelpath, Inc."
+  ],
+  "board": "ashby:levelpath"
+ },
+ {
+  "employer": "Sikka Software Corporation",
+  "key": "sikka software",
+  "count": 2,
+  "median_wage": 163421,
+  "cities": {
+   "San Jose": 2
+  },
+  "top_titles": [
+   "Software Developer",
+   "Data Scientist"
+  ],
+  "name_variants": [
+   "Sikka Software Corporation"
+  ]
+ },
+ {
+  "employer": "ActiveHours, Inc.",
+  "key": "activehours",
+  "count": 2,
+  "median_wage": 187741,
+  "cities": {
+   "Mountain View": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "ActiveHours, Inc."
+  ]
+ },
+ {
+  "employer": "Squint, Inc",
+  "key": "squint",
+  "count": 2,
+  "median_wage": 205000,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Ai Engineer"
+  ],
+  "name_variants": [
+   "Squint, Inc"
+  ]
+ },
+ {
+  "employer": "Veear Projects, Inc.",
+  "key": "veear projects",
+  "count": 2,
+  "median_wage": 147794,
+  "cities": {
+   "Pleasanton": 2
+  },
+  "top_titles": [
+   "Data Scientist",
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Veear Projects, Inc."
+  ]
+ },
+ {
+  "employer": "Designlibro Inc.",
+  "key": "designlibro",
+  "count": 2,
+  "median_wage": 167500,
+  "cities": {
+   "San Jose": 2
+  },
+  "top_titles": [
+   "Ai Engineer",
+   "Data Scientist"
+  ],
+  "name_variants": [
+   "Designlibro Inc."
+  ]
+ },
+ {
+  "employer": "Taste Tech Inc",
+  "key": "taste tech",
+  "count": 2,
+  "median_wage": 213515,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Software Developer, Ai Applications"
+  ],
+  "name_variants": [
+   "Taste Tech Inc"
+  ]
+ },
+ {
+  "employer": "DEEPROUTE.AI LTD.",
+  "key": "deeproute ai",
+  "count": 2,
+  "median_wage": 162850,
+  "cities": {
+   "Fremont": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "DEEPROUTE.AI LTD."
+  ]
+ },
+ {
+  "employer": "CEREBRAS SYSTEMS INC.",
+  "key": "cerebras systems",
+  "count": 2,
+  "median_wage": 190000,
+  "cities": {
+   "Sunnyvale": 2
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Software Engineer, Genai"
+  ],
+  "name_variants": [
+   "CEREBRAS SYSTEMS INC."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "Agent2 Research Inc.",
+  "key": "agent2 research",
+  "count": 2,
+  "median_wage": 177500,
+  "cities": {
+   "Los Altos Hills": 1,
+   "Millbrae": 1
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Agent2 Research Inc."
+  ]
+ },
+ {
+  "employer": "Zuora, Inc.",
+  "key": "zuora",
+  "count": 2,
+  "median_wage": 163500,
+  "cities": {
+   "Foster City": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Zuora, Inc."
+  ],
+  "board": "greenhouse:zuora"
+ },
+ {
+  "employer": "Alaris Security, Inc.",
+  "key": "alaris security",
+  "count": 2,
+  "median_wage": 161637,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Software Engineer 1",
+   "Forward Deployed Engineer / Software Engineer 2"
+  ],
+  "name_variants": [
+   "Alaris Security, Inc.",
+   "Alaris Security, Inc"
+  ]
+ },
+ {
+  "employer": "Neuramill, Inc.",
+  "key": "neuramill",
+  "count": 2,
+  "median_wage": 137850,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Founding Software Engineer"
+  ],
+  "name_variants": [
+   "Neuramill, Inc."
+  ]
+ },
+ {
+  "employer": "10x Genomics, Inc.",
+  "key": "10x genomics",
+  "count": 2,
+  "median_wage": 162500,
+  "cities": {
+   "Pleasanton": 2
+  },
+  "top_titles": [
+   "Data Scientist",
+   "Software Engineer, Data Platform"
+  ],
+  "name_variants": [
+   "10x Genomics, Inc."
+  ]
+ },
+ {
+  "employer": "Standard & Poor's Financial Services LLC",
+  "key": "standard poor s financial",
+  "count": 2,
+  "median_wage": 188295,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Machine Learning Engineer"
+  ],
+  "name_variants": [
+   "Standard & Poor's Financial Services LLC"
+  ]
+ },
+ {
+  "employer": "Velocity Global LLC",
+  "key": "velocity global",
+  "count": 2,
+  "median_wage": 150000,
+  "cities": {
+   "Palo Alto": 2
+  },
+  "top_titles": [
+   "Software Engineer Ii"
+  ],
+  "name_variants": [
+   "Velocity Global LLC"
+  ],
+  "board": "ashby:velocity"
+ },
+ {
+  "employer": "With Woz, Inc.",
+  "key": "with woz",
+  "count": 2,
+  "median_wage": 182271,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Llm Enablement Software Engineer"
+  ],
+  "name_variants": [
+   "With Woz, Inc."
+  ]
+ },
+ {
+  "employer": "Kalos Technology, Inc.",
+  "key": "kalos technology",
+  "count": 2,
+  "median_wage": 199256,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Founding Software Engineer"
+  ],
+  "name_variants": [
+   "Kalos Technology, Inc."
+  ]
+ },
+ {
+  "employer": "Yardi Systems, Inc.",
+  "key": "yardi systems",
+  "count": 2,
+  "median_wage": 107854,
+  "cities": {
+   "San Jose": 2
+  },
+  "top_titles": [
+   "Software Development Engineer I"
+  ],
+  "name_variants": [
+   "Yardi Systems, Inc."
+  ]
+ },
+ {
+  "employer": "SwingVision, Inc",
+  "key": "swingvision",
+  "count": 2,
+  "median_wage": 140400,
+  "cities": {
+   "Berkeley": 2
+  },
+  "top_titles": [
+   "Machine Learning Engineer"
+  ],
+  "name_variants": [
+   "SwingVision, Inc"
+  ]
+ },
+ {
+  "employer": "Orange Box Inc.",
+  "key": "orange box",
+  "count": 2,
+  "median_wage": 150000,
+  "cities": {
+   "Palo Alto": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Orange Box Inc."
+  ]
+ },
+ {
+  "employer": "Strala Group, Inc.",
+  "key": "strala",
+  "count": 2,
+  "median_wage": 187574,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Strala Group, Inc."
+  ]
+ },
+ {
+  "employer": "Schlumberger Technology Corporation",
+  "key": "schlumberger technology",
+  "count": 2,
+  "median_wage": 182750,
+  "cities": {
+   "Sunnyvale": 2
+  },
+  "top_titles": [
+   "Machine Learning Engineer"
+  ],
+  "name_variants": [
+   "Schlumberger Technology Corporation"
+  ]
+ },
+ {
+  "employer": "Cloudera, Inc.",
+  "key": "cloudera",
+  "count": 2,
+  "median_wage": 156363,
+  "cities": {
+   "San Jose": 2
+  },
+  "top_titles": [
+   "Software Engineer Ii",
+   "Software Engineer Ii - Dw"
+  ],
+  "name_variants": [
+   "Cloudera, Inc."
+  ]
+ },
+ {
+  "employer": "Collate Software, Inc.",
+  "key": "collate software",
+  "count": 2,
+  "median_wage": 249256,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Ai Scientist"
+  ],
+  "name_variants": [
+   "Collate Software, Inc."
+  ],
+  "board": "lever:collate"
+ },
+ {
+  "employer": "Boku Inc.",
+  "key": "boku",
+  "count": 2,
+  "median_wage": 176370,
+  "cities": {
+   "Fremont": 1,
+   "San Francisco": 1
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Boku Inc."
+  ],
+  "board": "greenhouse:boku"
+ },
+ {
+  "employer": "Skywalk Inc.",
+  "key": "skywalk",
+  "count": 2,
+  "median_wage": 150000,
+  "cities": {
+   "San Mateo": 2
+  },
+  "top_titles": [
+   "Founding Engineer, Data & Ml",
+   "Founding Machine Learning Engineer"
+  ],
+  "name_variants": [
+   "Skywalk Inc."
+  ]
+ },
+ {
+  "employer": "QuantCo, Inc.",
+  "key": "quantco",
+  "count": 2,
+  "median_wage": 200000,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Data Scientist"
+  ],
+  "name_variants": [
+   "QuantCo, Inc."
+  ]
+ },
+ {
+  "employer": "SquareTrade, Inc.",
+  "key": "squaretrade",
+  "count": 2,
+  "median_wage": 144750,
+  "cities": {
+   "Brisbane": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "SquareTrade, Inc."
+  ]
+ },
+ {
+  "employer": "Bedrock Robotics, Inc.",
+  "key": "bedrock robotics",
+  "count": 2,
+  "median_wage": 265000,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Bedrock Robotics, Inc."
+  ],
+  "board": "already"
+ },
+ {
+  "employer": "FurtherAI Inc.",
+  "key": "furtherai",
+  "count": 2,
+  "median_wage": 170000,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Ai Engineer",
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "FurtherAI Inc."
+  ],
+  "board": "ashby:furtherai"
+ },
+ {
+  "employer": "Permutation Labs Inc.",
+  "key": "permutation labs",
+  "count": 2,
+  "median_wage": 130811,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Ai Deployment Strategist",
+   "Ai Support Engineer"
+  ],
+  "name_variants": [
+   "Permutation Labs Inc."
+  ]
+ },
+ {
+  "employer": "Naro AI, Inc.",
+  "key": "naro ai",
+  "count": 2,
+  "median_wage": 150000,
+  "cities": {
+   "Mountain View": 2
+  },
+  "top_titles": [
+   "Naro Ai, Inc.",
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Naro AI, Inc."
+  ]
+ },
+ {
+  "employer": "Utopai Studios Inc",
+  "key": "utopai studios",
+  "count": 2,
+  "median_wage": 270000,
+  "cities": {
+   "Mountain View": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Utopai Studios Inc"
+  ]
+ },
+ {
+  "employer": "AUTOMATION ANYWHERE, INC.",
+  "key": "automation anywhere",
+  "count": 2,
+  "median_wage": 144682,
+  "cities": {
+   "American Canyon": 1,
+   "San Jose": 1
+  },
+  "top_titles": [
+   "Software Engineer, Ai/Ml",
+   "Software Engineer, Ui"
+  ],
+  "name_variants": [
+   "AUTOMATION ANYWHERE, INC."
+  ]
+ },
+ {
+  "employer": "Kid Company",
+  "key": "kid",
+  "count": 2,
+  "median_wage": 187750,
+  "cities": {
+   "Los Altos": 2
+  },
+  "top_titles": [
+   "Machine Learning Engineer",
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Kid Company"
+  ]
+ },
+ {
+  "employer": "Happyrobot Inc.",
+  "key": "happyrobot",
+  "count": 2,
+  "median_wage": 187500,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Machine Learning Engineer",
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Happyrobot Inc."
+  ]
+ },
+ {
+  "employer": "Freelea Corp",
+  "key": "freelea",
+  "count": 2,
+  "median_wage": 194834,
+  "cities": {
+   "Menlo Park": 2
+  },
+  "top_titles": [
+   "Data Scientist"
+  ],
+  "name_variants": [
+   "Freelea Corp"
+  ]
+ },
+ {
+  "employer": "THE TRADE DESK, INC.",
+  "key": "trade desk",
+  "count": 2,
+  "median_wage": 151400,
+  "cities": {
+   "San Jose": 2
+  },
+  "top_titles": [
+   "Software Engineer Ii"
+  ],
+  "name_variants": [
+   "THE TRADE DESK, INC."
+  ]
+ },
+ {
+  "employer": "Maven Robotics, Inc.",
+  "key": "maven robotics",
+  "count": 2,
+  "median_wage": 166462,
+  "cities": {
+   "Santa Clara": 2
+  },
+  "top_titles": [
+   "Ai Engineer",
+   "Robotics Machine Learning Engineer"
+  ],
+  "name_variants": [
+   "Maven Robotics, Inc."
+  ],
+  "board": "greenhouse:mavenrobotics"
+ },
+ {
+  "employer": "SYNVIA CORP",
+  "key": "synvia",
+  "count": 2,
+  "median_wage": 149458,
+  "cities": {
+   "Newark": 2
+  },
+  "top_titles": [
+   "Software Developer"
+  ],
+  "name_variants": [
+   "SYNVIA CORP"
+  ]
+ },
+ {
+  "employer": "Microchip Technology Inc.",
+  "key": "microchip technology",
+  "count": 2,
+  "median_wage": 125375,
+  "cities": {
+   "San Jose": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Microchip Technology Inc."
+  ]
+ },
+ {
+  "employer": "Kaliber Labs, Inc.",
+  "key": "kaliber labs",
+  "count": 2,
+  "median_wage": 151000,
+  "cities": {
+   "San Mateo": 2
+  },
+  "top_titles": [
+   "Machine Learning / Artificial Intelligence Engineer"
+  ],
+  "name_variants": [
+   "Kaliber Labs, Inc."
+  ]
+ },
+ {
+  "employer": "SS&C Technologies, Inc.",
+  "key": "ss c technologies",
+  "count": 2,
+  "median_wage": 117500,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Software Engineer (00112232)",
+   "Full-Stack Developer (00112252)"
+  ],
+  "name_variants": [
+   "SS&C Technologies, Inc."
+  ]
+ },
+ {
+  "employer": "Hilbert AI Co.",
+  "key": "hilbert ai",
+  "count": 2,
+  "median_wage": 165000,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Full Stack Software Engineer",
+   "Ai Engineer"
+  ],
+  "name_variants": [
+   "Hilbert AI Co."
+  ]
+ },
+ {
+  "employer": "Dataflix, Inc.",
+  "key": "dataflix",
+  "count": 2,
+  "median_wage": 130000,
+  "cities": {
+   "Hayward": 2
+  },
+  "top_titles": [
+   "Software Engineer",
+   "Software Engineer I"
+  ],
+  "name_variants": [
+   "Dataflix, Inc."
+  ]
+ },
+ {
+  "employer": "BIGDATAAPPTECH LLC",
+  "key": "bigdataapptech",
+  "count": 2,
+  "median_wage": 107203,
+  "cities": {
+   "San Jose": 1,
+   "San Mateo": 1
+  },
+  "top_titles": [
+   "Java Backend Engineer",
+   "Software Developer"
+  ],
+  "name_variants": [
+   "BIGDATAAPPTECH LLC"
+  ]
+ },
+ {
+  "employer": "ENTERPRISE MOBILITY INC.",
+  "key": "enterprise mobility",
+  "count": 2,
+  "median_wage": 135200,
+  "cities": {
+   "Newark": 2
+  },
+  "top_titles": [
+   "Data Scientist - Ai/Ml"
+  ],
+  "name_variants": [
+   "ENTERPRISE MOBILITY INC."
+  ]
+ },
+ {
+  "employer": "Verily Health Inc.",
+  "key": "verily health",
+  "count": 2,
+  "median_wage": 188330,
+  "cities": {
+   "San Bruno": 1,
+   "Mountain View": 1
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Verily Health Inc."
+  ]
+ },
+ {
+  "employer": "Onset Labs, Inc.",
+  "key": "onset labs",
+  "count": 2,
+  "median_wage": 162000,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Onset Labs, Inc."
+  ]
+ },
+ {
+  "employer": "Delta Electronics (Americas) Ltd.",
+  "key": "delta electronics",
+  "count": 2,
+  "median_wage": 98322,
+  "cities": {
+   "Fremont": 2
+  },
+  "top_titles": [
+   "Strategic Account Analyst - Ai Solution"
+  ],
+  "name_variants": [
+   "Delta Electronics (Americas) Ltd."
+  ]
+ },
+ {
+  "employer": "SkyReady Inc.",
+  "key": "skyready",
+  "count": 2,
+  "median_wage": 187741,
+  "cities": {
+   "Milpitas": 2
+  },
+  "top_titles": [
+   "Software Development Engineer"
+  ],
+  "name_variants": [
+   "SkyReady Inc."
+  ]
+ },
+ {
+  "employer": "Crewline AI, Inc",
+  "key": "crewline ai",
+  "count": 2,
+  "median_wage": 213512,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Crewline AI, Inc"
+  ]
+ },
+ {
+  "employer": "Second Axis, Inc.",
+  "key": "second axis",
+  "count": 2,
+  "median_wage": 161000,
+  "cities": {
+   "Vallejo": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Second Axis, Inc."
+  ]
+ },
+ {
+  "employer": "Varian Medical Systems, Inc.",
+  "key": "varian medical systems",
+  "count": 2,
+  "median_wage": 141564,
+  "cities": {
+   "Palo Alto": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "Varian Medical Systems, Inc."
+  ]
+ },
+ {
+  "employer": "6Sense Insights, Inc.",
+  "key": "6sense insights",
+  "count": 2,
+  "median_wage": 188534,
+  "cities": {
+   "Sunnyvale": 2
+  },
+  "top_titles": [
+   "Software Engineer"
+  ],
+  "name_variants": [
+   "6Sense Insights, Inc."
+  ]
+ },
+ {
+  "employer": "Ahrefs Research Inc",
+  "key": "ahrefs research",
+  "count": 2,
+  "median_wage": 174000,
+  "cities": {
+   "Palo Alto": 2
+  },
+  "top_titles": [
+   "Machine Learning Engineer"
+  ],
+  "name_variants": [
+   "Ahrefs Research Inc"
+  ]
+ },
+ {
+  "employer": "IDITOR, INC.",
+  "key": "iditor",
+  "count": 2,
+  "median_wage": 156000,
+  "cities": {
+   "San Francisco": 2
+  },
+  "top_titles": [
+   "Generative Ai Full Stack Mobile App Developer",
+   "Ai Full-Stack Application Programmer"
+  ],
+  "name_variants": [
+   "IDITOR, INC."
+  ]
+ }
+]
