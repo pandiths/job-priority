@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Job Radar. usage: radar.py scan [--no-notify] | radar.py serve [port] | radar.py top [n]"""
-import csv, datetime as dt, fcntl, json, os, re, sqlite3, subprocess, sys, threading
+import base64, csv, datetime as dt, fcntl, functools, hashlib, hmac, itertools, json, os, re, sqlite3, subprocess, sys, threading, urllib.error
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import parse_qs, urlparse
 
@@ -39,6 +39,8 @@ def db():
     CREATE INDEX IF NOT EXISTS jobs_score ON jobs(score);
     CREATE TABLE IF NOT EXISTS study(id TEXT PRIMARY KEY);
     CREATE TABLE IF NOT EXISTS referrals(company TEXT, role TEXT, at TEXT, PRIMARY KEY(company, role));
+    CREATE TABLE IF NOT EXISTS followups(company TEXT, role TEXT, at TEXT);
+    CREATE TABLE IF NOT EXISTS job_urls(id TEXT, url TEXT, host TEXT, first_seen TEXT, PRIMARY KEY(id, url));
     """)
     if "raw" not in [r["name"] for r in c.execute("PRAGMA table_info(jobs)")]:
         c.execute("ALTER TABLE jobs ADD COLUMN raw TEXT")
@@ -116,6 +118,7 @@ def scan(send_notification=True):
             location=excluded.location,url=excluded.url,sources=excluded.sources,applicants=excluded.applicants,tags=excluded.tags,
             text=excluded.text,eval=excluded.eval,score=excluded.score,last_seen=excluded.last_seen,raw=excluded.raw""",
             (j["id"], j["company"], j["title"], j.get("location"), j["url"], json.dumps(j["sources"]), j.get("applicants"), json.dumps(j.get("tags") or []), j.get("text") or "", json.dumps(e), e["score"], ts, ts, json.dumps({k: v for k, v in j.items() if k != "text"})))
+        c.execute("INSERT OR IGNORE INTO job_urls VALUES(?,?,?,?)", (j["id"], j["url"], urlparse(j["url"]).hostname, ts))
     # Rows missing from this scan stay visible for a few days; rescore them so aging and rule changes reach them too.
     for r in c.execute("SELECT id,text,raw FROM jobs WHERE last_seen<>? AND raw IS NOT NULL", (ts,)).fetchall():
         e = scoring.evaluate(dict(json.loads(r["raw"]), text=r["text"]), resume, tracker)
@@ -138,25 +141,122 @@ APPLIED_STATUSES = ("SUBMITTED", "SUBMITTED?", "LIKELY SUBMITTED")
 def visible(c):
     rows = scoring.tracker_rows()
     cutoff = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=CLOSED_AFTER_DAYS)).isoformat()
-    out = []
-    for r in c.execute("SELECT id,company,title,location,url,sources,applicants,tags,eval,score,first_seen,last_seen,state,notified,json_extract(raw,'$.jobright_id') AS jobright_id,json_extract(raw,'$.simplify_id') AS simplify_id FROM jobs WHERE last_seen>=? ORDER BY score DESC", (cutoff,)):
+    out, reposts = [], reposted(c)
+    for r in c.execute("SELECT id,company,title,location,url,sources,applicants,tags,eval,score,first_seen,last_seen,state,notified,json_extract(raw,'$.jobright_id') AS jobright_id,json_extract(raw,'$.simplify_id') AS simplify_id FROM jobs WHERE last_seen>=? AND state<>'closed' ORDER BY score DESC", (cutoff,)):
         d = dict(r)
+        d["reposted"] = reposts.get(d["id"], 0)
         d.update(eval=json.loads(d["eval"]), sources=json.loads(d["sources"]), tags=json.loads(d["tags"]))
         e = d["eval"]
         row = scoring.tracker_row(d["company"], d["title"], rows)
         status = row["status"] if row else ""
         d["tracker_i"] = row["i"] if row else None
         d["prepared"] = os.path.exists(prep_paths(d)[2])
-        d["fillable"] = bool(fill_target(d["url"]))
+        d["fill_kind"] = (fill_target_for(d) or (None,))[0]
+        d["fillable"] = bool(d["fill_kind"])
         d["bucket"] = "filled" if status in FILLED_STATUSES else "applied" if status in APPLIED_STATUSES or e["applied"] or d["state"] == "applied" else "skipped" if status == "SKIPPED" else "blocked" if e["block"] else "now" if d["score"] >= scoring.APPLY_NOW and e["parts"]["timing"] >= 45 and e["parts"]["fit"] >= 70 and e["parts"]["level"] >= 60 and not e["thin_jd"] else "strong" if d["score"] >= scoring.STRONG else "other"
         out.append(d)
     return out
 
 
-def bay_area(jobs):
-    """Bay Area H-1B sponsors (bay_area.json) with the roles the last scans found for each.
+REPOST_MIN_DAYS = 7
+
+
+def reposted(c):
+    """Times each role came back under a new URL on the same site, a week or more after an earlier listing.
+    URLs first seen in one scan are parallel openings, not reposts (rule from career-ops' detect-reposts)."""
+    out = {}
+    rows = c.execute("SELECT id,host,first_seen FROM job_urls WHERE id IN (SELECT id FROM job_urls GROUP BY id HAVING count(*)>1) ORDER BY first_seen").fetchall()
+    for (jid, host), grp in itertools.groupby(sorted(rows, key=lambda r: (r["id"], r["host"] or "", r["first_seen"])), key=lambda r: (r["id"], r["host"])):
+        seen = [dt.datetime.fromisoformat(r["first_seen"]) for r in grp]
+        n = sum((b - a).days >= REPOST_MIN_DAYS for a, b in zip(seen, seen[1:]))
+        if n:
+            out[jid] = out.get(jid, 0) + n
+    return out
+
+
+# Closure wording on posting pages, the English part of career-ops' liveness-core patterns.
+CLOSED_TEXT = re.compile(
+    r"job (is )?no longer available|job.{0,40}no longer open|this job has expired|job posting has expired"
+    r"|no longer accepting applications|this (position|role|job) (is )?no longer|this (job|role|position)( listing)? is closed\b(?!-)"
+    r"|job (listing )?not found|the page you are looking for doesn.t exist|applications? (have |are |is )?closed"
+    r"|\b(job|position|role|posting|opening|requisition)\b.{0,60}?(?<!application )(?<!form )has been filled\b(?! out)", re.I)
+
+
+def liveness(job):
+    """One request to the posting before spending a resume or a form fill on it.
+    Returns 'closed', 'open' or 'unknown'; a blocked or unclear answer never counts as closed."""
+    url = job["url"]
+    try:
+        m = re.match(r"https://([\w-]+)\.(wd\d+)\.myworkdayjobs\.com/(?:[a-z]{2}-[A-Z]{2}/)?([^/]+)/job/([^?#]+)", url)
+        if m:
+            t, wd, site, path = m.groups()
+            sources.get(f"https://{t}.{wd}.myworkdayjobs.com/wday/cxs/{t}/{site}/job/{path}")
+            return "open"
+        m = re.match(r"https://jobs\.ashbyhq\.com/([^/]+)/([0-9a-f-]{36})", url)
+        if m:
+            ids = {j["id"] for j in json.loads(sources.get(f"https://api.ashbyhq.com/posting-api/job-board/{m[1]}"))["jobs"]}
+            return "open" if m[2] in ids else "closed"
+        m = re.match(r"https://(?:job-)?boards(?:\.eu)?\.greenhouse\.io/(?:embed/job_app\?for=)?([\w-]+)(?:/jobs/|&token=)(\d+)", url)
+        if m:
+            sources.get(f"https://boards-api.greenhouse.io/v1/boards/{m[1]}/jobs/{m[2]}")
+            return "open"
+        final, text = sources.get(url, final_url=True)
+        # A closed Greenhouse job on a company site redirects to the general careers page, dropping its gh_jid.
+        jid = re.search(r"gh_jid=(\d+)", url)
+        if re.search(r"[?&]error=true", final) or (jid and jid[1] not in final) or CLOSED_TEXT.search(sources.clean(text)[:20000]):
+            return "closed"
+        return "open"
+    except urllib.error.HTTPError as e:
+        return "closed" if e.code in (404, 410) else "unknown"
+    except Exception:
+        return "unknown"
+
+
+def close_if_gone(job):
+    """Marks the job closed and returns an error message when the posting is gone."""
+    if liveness(job) != "closed":
+        return None
+    c = db()
+    c.execute("UPDATE jobs SET state='closed' WHERE id=?", (job["id"],))
+    c.commit()
+    return "This posting has closed, so it was taken off your list. Pick another job."
+
+
+FOLLOWUP_FIRST_DAYS, FOLLOWUP_EVERY_DAYS, FOLLOWUP_MAX = 7, 7, 2  # career-ops' default cadence for applied roles
+REFERRAL_NUDGE_DAYS = 5
+
+
+def followups():
+    """Applications with no reply that are due a follow-up, and referral asks that have gone quiet."""
+    c, today = db(), dt.date.today()
+    done = {}
+    for r in c.execute("SELECT company,role,at FROM followups ORDER BY at"):
+        done.setdefault((r["company"], r["role"]), []).append(r["at"][:10])
+    due = []
+    for r in tracker_list():
+        if r["status"] not in APPLIED_STATUSES or not re.match(r"\d{4}-\d{2}-\d{2}$", r["date"] or ""):
+            continue
+        past = done.get((r["company"], r["role"]), [])
+        if len(past) >= FOLLOWUP_MAX:
+            continue
+        last = dt.date.fromisoformat(past[-1] if past else r["date"])
+        wait = FOLLOWUP_EVERY_DAYS if past else FOLLOWUP_FIRST_DAYS
+        if (today - last).days >= wait:
+            due.append(dict(kind="application", company=r["company"], role=r["role"], applied=r["date"], days=(today - dt.date.fromisoformat(r["date"])).days, count=len(past)))
+    for r in c.execute("SELECT company,role,at FROM referrals"):
+        if (r["company"], r["role"]) in done or not r["at"]:
+            continue
+        days = (today - dt.date.fromisoformat(r["at"][:10])).days
+        if days >= REFERRAL_NUDGE_DAYS:
+            due.append(dict(kind="referral", company=r["company"], role=r["role"], applied=r["at"][:10], days=days, count=0))
+    return sorted(due, key=lambda x: -x["days"])
+
+
+def sponsor_companies(jobs):
+    """US H-1B sponsors for software/ML roles (us_companies.json, by worksite city) with the roles the
+    last scans found for each, and whether the app reads the company's careers site.
     Employer variants that match the same job-board company (Amazon.com Services, Amazon Web Services) are merged."""
-    path = os.path.join(D, "bay_area.json")
+    path = os.path.join(D, "us_companies.json")
     if not os.path.exists(path):
         return []
     by_co = {}
@@ -164,22 +264,33 @@ def bay_area(jobs):
         if j["state"] != "dismissed" and j["bucket"] != "blocked":
             by_co.setdefault(scoring.norm_company(j["company"]), []).append(j)
     names = sorted((n for n in by_co if len(n) >= 4), key=len, reverse=True)
+    # Boards the app scans: ATS slugs, Workday tenants, custom career sites, plus the Bay Area probe's matches.
+    b = json.load(open(os.path.join(D, "boards.json")))
+    slugs = {str(x).lower().split(".")[0] for v in b.values() for x in v}
+    import bigco
+    slugs |= {scoring.norm_company(n).replace(" ", "") for n in bigco.BIGCO}
+    probed = {}
+    if os.path.exists(os.path.join(D, "bay_area.json")):
+        probed = {e["employer"]: e["board"] for e in json.load(open(os.path.join(D, "bay_area.json"))) if e.get("board")}
+    fix = {"San J Ose": "San Jose", "San Francsico": "San Francisco", "San Franciso": "San Francisco", "South  San Francisco": "South San Francisco"}
     groups = {}
     for e in json.load(open(path)):
         k = scoring.norm_company(e["employer"])
         k = next((n for n in names if k == n or k.startswith(n + " ")), k)
         g = groups.setdefault(k, dict(name=e["employer"], filings=0, wage=e.get("median_wage"), cities={}, board=None, roles=[]))
         g["filings"] += e["count"]
-        g["board"] = g["board"] or e.get("board")
+        first = k.split(" ")[0]
+        g["board"] = g["board"] or probed.get(e["employer"]) or (k.replace(" ", "") in slugs or (len(first) >= 4 and first in slugs)) or None
         for city, n in e["cities"].items():
-            city = re.sub(r"\s+", " ", city).strip(" ,")
-            city = {"San J Ose": "San Jose", "San Francsico": "San Francisco", "San Franciso": "San Francisco"}.get(city, city)
+            c, _, st = city.rpartition(", ")
+            city = f"{fix.get(c, c)}, {st}"
             g["cities"][city] = g["cities"].get(city, 0) + n
     for k, g in groups.items():
         js = by_co.get(k, [])
         if js:
             g["name"] = js[0]["company"]
-        g["roles"] = [dict(id=j["id"], title=j["title"], score=round(j["score"]), bucket=j["bucket"]) for j in js[:50]]
+        g["open"] = len(js)
+        g["roles"] = [dict(id=j["id"], title=j["title"], score=round(j["score"]), bucket=j["bucket"]) for j in sorted(js, key=lambda j: -j["score"])[:5]]
     return sorted(groups.values(), key=lambda g: -g["filings"])
 
 
@@ -199,14 +310,28 @@ def slug(company, title):
 
 
 def job_row(job_id):
-    r = db().execute("SELECT id,company,title,url,text FROM jobs WHERE id=?", (job_id,)).fetchone()
+    r = db().execute("SELECT id,company,title,url,text,raw FROM jobs WHERE id=?", (job_id,)).fetchone()
     return dict(r) if r else None
 
 
 def prep_paths(job):
     name = slug(job["company"], job["title"])
     out = os.path.join(OUTPUT, name)
+    # Long titles can share a slug; a folder prepared for another role gets a suffix from the job id.
+    try:
+        with open(os.path.join(out, name + ".report.json")) as f:
+            taken = json.load(f).get("role") != job["title"]
+    except (OSError, ValueError):
+        taken = False
+    if taken:
+        name += hashlib.sha1(job["id"].encode()).hexdigest()[:6]
+        out = os.path.join(OUTPUT, name)
     return name, out, os.path.join(out, name + ".report.json")
+
+
+def prep_files(name, out):
+    """Tailored resume HTML, resume PDF and cover letter PDF that apply/prepare.mjs writes for a job."""
+    return os.path.join(out, name + ".html"), os.path.join(out, f"Skanda_Pandith_Resume_{name}.pdf"), os.path.join(out, f"Skanda_Pandith_CoverLetter_{name}.pdf")
 
 
 def prep_status(job):
@@ -226,6 +351,9 @@ def start_prepare(job):
     name, out, _ = prep_paths(job)
     if len(job["text"] or "") < 150:
         return dict(state="failed", error="This source has no full job description. Open the posting instead.")
+    gone = close_if_gone(job)
+    if gone:
+        return dict(state="failed", error=gone)
     os.makedirs(out, exist_ok=True)
     jd = os.path.join(out, name + ".jd.txt")
     with open(jd, "w") as f:
@@ -245,7 +373,34 @@ def fill_target(url):
     m = re.match(r"(https://jobs\.lever\.co/[^/]+/[0-9a-f-]{36})", url)
     if m:
         return "lever", m.group(1) + "/apply"
+    m = re.match(r"(https://[\w-]+\.wd\d+\.myworkdayjobs\.com/.+/job/[^?#]+)", url)
+    if m:
+        return "workday", m.group(1)
+    # Everything else goes to the general filler, except links that only lead back to an aggregator.
+    if not re.search(r"//([\w-]+\.)*(jobright\.ai|ycombinator\.com|linkedin\.com)/", url):
+        return "generic", url
     return None
+
+
+@functools.lru_cache(maxsize=1)
+def greenhouse_boards():
+    with open(os.path.join(D, "boards.json")) as f:
+        return frozenset(json.load(f).get("greenhouse", []))
+
+
+def fill_target_for(job):
+    """fill_target, plus Greenhouse forms embedded on company sites (?gh_jid=), which go to the Greenhouse filler."""
+    target = fill_target(job["url"])
+    jid = re.search(r"[?&]gh_jid=(\d+)", job["url"])
+    if target and target[0] == "generic" and jid:
+        try:
+            board = json.loads(job.get("raw") or "{}").get("board")
+        except ValueError:
+            board = None
+        board = board or next((b for b in greenhouse_boards() if b == re.sub(r"[^a-z0-9]", "", job["company"].lower())), None)
+        if board:
+            return "greenhouse", f"https://job-boards.greenhouse.io/embed/job_app?for={board}&token={jid.group(1)}"
+    return target
 
 
 def fill(job):
@@ -253,12 +408,15 @@ def fill(job):
     status = prep_status(job)
     if status.get("state") != "ready" or not status.get("passed"):
         return dict(ok=False, error="Prepare a resume that passes the ATS check first.")
-    target = fill_target(job["url"])
+    target = fill_target_for(job)
     if not target:
         return dict(ok=False, error="This site has no automatic filler yet. Use Open posting or an Apply through button.")
     kind, url = target
-    script, gen = {"greenhouse": ("gh.sh", "gh_run.js"), "ashby": ("ashby.sh", "ashby_gen.js"), "lever": ("lever.sh", "lever_gen.js")}[kind]
+    gone = close_if_gone(job)
+    if gone:
+        return dict(ok=False, error=gone)
     name, out, _ = prep_paths(job)
+    html, pdf, cover = prep_files(name, out)
     lock = open(FILL_LOCK, "w")
     try:
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
@@ -266,16 +424,145 @@ def fill(job):
         return dict(ok=False, error="Another form is being filled. Try again in a minute.")
     # Sponsorship questions stay blank on purpose: the applicant answers those personally.
     env = dict(os.environ, BLANKSP="1")
-    subprocess.run(["bash", os.path.join(scoring.JOBSEARCH, script), out, f"{name}={url}"], cwd=scoring.JOBSEARCH, env=env, capture_output=True, timeout=30, check=True)
-    gen_path = os.path.join(scoring.JOBSEARCH, gen)
+    if kind == "workday":
+        # One fixed script walks the Workday steps; pressing Fill again resumes from the step the tab is on.
+        gen_path = os.path.join(scoring.JOBSEARCH, "wdg", "fill_all.js")
+        env.update(WD_URL=url, WD_RES=pdf, WD_HTML=html)
+        timeout = 900
+    elif kind == "generic":
+        # Reads each page's fields, asks Claude for answers, fills them; pressing Fill again continues from the tab.
+        gen_path = os.path.join(D, "apply", "fill_any.js")
+        env.update(GF_URL=url, GF_RES=pdf, GF_COVER=cover, GF_HTML=html, GF_COMPANY=job["company"], GF_TITLE=job["title"], GF_PROFILE=PROFILE_MD, GF_RADAR=D)
+        timeout = 900
+    else:
+        script, gen = {"greenhouse": ("gh.sh", "gh_run.js"), "ashby": ("ashby.sh", "ashby_gen.js"), "lever": ("lever.sh", "lever_gen.js")}[kind]
+        subprocess.run(["bash", os.path.join(scoring.JOBSEARCH, script), out, f"{name}={url}"], cwd=scoring.JOBSEARCH, env=env, capture_output=True, timeout=30, check=True)
+        gen_path = os.path.join(scoring.JOBSEARCH, gen)
+        timeout = 300
     if SUBMIT_CLICK.search(open(gen_path).read()):
         return dict(ok=False, error="Stopped: the generated filler contains a Submit click.")
-    p = subprocess.run([NODE, os.path.join(scoring.JOBSEARCH, "cdp_run.js"), gen_path], cwd=scoring.JOBSEARCH, capture_output=True, text=True, timeout=300)
+    # The dedicated fillers click like a person, which stalls while Chrome isn't drawing the window.
+    # The general filler uses DOM events and doesn't need this.
+    seen = subprocess.run([NODE, os.path.join(scoring.JOBSEARCH, "cdp_run.js"), os.path.join(D, "apply", "visible_check.js")], cwd=scoring.JOBSEARCH, capture_output=True, text=True, timeout=60) if kind != "generic" else None
+    if seen and "VISIBLE" not in seen.stdout:
+        return dict(ok=False, error="The job-search Chrome window is hidden (on another desktop, behind a full-screen window, or minimized), so it can't be clicked. Put it on screen, for example side by side with this page, and press Fill again.")
+    p = subprocess.run([NODE, os.path.join(scoring.JOBSEARCH, "cdp_run.js"), gen_path], cwd=scoring.JOBSEARCH, env=env, capture_output=True, text=True, timeout=timeout)
     if p.returncode or "LEFT OPEN FOR REVIEW" not in p.stdout:
-        return dict(ok=False, error="The filler didn't finish. Is the job-search Chrome open?", log=p.stdout[-1500:])
-    subprocess.run([sys.executable, TRACKER, "add", dt.date.today().isoformat(), job["company"], job["title"], "FILLED - TAB OPEN", out, f"ATS {status['ats_after']}; filled by Job Radar"], capture_output=True, timeout=20)
+        why = next((l[2:].strip() for l in p.stdout.splitlines() if l.startswith("!!")), "The filler didn't finish. Is the job-search Chrome open?")
+        return dict(ok=False, error=why, log=p.stdout[-1500:])
+    # A Workday form can take several Fill presses; record it in the tracker once.
+    rows = csv.DictReader(open(os.path.join(scoring.JOBSEARCH, "applications.csv")))
+    if not any(r["company"] == job["company"] and r["role"] == job["title"] for r in rows):
+        subprocess.run([sys.executable, TRACKER, "add", dt.date.today().isoformat(), job["company"], job["title"], "FILLED - TAB OPEN", out, f"ATS {status['ats_after']}; filled by Job Radar"], capture_output=True, timeout=20)
     todo = [l.strip() for l in p.stdout.splitlines() if l.startswith("??") or l.startswith("!!")]
     return dict(ok=True, needs_you=todo)
+
+
+# ---------- browser extension (extension/): the server answers forms; the extension fills the tab you're on ----------
+EXT_TOKEN_FILE = os.path.join(D, "data", "ext_token")
+# Personal files live outside the repo; see profile.example.md.
+PROFILE_MD = os.environ.get("JR_PROFILE", os.path.join(scoring.JOBSEARCH, "gen", "profile.md"))
+MASTER_PDF = os.path.expanduser(os.environ.get("JR_MASTER_PDF", "~/Downloads/Skanda_Pandith_Resume_A_v2.pdf"))
+MASTER_HTML = os.environ.get("JR_MASTER_HTML", os.path.join(scoring.JOBSEARCH, "resume_A_v2.html"))
+LOGIN_SERVICE = "jobsearch-apply"
+
+
+def ext_token():
+    """A random secret shared only with the unpacked extension (extension/config.js, git-ignored)."""
+    if not os.path.exists(EXT_TOKEN_FILE):
+        os.makedirs(os.path.dirname(EXT_TOKEN_FILE), exist_ok=True)
+        with open(EXT_TOKEN_FILE, "w") as f:
+            f.write(os.urandom(24).hex())
+    with open(EXT_TOKEN_FILE) as f:
+        token = f.read().strip()
+    cfg = os.path.join(D, "extension", "config.js")
+    line = f'export const SERVER = "http://localhost:{PORT}";\nexport const TOKEN = "{token}";\n'
+    with open(cfg, "a+") as f:
+        f.seek(0)
+        stale = f.read() != line
+    if stale:
+        with open(cfg, "w") as f:
+            f.write(line)
+    return token
+
+
+def ext_jobs(page_url, page_title):
+    """Prepared resumes, best match for the page first, then the master resume."""
+    host = urlparse(page_url).netloc.lower()
+    hay = (page_url + " " + page_title).lower()
+    words = set(re.findall(r"[a-z]{3,}", page_title.lower()))
+    out = []
+    for d in visible(db()):
+        if not d["prepared"]:
+            continue
+        s = prep_status(d)
+        if s.get("state") != "ready" or not s.get("passed"):
+            continue
+        co = re.sub(r"[^a-z0-9]", "", d["company"].lower())
+        score = 3 * (urlparse(d["url"]).netloc.lower() == host) + 2 * (bool(co) and co in re.sub(r"[^a-z0-9]", "", hay)) + len(words & set(re.findall(r"[a-z]{3,}", d["title"].lower()))) / 4
+        out.append(dict(id=d["id"], label=f"{d['company']} · {d['title']}", match=round(score, 2)))
+    out.sort(key=lambda x: -x["match"])
+    return out + [dict(id="", label="Master resume (not tailored)", match=0)]
+
+
+def ext_paths(job_id):
+    """Resume HTML, resume PDF and cover letter PDF for a job id, or the master resume for ''."""
+    job = job_row(job_id) if job_id else None
+    if not job:
+        return MASTER_HTML, MASTER_PDF, None, None
+    name, out, _ = prep_paths(job)
+    return (*prep_files(name, out), job)
+
+
+def html_text(path):
+    with open(path) as f:
+        t = re.sub(r"<style[\s\S]*?</style>", "", f.read(), flags=re.I)
+    t = re.sub(r"</(p|li|h\d|div)>", "\n", t, flags=re.I)
+    t = re.sub(r"<[^>]+>", " ", t).replace("&amp;", "&")
+    return re.sub(r"\n\s*\n+", "\n", re.sub(r"[ \t]+", " ", t)).strip()
+
+
+def ext_answer(b):
+    html, _, _, job = ext_paths(b.get("job_id", ""))
+    with open(PROFILE_MD) as f:
+        profile = f.read()
+    payload = dict(fields=b.get("fields", []), profile=profile, resume=html_text(html),
+                   company=job["company"] if job else b.get("company", ""), title=job["title"] if job else b.get("title", ""))
+    p = subprocess.run([NODE, os.path.join(D, "apply", "answer_form.mjs")], input=json.dumps(payload), capture_output=True, text=True, timeout=300, cwd=D)
+    try:
+        return json.loads(p.stdout)
+    except ValueError:
+        return dict(error=(p.stderr or "no answer")[-300:])
+
+
+def ext_file(job_id, kind):
+    _, pdf, cover, _ = ext_paths(job_id)
+    path = cover if kind == "cover" else pdf
+    if not path or not os.path.exists(path):
+        return None
+    with open(path, "rb") as f:
+        return dict(name=os.path.basename(path), b64=base64.b64encode(f.read()).decode())
+
+
+def ext_login():
+    """The job-site login saved in macOS Keychain (service jobsearch-apply). Sent only to the extension."""
+    attrs = subprocess.run(["security", "find-generic-password", "-s", LOGIN_SERVICE], capture_output=True, text=True).stdout
+    email = re.search(r'"acct"<blob>="([^"]+)"', attrs)
+    pw = subprocess.run(["security", "find-generic-password", "-s", LOGIN_SERVICE, "-w"], capture_output=True, text=True).stdout.rstrip("\n")
+    if not (email and pw):
+        return dict(error=f"No login saved in Keychain. Add one with: security add-generic-password -a YOUR_EMAIL -s {LOGIN_SERVICE} -w")
+    return dict(email=email.group(1), password=pw)
+
+
+def ext_filled(job_id):
+    job = job_row(job_id) if job_id else None
+    if not job:
+        return dict(ok=True)
+    status = prep_status(job)
+    rows = csv.DictReader(open(os.path.join(scoring.JOBSEARCH, "applications.csv")))
+    if not any(r["company"] == job["company"] and r["role"] == job["title"] for r in rows):
+        subprocess.run([sys.executable, TRACKER, "add", dt.date.today().isoformat(), job["company"], job["title"], "FILLED - TAB OPEN", prep_paths(job)[1], f"ATS {status.get('ats_after')}; filled by the Job Radar extension"], capture_output=True, timeout=20)
+    return dict(ok=True)
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -304,11 +591,13 @@ class Handler(BaseHTTPRequestHandler):
             return self.reply(tracker_list())
         if u.path == "/api/status":
             s = c.execute("SELECT at,status,total,new FROM scans ORDER BY at DESC LIMIT 1").fetchone()
-            return self.reply(dict(scan=dict(s, status=json.loads(s["status"])) if s else None, pipeline=pipeline(), scanning=scanning(), weights=scoring.WEIGHTS))
+            return self.reply(dict(scan=dict(s, status=json.loads(s["status"])) if s else None, pipeline=pipeline(), scanning=scanning(), weights=scoring.WEIGHTS, resting=sources.cooldowns()))
+        if u.path == "/api/followups":
+            return self.reply(followups())
         if u.path == "/api/referrals":
             return self.reply([dict(r) for r in c.execute("SELECT company,role,at FROM referrals ORDER BY at DESC")])
         if u.path == "/api/companies":
-            return self.reply(bay_area(visible(c)))
+            return self.reply(sponsor_companies(visible(c)))
         if u.path == "/api/prep":
             job = job_row(parse_qs(u.query).get("id", [""])[0])
             return self.reply(prep_status(job) if job else {"state": "none"})
@@ -321,6 +610,23 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_POST(self):
         origin = self.headers.get("Origin", "")
+        if self.path.startswith("/api/ext/"):
+            # Only the unpacked extension knows the token; pages on other sites can't call these.
+            if not origin.startswith("chrome-extension://") or not hmac.compare_digest(self.headers.get("X-JR-Token", ""), ext_token()):
+                return self.reply({"error": "forbidden"}, code=403)
+            b = json.loads(self.rfile.read(int(self.headers.get("Content-Length", 0))) or b"{}")
+            route = self.path[len("/api/ext/"):]
+            if route == "jobs":
+                return self.reply(ext_jobs(b.get("url", ""), b.get("title", "")))
+            if route == "answer":
+                return self.reply(ext_answer(b))
+            if route == "file":
+                return self.reply(ext_file(b.get("job_id", ""), b.get("kind", "resume")) or {"error": "no file"})
+            if route == "login":
+                return self.reply(ext_login())
+            if route == "filled":
+                return self.reply(ext_filled(b.get("job_id", "")))
+            return self.reply({"error": "not found"}, code=404)
         if origin and not re.fullmatch(r"http://(localhost|127\.0\.0\.1):\d+", origin):
             return self.reply({"error": "forbidden"}, code=403)
         if self.path == "/api/scan":
@@ -360,6 +666,13 @@ class Handler(BaseHTTPRequestHandler):
                 c.execute("DELETE FROM referrals WHERE company=? AND role=?", (b.get("company"), b.get("role")))
             c.commit()
             return self.reply({"ok": True})
+        if self.path == "/api/followup":
+            # Records a follow-up the user sent themselves. The app never sends messages.
+            b = json.loads(self.rfile.read(int(self.headers.get("Content-Length", 0))))
+            c = db()
+            c.execute("INSERT INTO followups VALUES(?,?,?)", (str(b.get("company"))[:120], str(b.get("role"))[:200], now()))
+            c.commit()
+            return self.reply({"ok": True})
         if self.path in ("/api/prepare", "/api/fill"):
             job = job_row(json.loads(self.rfile.read(int(self.headers.get("Content-Length", 0)))).get("id"))
             if not job:
@@ -388,5 +701,6 @@ if __name__ == "__main__":
             print(f"{r['score']:5.1f} {r['bucket']:6} {r['company'][:22]:22} {r['title'][:52]:52} yrs={e['years']} fit={e['parts']['fit']} t={e['parts']['timing']} sp={e['parts']['sponsor']} {','.join(r['sources'])}")
     else:
         port = int(sys.argv[2]) if len(sys.argv) > 2 else PORT
+        ext_token()  # writes extension/config.js for the unpacked extension
         print(f"http://localhost:{port}")
         ThreadingHTTPServer(("127.0.0.1", port), Handler).serve_forever()
