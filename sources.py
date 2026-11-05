@@ -1,18 +1,18 @@
 """Job sources. Each returns normalised dicts: company,title,location,url,posted,text,salary,source + optional Jobright signals."""
 import html, json, os, re, subprocess, threading, time, urllib.error, urllib.request
 from concurrent.futures import ThreadPoolExecutor
-from urllib.parse import unquote
+from urllib.parse import unquote, urlparse
 
 D = os.path.dirname(os.path.abspath(__file__))
-# Scan politely: few requests at once, a pause per board, and a full stop when a site asks us to slow down.
-WORKERS = 3
+# Scan politely: two requests at once at most, a pause per board, and a full stop when a site asks us to slow down.
+WORKERS = 2
 PAUSE_SECONDS = 1.0
 SIMPLIFY = "https://raw.githubusercontent.com/SimplifyJobs/New-Grad-Positions/dev/.github/scripts/listings.json"
 NODE = os.path.expanduser("~/.local/node/bin/node")
 
 ENGINEER = re.compile(r"engineer|developer|\bsde\b|\bswe\b|\bmle\b|member of technical staff", re.I)
 TARGET = re.compile(r"software|machine learning|\bml\b|\bai\b|back-?end|platform|infrastructure|forward deployed|full[- ]?stack|applied|\bllm|mlops|reliability|\bsre\b|product engineer|\bsde\b|\bswe\b|\bmle\b|member of technical staff", re.I)
-EXCLUDE = re.compile(r"\bsenior\b|\bsr\b|\bstaff\b|principal|distinguished|\bfellow\b|vice president|\blead\b|manager|director|\bhead\b|\bvp\b|\bintern\b|internship|co-?op\b|front-?end|\bios\b|android|embedded|firmware|hardware|\bqa\b|\btest engineer|verification|support|sales|recruit|architect|\bphd\b|clearance|polygraph|silicon|\bcad\b|mechanical|electrical|summer 20|\biv\b|\bv\b|apprentice|physical design|designer|contractor|data center|\bit systems|in test\b|\bsdet\b|analyst|gameplay", re.I)
+EXCLUDE = re.compile(r"\bsenior\b|\bsr\b|\bstaff\b|principal|distinguished|\bfellow\b|vice president|\blead\b|manager|director|\bhead\b|\bvp\b|\bintern\b|internship|co-?op\b|front-?end|\bios\b|android|embedded|firmware|hardware|\bqa\b|\btest engineer|verification|support|sales|recruit|architect|\bphd\b|clearance|polygraph|ts/sci|top secret|silicon|\bcad\b|mechanical|electrical|summer 20|\biv\b|\bv\b|apprentice|physical design|designer|contractor|data center|\bit systems|in test\b|\bsdet\b|analyst|gameplay", re.I)
 
 STATES = "AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY DC".split()
 US_CODES = re.compile(r"\b(?:" + "|".join(STATES) + r"|US|USA|U\.S\.)\b")
@@ -38,9 +38,52 @@ def is_us(loc):
     return False
 
 
-def get(url, data=None, headers=None, timeout=30):
-    h = {"User-Agent": "Mozilla/5.0", **(headers or {})}
-    return urllib.request.urlopen(urllib.request.Request(url, data=data, headers=h), timeout=timeout).read().decode("utf-8", "ignore")
+# A site that says "too many requests" (429), "unavailable" (503) or "forbidden" (403) is left alone
+# for at least a day, across scans, and longer if it sends Retry-After. Shared job-board APIs are only
+# rested on 429/503, since a 403 there is about one board, not about us.
+COOLDOWN_FILE = os.path.join(D, "data", "cooldown.json")
+COOLDOWN_HOURS = 24
+SHARED_HOSTS = {"boards-api.greenhouse.io", "api.ashbyhq.com", "api.lever.co", "api.smartrecruiters.com",
+                "apply.workable.com", "raw.githubusercontent.com", "hn.algolia.com"}
+USER_AGENT = "JobRadar/1.0 (personal job search tool; reads public job listings slowly)"
+_cooldown_lock = threading.Lock()
+
+
+def cooldowns():
+    try:
+        return {h: t for h, t in json.load(open(COOLDOWN_FILE)).items() if t > time.time()}
+    except Exception:
+        return {}
+
+
+def _rest(host, retry_after):
+    wait = COOLDOWN_HOURS * 3600
+    if str(retry_after or "").isdigit():
+        wait = max(wait, int(retry_after))
+    with _cooldown_lock:
+        c = cooldowns()
+        c[host] = max(c.get(host, 0), time.time() + wait)
+        os.makedirs(os.path.dirname(COOLDOWN_FILE), exist_ok=True)
+        with open(COOLDOWN_FILE + ".tmp", "w") as f:
+            json.dump(c, f)
+        os.replace(COOLDOWN_FILE + ".tmp", COOLDOWN_FILE)
+
+
+def get(url, data=None, headers=None, timeout=30, final_url=False):
+    """final_url=True returns (url after redirects, text)."""
+    host = urlparse(url).hostname or ""
+    until = cooldowns().get(host)
+    if until:
+        raise RuntimeError(f"{host} asked us to slow down; resting until {time.strftime('%b %d %H:%M', time.localtime(until))}")
+    h = {"User-Agent": USER_AGENT, **(headers or {})}
+    try:
+        r = urllib.request.urlopen(urllib.request.Request(url, data=data, headers=h), timeout=timeout)
+        text = r.read().decode("utf-8", "ignore")
+        return (r.geturl(), text) if final_url else text
+    except urllib.error.HTTPError as e:
+        if e.code in (429, 503) or (e.code == 403 and host not in SHARED_HOSTS):
+            _rest(host, e.headers.get("Retry-After"))
+        raise
 
 
 def clean(t):
@@ -60,7 +103,7 @@ def greenhouse(board):
     for j in json.loads(get(f"https://boards-api.greenhouse.io/v1/boards/{board}/jobs?content=true"))["jobs"]:
         loc = (j.get("location") or {}).get("name", "")
         if wanted_title(j.get("title")) and is_us(loc):
-            out.append(dict(company=j.get("company_name") or pretty(board), title=j["title"], location=loc, url=j["absolute_url"], posted=j.get("first_published") or j.get("updated_at"), text=clean(j.get("content")), ats=f"gh:{j['id']}"))
+            out.append(dict(company=j.get("company_name") or pretty(board), title=j["title"], location=loc, url=j["absolute_url"], posted=j.get("first_published") or j.get("updated_at"), text=clean(j.get("content")), ats=f"gh:{j['id']}", board=board))
     return out
 
 
@@ -108,8 +151,10 @@ def workday(spec):
         if path in seen or "30+" in p.get("postedOn", "") or not wanted_title(p.get("title")):
             continue
         seen.add(path)
-        if not (is_us(loc) or re.search(r"\d+ Locations", loc)):
+        # Skip only clearly foreign roles here; campus names like "Whippany Campus" are checked on the job page.
+        if FOREIGN.search(loc) and not is_us(loc):
             continue
+        time.sleep(0.5)
         d = json.loads(get(base + path, headers={"Accept": "application/json"}))["jobPostingInfo"]
         full = f"{d.get('location', '')} {(d.get('country') or {}).get('descriptor', '')}"
         if is_us(full):

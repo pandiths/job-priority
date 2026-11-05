@@ -9,3 +9,6 @@ radar.db*
 node_modules/
 __pycache__/
 .env*
+
+# Extension secret, written by radar.py serve
+extension/config.js

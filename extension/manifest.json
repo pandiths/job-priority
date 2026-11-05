@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "Job Radar Autofill",
+  "version": "1.0",
+  "description": "Click the icon on a job application to fill it from your Job Radar profile and tailored resume. You review and submit.",
+  "permissions": ["scripting", "activeTab"],
+  "host_permissions": ["<all_urls>"],
+  "background": { "service_worker": "background.js", "type": "module" },
+  "action": { "default_title": "Fill this application (Job Radar)", "default_icon": { "32": "icon32.png", "128": "icon128.png" } },
+  "icons": { "32": "icon32.png", "128": "icon128.png" }
+}

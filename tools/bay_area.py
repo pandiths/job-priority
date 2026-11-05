@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
-"""Bay Area H-1B sponsors for software / ML roles, from the same DOL LCA file as build_sponsors.py.
+"""H-1B sponsors for software / ML roles by worksite city, from the same DOL LCA file as build_sponsors.py.
 
 Usage (python3 -I; stdlib only):
   python3 -I bay_area.py LCA_Disclosure_Data_FY2026_Q3.xlsx --out bay_area.json
+  python3 -I bay_area.py LCA_Disclosure_Data_FY2026_Q3.xlsx --all-us --min 3 --out us_companies.json
+
+--all-us keeps every US worksite and names cities "City, ST".
 
 Writes [{employer, key, count, median_wage, cities: {city: n}, top_titles}] for employers with
 certified H-1B filings at a worksite in the nine Bay Area counties plus Santa Cruz, after the same
@@ -12,7 +15,7 @@ title and staffing filters as build_sponsors.py. Board matching is done afterwar
 import argparse, collections, json, os, re, statistics, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from build_sponsors import iter_rows, norm_name, annual, TITLE_INC, TITLE_EXC, DENY, STAFFING_WORDS
+from build_sponsors import iter_rows, norm_name, annual, TITLE_INC, TITLE_EXC, DENY, STAFFING_WORDS, US_STATES
 
 COUNTIES = {"alameda", "contra costa", "marin", "napa", "san francisco", "san mateo", "santa clara",
             "solano", "sonoma", "santa cruz"}
@@ -23,6 +26,7 @@ def main():
     ap.add_argument("xlsx")
     ap.add_argument("--out", default="bay_area.json")
     ap.add_argument("--min", type=int, default=2, help="drop employers with fewer filings")
+    ap.add_argument("--all-us", action="store_true", help="every US worksite, not just the Bay Area")
     args = ap.parse_args()
     H, emp = None, {}
     for row in iter_rows(args.xlsx):
@@ -32,11 +36,12 @@ def main():
         g = lambda k: row.get(H[k], "")
         if g("VISA_CLASS") != "H-1B" or g("CASE_STATUS").strip().lower() != "certified":
             continue
-        if g("WORKSITE_STATE").strip().upper() != "CA":
-            continue
+        st = g("WORKSITE_STATE").strip().upper()
         county = re.sub(r"\s+county$", "", g("WORKSITE_COUNTY").strip().lower())
+        if not (st in US_STATES if args.all_us else st == "CA" and county in COUNTIES):
+            continue
         title = g("JOB_TITLE").strip()
-        if county not in COUNTIES or not TITLE_INC.search(title) or TITLE_EXC.search(title):
+        if not TITLE_INC.search(title) or TITLE_EXC.search(title):
             continue
         name = g("EMPLOYER_NAME").strip()
         key = norm_name(name)
@@ -47,7 +52,8 @@ def main():
         e["n"] += 1
         e["names"][name] += 1
         e["titles"][re.sub(r"\s+", " ", title.title())] += 1
-        e["cities"][g("WORKSITE_CITY").strip().title()] += 1
+        city = re.sub(r"\s+", " ", g("WORKSITE_CITY")).strip(" ,").title()
+        e["cities"][f"{city}, {st}" if args.all_us else city] += 1
         e["sec"] += g("SECONDARY_ENTITY").strip().lower().startswith("y")
         w = annual(g("WAGE_RATE_OF_PAY_FROM"), g("WAGE_UNIT_OF_PAY"))
         if w:
@@ -67,7 +73,7 @@ def main():
                     "name_variants": [k for k, _ in e["names"].most_common(4)]})
     out.sort(key=lambda r: -r["count"])
     json.dump(out, open(args.out, "w"), indent=1)
-    print(f"{len(out)} Bay Area employers -> {args.out}", file=sys.stderr)
+    print(f"{len(out)} employers -> {args.out}", file=sys.stderr)
 
 
 if __name__ == "__main__":

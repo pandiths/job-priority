@@ -35,7 +35,7 @@ def amazon():
 
 
 def _google_page(q, page):
-    u = "https://www.google.com/about/careers/applications/jobs/results/?" + urlencode([("q", q), ("location", "United States"), ("target_level", "EARLY"), ("target_level", "MID"), ("page", page)])
+    u = "https://www.google.com/about/careers/applications/jobs/results/?" + urlencode([("q", q), ("location", "United States"), ("target_level", "EARLY"), ("target_level", "MID")])
     s = get(u)
     i = s.find("key: 'ds:1'")
     if i < 0:
@@ -47,7 +47,7 @@ def _google_page(q, page):
 def google():
     seen, out = set(), []
     for q in QUERIES:
-        for page in (1, 2):  # 20 per page
+        for page in (1,):  # first page only: Google's robots.txt disallows the page= parameter
             _pause()
             rows = _google_page(q, page)
             for r in rows:
