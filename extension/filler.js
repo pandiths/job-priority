@@ -47,6 +47,18 @@ window.__jr = (() => {
     }
     return clean(t || e.placeholder || e.name || "");
   };
+  // Repeated entries ("Work History 2", "Education 1") and date groups ("From", "To") give a field its meaning.
+  const entryOf = (e) => {
+    for (let c = up(e), i = 0; c && i < 12; i++, c = up(c)) {
+      const lb = c.getAttribute && c.getAttribute("aria-labelledby");
+      if (c.getAttribute && c.getAttribute("role") === "group" && lb) { const t = clean(lb.split(/\s+/).map((x) => byId(c, x)?.innerText || "").join(" ")); if (/\d\s*$/.test(t)) return t; }
+      const h = c.querySelectorAll ? [...c.querySelectorAll("h1,h2,h3,h4,h5,h6,[role=heading]")].filter((x) => !x.contains(e) && /\b\d{1,2}\s*$/.test(text(x))) : [];
+      // The first ancestor with numbered headings is either one entry (one heading) or a whole section (several): only the first counts.
+      if (h.length) return h.length === 1 && (h[0].compareDocumentPosition(e) & Node.DOCUMENT_POSITION_FOLLOWING) ? text(h[0]) : "";
+    }
+    return "";
+  };
+  const dateGroup = (e) => { for (let c = up(e), i = 0; c && i < 6; i++, c = up(c)) { const l = c.querySelectorAll && [...c.querySelectorAll("label, legend")].find((x) => !x.contains(e) && text(x) && !/^(month|year|day|mm|yyyy|dd)$/i.test(text(x))); if (l) return text(l); } return ""; };
   const optText = (e) => clean((e.labels && e.labels[0] && text(e.labels[0])) || e.getAttribute("aria-label") || (e.parentElement && text(e.parentElement)) || e.value);
   const groupQ = (els) => {
     const lg = els[0].closest("fieldset")?.querySelector("legend")?.innerText;
@@ -66,13 +78,13 @@ window.__jr = (() => {
     all("[data-jr], [data-jr-opt]").forEach((e) => { e.removeAttribute("data-jr"); e.removeAttribute("data-jr-opt"); });
     const fields = [], seen = new Set();
     let id = 0;
-    const els = all("input, textarea, select, [role=combobox], [role=radio]");
+    const els = all("input, textarea, select, [role=combobox], [role=radio], button[aria-haspopup=listbox]");
     const password = els.some((e) => e.type === "password" && vis(e));
     for (const e of els) {
       if (seen.has(e) || outside(e)) continue;
       const tag = e.tagName.toLowerCase(), type = (e.getAttribute("type") || "").toLowerCase(), role = e.getAttribute("role");
       if (tag === "input" && /^(hidden|submit|button|reset|image|search|password)$/.test(type)) continue;
-      if (tag === "input" && !/^(file|radio|checkbox)$/.test(type) && role !== "combobox" && (e.tabIndex === -1 || e.getAttribute("aria-hidden") === "true" || getComputedStyle(e).opacity === "0")) continue;
+      if (tag === "input" && !/^(file|radio|checkbox)$/.test(type) && role !== "combobox" && role !== "spinbutton" && (e.tabIndex === -1 || e.getAttribute("aria-hidden") === "true" || getComputedStyle(e).opacity === "0")) continue;
       if (type === "file") { const c = closest(up(e) || e, "div, label, section, [class*='drop' i]") || up(e); if (!vis(e) && !(c && vis(c))) continue; }
       else if (!vis(e) && type !== "radio" && type !== "checkbox") continue;
       if (type === "radio" || role === "radio" || type === "checkbox") {
@@ -93,10 +105,15 @@ window.__jr = (() => {
         continue;
       }
       seen.add(e);
-      const n = id++, label = labelOf(e);
+      const n = id++, spin = e.getAttribute("role") === "spinbutton", entry = entryOf(e);
+      let label = spin ? `${dateGroup(e)} ${e.getAttribute("aria-label") || labelOf(e)}`.trim() : labelOf(e);
+      if (entry && !label.includes(entry)) label = `${entry} › ${label}`;
       e.setAttribute("data-jr", n);
       if (tag === "select") {
         fields.push({ id: n, type: "select", label, required: req(e, label), options: [...e.options].filter((x) => x.value !== "" && !/^(select|choose|--)/i.test(x.text.trim())).map((x) => clean(x.text)).slice(0, 250), value: e.selectedIndex > 0 && e.value ? clean(e.options[e.selectedIndex].text) : "" });
+      } else if (tag === "button") {
+        // Workday-style dropdowns are buttons that open a list; "Select One" means nothing is chosen yet.
+        fields.push({ id: n, type: "combobox", label, required: req(e, label), value: /^(select one|select|choose one)$/i.test(text(e)) ? "" : text(e) });
       } else if (role === "combobox" || e.getAttribute("aria-autocomplete") === "list") {
         const box = e.closest("[class*='control' i]") || e.closest("[class*='container' i], [class*='select' i]") || e.parentElement;
         fields.push({ id: n, type: "combobox", label, required: req(e, label), value: clean(e.value || box?.querySelector("[class*='single-value' i], [class*='singleValue' i], [class*='multi-value' i], [class*='multiValue' i]")?.innerText || "") });
@@ -105,9 +122,12 @@ window.__jr = (() => {
         let fl = label;
         for (let c = up(e), i = 0; c && i < 8 && (!fl || fl.length < 12 || (/^(attach|upload|browse|choose)/i.test(fl) && fl.length < 30)); i++, c = up(c)) if (text(c).length > 6) fl = text(c).slice(0, 120);
         const h = hints(e);
-        fields.push({ id: n, type: "file", label: (h ? `[section: ${h}] ` : "") + fl, required: req(e, fl), value: e.files && e.files.length ? e.files[0].name : "" });
+        let uploaded = e.files && e.files.length ? e.files[0].name : "";
+        for (let c = up(e), i = 0; !uploaded && c && i < 6; i++, c = up(c)) { const m = (text(c) + " " + [...(c.querySelectorAll ? c.querySelectorAll("[aria-label]") : [])].map((x) => x.getAttribute("aria-label")).join(" ")).match(/[\w.-]+\.(pdf|docx?)\b/i); if (m) uploaded = m[0]; }
+        fields.push({ id: n, type: "file", label: (h ? `[section: ${h}] ` : "") + fl, required: req(e, fl), value: uploaded });
       } else {
-        fields.push({ id: n, type: tag === "textarea" ? "textarea" : type || "text", label, required: req(e, label), value: clean(e.value) });
+        const shown = spin && byId(e, e.id.replace(/-input$/, "-display"));
+        fields.push({ id: n, type: spin ? "date part" : tag === "textarea" ? "textarea" : type || "text", label, required: req(e, label), value: shown ? (/^(mm|yyyy|dd)$/i.test(text(shown)) ? "" : text(shown)) : clean(e.value) });
       }
     }
     return { fields, password };
@@ -119,7 +139,7 @@ window.__jr = (() => {
       if (f.type !== "combobox" || f.value) continue;
       const el = one(`[data-jr="${f.id}"]`);
       press(el.closest("[class*='control' i]") || el); el.focus(); await sleep(500);
-      f.options = [...new Set(all("[role=option]").filter(vis).map(text).filter(Boolean))].slice(0, 120);
+      f.options = [...new Set(all("[role=option], [data-automation-id=promptOption]").filter(vis).map(text).filter(Boolean))].slice(0, 120);
       key(el, "Escape"); el.blur(); await sleep(150);
       if (!f.options.length) delete f.options;
       else if (f.options.length >= 100) f.options_partial = true; // long lists load more as you type
@@ -140,7 +160,7 @@ window.__jr = (() => {
   };
   const typeText = (el, v) => { el.focus(); setValue(el, v); el.dispatchEvent(new Event("change", { bubbles: true, composed: true })); el.dispatchEvent(new FocusEvent("blur")); el.blur(); };
   const findOption = (want) => {
-    const os = all("[role=option]").filter(vis);
+    const os = all("[role=option], [data-automation-id=promptOption]").filter(vis);
     return os.find((o) => norm(text(o)) === norm(want)) || os.find((o) => norm(text(o)).startsWith(norm(want)));
   };
   const fileFrom = (f) => { const b = atob(f.b64), u = new Uint8Array(b.length); for (let i = 0; i < b.length; i++) u[i] = b.charCodeAt(i); return new File([u], f.name, { type: "application/pdf" }); };
@@ -173,24 +193,54 @@ window.__jr = (() => {
       if (!o) { if (el.tagName === "INPUT") setValue(el, ""); key(el, "Escape"); el.blur(); return false; }
       press(o); await sleep(300); el.blur(); return true;
     }
+    if (el.getAttribute("role") === "spinbutton") {
+      // Date parts (Workday MM / YYYY) take keystrokes, not a pasted value.
+      // insertText produces the trusted input events these widgets listen for.
+      el.focus(); el.select && el.select();
+      document.execCommand("insertText", false, String(a.answer));
+      await sleep(200);
+      const shown = document.getElementById(el.id.replace(/-input$/, "-display"));
+      return shown ? !/^(mm|yyyy|dd)$/i.test(text(shown)) : el.value.trim() !== "";
+    }
     typeText(el, a.answer);
     return !("value" in el) || el.value.trim() !== ""; // sites may reformat, e.g. phone numbers
+  }
+
+  // Date boxes (Workday MM / YYYY) only accept real keystrokes, typed from the first part on. apply() returns
+  // them as `keys` for the caller to type: the extension through chrome.debugger, the app through Playwright.
+  function dateKeys(parts) {
+    const dates = new Map(), keys = [];
+    for (const { el, answer, label } of parts) {
+      const m = el.id && el.id.match(/^(.*)-dateSection(Month|Day|Year)-input$/);
+      if (!m) { keys.push({ id: el.id, text: String(answer), label }); continue; }
+      const d = dates.get(m[1]) || { label };
+      d[m[2]] = String(answer);
+      dates.set(m[1], d);
+    }
+    for (const [base, d] of dates) {
+      const order = ["Month", "Day", "Year"].filter((k) => d[k] && one(`[id="${base}-dateSection${k}-input"]`));
+      if (!order.length) continue;
+      const pad = { Month: 2, Day: 2, Year: 4 };
+      keys.push({ id: `${base}-dateSection${order[0]}-input`, text: order.map((k) => d[k].padStart(pad[k], "0")).join(""), label: d.label.replace(/ (Month|Day|Year)$/, "") });
+    }
+    return keys;
   }
 
   async function apply(list, files) {
     const scanned = new Map(scan().fields.map((f) => [f.id, f]));
     let filled = 0;
-    const failed = [];
+    const failed = [], dateParts = [];
     for (const a of list) {
       const f = scanned.get(a.id);
-      if (!f || f.value || NEVER.test(f.label)) continue;
+      if (!f || (f.value && !a.replace) || NEVER.test(f.label)) continue;
+      if (f.type === "date part") { const el = one(`[data-jr="${a.id}"]`); if (el) dateParts.push({ el, answer: a.answer, label: f.label }); continue; }
       let ok = false;
       try { ok = await fillOne({ ...a, type: f.type }, files); } catch { ok = false; }
       if (ok) filled++;
       else failed.push(`${f.label || f.type}: couldn't set "${a.answer || (a.choices || []).join(", ")}"`);
       await sleep(120);
     }
-    return { filled, failed };
+    return { filled, failed, keys: dateKeys(dateParts) };
   }
 
   function login(c) {
@@ -206,5 +256,29 @@ window.__jr = (() => {
     return "Filled your saved login. Press the sign-in button, then click the icon again on the form.";
   }
 
-  return { scan, apply, login, comboOptions };
+  // Presses "Add" / "Add Another" in work history and education sections until they hold as many entries
+  // as the resume. Entries are counted by their Delete/Remove buttons.
+  const SECTIONS = { work: /^(work (experience|history)|employment( history)?|professional experience|experience)\b/i, education: /^education\b/i };
+  async function addEntries(counts) {
+    const added = { work: 0, education: 0 };
+    for (const kind of Object.keys(SECTIONS)) {
+      for (let tries = 0; tries < 6; tries++) {
+        const heading = all("h1,h2,h3,h4,h5,h6,[role=heading]").filter(vis).find((h) => SECTIONS[kind].test(text(h)) && !/\d\s*$/.test(text(h)));
+        if (!heading) break;
+        let sec = heading;
+        const isAdd = (b) => /^add( another)?$/i.test(text(b)) || b.getAttribute("data-automation-id") === "add-button";
+        for (let i = 0; i < 6 && sec && ![...sec.querySelectorAll("button")].some((b) => vis(b) && isAdd(b)); i++) sec = up(sec);
+        if (!sec) break;
+        const have = [...sec.querySelectorAll("button")].filter((b) => vis(b) && /^(delete|remove)$/i.test(text(b) || b.getAttribute("aria-label") || "")).length;
+        if (have >= (counts[kind] || 0)) break;
+        const btn = [...sec.querySelectorAll("button")].filter((b) => vis(b) && isAdd(b)).pop();
+        if (!btn) break;
+        press(btn); added[kind]++;
+        await sleep(1500);
+      }
+    }
+    return added;
+  }
+
+  return { scan, apply, login, comboOptions, addEntries };
 })();

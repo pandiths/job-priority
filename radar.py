@@ -40,12 +40,17 @@ def db():
     CREATE TABLE IF NOT EXISTS study(id TEXT PRIMARY KEY);
     CREATE TABLE IF NOT EXISTS referrals(company TEXT, role TEXT, at TEXT, PRIMARY KEY(company, role));
     CREATE TABLE IF NOT EXISTS followups(company TEXT, role TEXT, at TEXT);
+    CREATE TABLE IF NOT EXISTS outcomes(company TEXT, role TEXT, outcome TEXT, at TEXT, PRIMARY KEY(company, role));
     CREATE TABLE IF NOT EXISTS job_urls(id TEXT, url TEXT, host TEXT, first_seen TEXT, PRIMARY KEY(id, url));
     """)
     c.executescript(outreach.SCHEMA)
     outreach.migrate(c)
     if "raw" not in [r["name"] for r in c.execute("PRAGMA table_info(jobs)")]:
         c.execute("ALTER TABLE jobs ADD COLUMN raw TEXT")
+    have = [r["name"] for r in c.execute("PRAGMA table_info(referrals)")]
+    for col in ("person", "link", "status", "note"):
+        if col not in have:
+            c.execute(f"ALTER TABLE referrals ADD COLUMN {col} TEXT DEFAULT ''")
     return c
 
 
@@ -245,7 +250,7 @@ def followups():
         wait = FOLLOWUP_EVERY_DAYS if past else FOLLOWUP_FIRST_DAYS
         if (today - last).days >= wait:
             due.append(dict(kind="application", company=r["company"], role=r["role"], applied=r["date"], days=(today - dt.date.fromisoformat(r["date"])).days, count=len(past)))
-    for r in c.execute("SELECT company,role,at FROM referrals"):
+    for r in c.execute("SELECT company,role,at FROM referrals WHERE status IN ('', 'asked')"):
         if (r["company"], r["role"]) in done or not r["at"]:
             continue
         days = (today - dt.date.fromisoformat(r["at"][:10])).days
@@ -295,6 +300,62 @@ def sponsor_companies(jobs):
         g["open"] = len(js)
         g["roles"] = [dict(id=j["id"], title=j["title"], score=round(j["score"]), bucket=j["bucket"]) for j in sorted(js, key=lambda j: -j["score"])[:5]]
     return sorted(groups.values(), key=lambda g: -g["filings"])
+
+
+OUTCOMES = ("interview", "rejected", "offer")
+REFERRAL_STATUSES = ("asked", "replied", "referred", "declined")
+
+
+def report(today=None):
+    """Totals behind the Report page, from the tracker plus what the app records (referrals, cold emails, outcomes)."""
+    c, today = db(), today or dt.date.today()
+    rows = tracker_list()
+    out = {(r["company"], r["role"]): r["outcome"] for r in c.execute("SELECT company,role,outcome FROM outcomes")}
+    refs = {(r["company"], r["role"]): r["status"] or "asked" for r in c.execute("SELECT company,role,status FROM referrals")}
+    mailed = {outreach.company_key(r["company"]) for r in c.execute("SELECT company FROM outreach")}
+    dated = lambda r: re.match(r"\d{4}-\d{2}-\d{2}$", r["date"] or "")
+    applied = [r for r in rows if r["status"] in APPLIED_STATUSES]
+    days = [(today - dt.timedelta(days=i)).isoformat() for i in range(27, -1, -1)]
+    per_day = {d: dict(day=d, submitted=0, filled=0) for d in days}
+    for r in rows:
+        if dated(r) and r["date"] in per_day:
+            k = "submitted" if r["status"] in APPLIED_STATUSES else "filled" if r["status"] in ("FILLED - TAB OPEN", "NEEDS YOU") else None
+            if k:
+                per_day[r["date"]][k] += 1
+    waiting = [r for r in rows if r["status"] in ("FILLED - TAB OPEN", "NEEDS YOU") and dated(r)]
+    age = lambda r: (today - dt.date.fromisoformat(r["date"])).days
+    ages = sorted(age(r) for r in applied if dated(r))
+    apps = [dict(company=r["company"], role=r["role"], date=r["date"], days=age(r) if dated(r) else None,
+                 outcome=out.get((r["company"], r["role"]), ""), referral=refs.get((r["company"], r["role"]), ""),
+                 emailed=outreach.company_key(r["company"]) in mailed) for r in applied]
+    sends = c.execute("SELECT via, COUNT(*) n FROM outreach GROUP BY via").fetchall()
+    return dict(
+        submitted=len(applied), companies=len({scoring.company_key(r["company"]) for r in applied}),
+        waiting=len(waiting), stale=sum(age(r) > 7 for r in waiting), needs_you=sum(r["status"] == "NEEDS YOU" for r in rows),
+        median_age=ages[len(ages) // 2] if ages else None,
+        outcomes={o: sum(a["outcome"] == o for a in apps) for o in OUTCOMES},
+        referrals={s: sum(v == s for v in refs.values()) for s in REFERRAL_STATUSES},
+        emails={(r["via"] or "smtp"): r["n"] for r in sends},
+        per_day=list(per_day.values()), applications=sorted(apps, key=lambda a: a["date"] or "", reverse=True))
+
+
+def focus_tab(url, company, port=9333, opener=None):
+    """Brings a job's open form to the front in the job-search Chrome (CDP on :9333).
+    Matches the posting's id (Greenhouse/Workday number, Ashby uuid) in the tab URL, then the company name."""
+    import urllib.request
+    opener = opener or (lambda u: urllib.request.urlopen(u, timeout=5).read())
+    try:
+        tabs = [t for t in json.loads(opener(f"http://127.0.0.1:{port}/json")) if t.get("type") == "page"]
+    except (OSError, ValueError):
+        return {"error": "The job-search Chrome isn't running, so there's no open form to show."}
+    ids = set(re.findall(r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}|\d{5,}", url or ""))
+    key = re.sub(r"[^a-z0-9]", "", (company or "").lower())
+    flat = lambda t: re.sub(r"[^a-z0-9]", "", t["url"].lower())
+    hits = [t for t in tabs if ids and any(i in t["url"] for i in ids)] or [t for t in tabs if len(key) >= 4 and key in flat(t)]
+    if not hits:
+        return {"error": f"No open tab for {company} in the job-search Chrome. The form may have been closed."}
+    opener(f"http://127.0.0.1:{port}/json/activate/{hits[0]['id']}")
+    return {"ok": True, "title": hits[0].get("title", ""), "matches": len(hits)}
 
 
 def tracker_list():
@@ -490,22 +551,33 @@ def ext_token():
 
 
 def ext_jobs(page_url, page_title):
-    """Prepared resumes, best match for the page first, then the master resume."""
-    host = urlparse(page_url).netloc.lower()
-    hay = (page_url + " " + page_title).lower()
+    """Prepared resumes, best match for the page first, then the master resume.
+    The exact posting scores highest. On shared applicant-tracking hosts (jobs.ashbyhq.com, ...) the host
+    alone says nothing, so the company's board in the path (/plaid/...) is compared instead."""
+    base = lambda u: u.split("#")[0].split("?")[0].rstrip("/").lower()
+    page, host = base(page_url), urlparse(page_url).netloc.lower()
+    board = lambda u: (urlparse(u).path.strip("/").split("/") or [""])[0].lower()
+    hay = re.sub(r"[^a-z0-9]", "", (page_url + " " + page_title).lower())
     words = set(re.findall(r"[a-z]{3,}", page_title.lower()))
     out = []
     for d in visible(db()):
         if not d["prepared"]:
             continue
         s = prep_status(d)
-        if s.get("state") != "ready" or not s.get("passed"):
+        if s.get("state") != "ready":
             continue
+        ju, jh = base(d["url"]), urlparse(d["url"]).netloc.lower()
+        exact = bool(ju) and (page.startswith(ju) or (urlparse(ju).path.strip("/") and ju.startswith(page)))
+        same_site = jh == host and (not outreach.ATS_HOSTS.search(host) or board(d["url"]) == board(page_url))
         co = re.sub(r"[^a-z0-9]", "", d["company"].lower())
-        score = 3 * (urlparse(d["url"]).netloc.lower() == host) + 2 * (bool(co) and co in re.sub(r"[^a-z0-9]", "", hay)) + len(words & set(re.findall(r"[a-z]{3,}", d["title"].lower()))) / 4
-        out.append(dict(id=d["id"], label=f"{d['company']} · {d['title']}", match=round(score, 2)))
+        score = 10 * exact + 3 * same_site + 2 * (bool(co) and co in hay) + len(words & set(re.findall(r"[a-z]{3,}", d["title"].lower()))) / 4
+        name, out_dir, _ = prep_paths(d)
+        _, pdf, cover = prep_files(name, out_dir)
+        ats = "" if s.get("passed") else f" (ATS {s.get('ats_after', 0):.0f})"
+        out.append(dict(id=d["id"], label=f"{d['company']} · {d['title']}{ats}", match=round(score, 2),
+                        files=dict(resume=os.path.basename(pdf), cover=os.path.basename(cover))))
     out.sort(key=lambda x: -x["match"])
-    return out + [dict(id="", label="Master resume (not tailored)", match=0)]
+    return out + [dict(id="", label="Master resume (not tailored)", match=0, files=dict(resume=os.path.basename(MASTER_PDF), cover=""))]
 
 
 def ext_paths(job_id):
@@ -523,6 +595,16 @@ def html_text(path):
     t = re.sub(r"</(p|li|h\d|div)>", "\n", t, flags=re.I)
     t = re.sub(r"<[^>]+>", " ", t).replace("&amp;", "&")
     return re.sub(r"\n\s*\n+", "\n", re.sub(r"[ \t]+", " ", t)).strip()
+
+
+def resume_entries(path):
+    """How many jobs and degrees the resume lists, so the extension can press Add that many times."""
+    with open(path) as f:
+        h = f.read()
+    def count(heading):
+        part = (re.split(rf"<h2>\s*{heading}\s*</h2>", h, flags=re.I)[1:] or [""])[0].split("<h2>")[0]
+        return len(re.findall(r'<span class="l">', part))
+    return dict(work=count("Work Experience"), education=count("Education"))
 
 
 def ext_answer(b):
@@ -647,14 +729,22 @@ class Handler(BaseHTTPRequestHandler):
             s = c.execute("SELECT at,status,total,new FROM scans ORDER BY at DESC LIMIT 1").fetchone()
             return self.reply(dict(scan=dict(s, status=json.loads(s["status"])) if s else None, pipeline=pipeline(), scanning=scanning(), weights=scoring.WEIGHTS, resting=sources.cooldowns()))
         if u.path == "/api/outreach":
-            job = job_row(parse_qs(u.query).get("id", [""])[0])
+            q = parse_qs(u.query)
+            job = job_row(q.get("id", [""])[0]) or (outreach.company_job(q["company"][0]) if q.get("company", [""])[0].strip() else None)
             return self.reply(outreach_view(job) if job else {"error": "unknown job"})
+        if u.path == "/api/outreach/lists":
+            try:
+                return self.reply(dict(lists=outreach.lists(), companies=outreach.saved_companies(db())))
+            except RuntimeError as e:
+                return self.reply({"error": str(e), "companies": outreach.saved_companies(db())})
         if u.path == "/api/outreach/history":
             return self.reply(outreach.history(db()))
         if u.path == "/api/followups":
             return self.reply(followups())
         if u.path == "/api/referrals":
-            return self.reply([dict(r) for r in c.execute("SELECT company,role,at FROM referrals ORDER BY at DESC")])
+            return self.reply([dict(r) for r in c.execute("SELECT company,role,at,person,link,status,note FROM referrals ORDER BY at DESC")])
+        if u.path == "/api/report":
+            return self.reply(report())
         if u.path == "/api/companies":
             return self.reply(sponsor_companies(visible(c)))
         if u.path == "/api/prep":
@@ -681,6 +771,8 @@ class Handler(BaseHTTPRequestHandler):
                 return self.reply(ext_answer(b))
             if route == "file":
                 return self.reply(ext_file(b.get("job_id", ""), b.get("kind", "resume")) or {"error": "no file"})
+            if route == "entries":
+                return self.reply(resume_entries(ext_paths(b.get("job_id", ""))[0]))
             if route == "login":
                 return self.reply(ext_login())
             if route == "filled":
@@ -720,9 +812,40 @@ class Handler(BaseHTTPRequestHandler):
             b = json.loads(self.rfile.read(int(self.headers.get("Content-Length", 0))))
             c = db()
             if b.get("sent"):
-                c.execute("INSERT OR REPLACE INTO referrals VALUES(?,?,?)", (str(b.get("company"))[:120], str(b.get("role"))[:200], now()))
+                key = (str(b.get("company"))[:120], str(b.get("role"))[:200])
+                if not c.execute("SELECT 1 FROM referrals WHERE company=? AND role=?", key).fetchone():
+                    c.execute("INSERT INTO referrals(company,role,at,person,link,status,note) VALUES(?,?,?,'','','asked','')", (*key, now()))
+                if b.get("status") not in (None, *REFERRAL_STATUSES):
+                    return self.reply({"error": "unknown status"}, code=400)
+                for col, n in (("person", 200), ("link", 300), ("status", 20), ("note", 1000)):
+                    if b.get(col) is not None:
+                        c.execute(f"UPDATE referrals SET {col}=? WHERE company=? AND role=?", (str(b[col])[:n], *key))
             else:
                 c.execute("DELETE FROM referrals WHERE company=? AND role=?", (b.get("company"), b.get("role")))
+            c.commit()
+            return self.reply({"ok": True})
+        if self.path == "/api/focus":
+            b = json.loads(self.rfile.read(int(self.headers.get("Content-Length", 0))))
+            return self.reply(focus_tab(str(b.get("url") or ""), str(b.get("company") or "")))
+        if self.path == "/api/tracker_status":
+            # Submit sweep: a filled form the user sent (SUBMITTED) or gave up on (SKIPPED).
+            b = json.loads(self.rfile.read(int(self.headers.get("Content-Length", 0))))
+            co, role = str(b.get("company") or "").strip(), str(b.get("role") or "").strip()
+            if b.get("status") not in ("SUBMITTED", "SKIPPED") or not co or not role:
+                return self.reply({"error": "bad request"}, code=400)
+            subprocess.run([sys.executable, TRACKER, "set", co, role, b["status"]], capture_output=True, timeout=20)
+            return self.reply({"ok": True})
+        if self.path == "/api/outcome":
+            # What the company did with an application: interview, rejected, offer, or "" for no reply yet.
+            b = json.loads(self.rfile.read(int(self.headers.get("Content-Length", 0))))
+            o, c = b.get("outcome") or "", db()
+            if o and o not in OUTCOMES:
+                return self.reply({"error": "unknown outcome"}, code=400)
+            key = (str(b.get("company"))[:120], str(b.get("role"))[:200])
+            if o:
+                c.execute("INSERT OR REPLACE INTO outcomes VALUES(?,?,?,?)", (*key, o, now()))
+            else:
+                c.execute("DELETE FROM outcomes WHERE company=? AND role=?", key)
             c.commit()
             return self.reply({"ok": True})
         if self.path == "/api/followup":
@@ -734,12 +857,28 @@ class Handler(BaseHTTPRequestHandler):
             return self.reply({"ok": True})
         if self.path.startswith("/api/outreach/"):
             b = json.loads(self.rfile.read(int(self.headers.get("Content-Length", 0))) or b"{}")
-            job = job_row(b.get("id", ""))
+            if self.path == "/api/outreach/sync":
+                try:
+                    if not b.get("label_id"):
+                        return self.reply({"error": "Choose the Apollo list you made for your job search."})
+                    n = outreach.sync_contacts(db(), b["label_id"])
+                except RuntimeError as e:
+                    return self.reply({"error": str(e)})
+                return self.reply(dict(synced=n, companies=outreach.saved_companies(db())))
+            # A job from the list, or just a company name typed on the Email recruiters page.
+            job = job_row(str(b.get("id", ""))) or (outreach.company_job(b["company"]) if str(b.get("company", "")).strip() else None)
             if not job:
                 return self.reply({"error": "unknown job"}, code=404)
             try:
                 if self.path == "/api/outreach/find":
-                    return self.reply(dict(contacts=outreach.find(db(), job, re.sub(r"^(https?://)?(www\.)?", "", str(b.get("domain") or "")).strip("/ ") or outreach.guess_domain(job["company"], job["url"]))))
+                    domain = re.sub(r"^(https?://)?(www\.)?", "", str(b.get("domain") or "")).strip("/ ")
+                    if b.get("org_id") or domain:
+                        return self.reply(dict(contacts=outreach.find(db(), job, domain=domain or None, org_id=b.get("org_id"))))
+                    if job["id"].startswith("co:"):
+                        return self.reply(outreach.find_by_name(db(), job, job["company"]))
+                    return self.reply(dict(contacts=outreach.find(db(), job, domain=outreach.guess_domain(job["company"], job["url"]))))
+                if self.path == "/api/outreach/lookup":
+                    return self.reply(dict(companies=outreach.lookup_company(job["company"])))
                 if self.path == "/api/outreach/reveal":
                     return self.reply(dict(contact=outreach.reveal(db(), str(b.get("person_id")))))
             except RuntimeError as e:

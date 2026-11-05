@@ -2,7 +2,8 @@
 
 Nothing is sent without the user pressing Send on that one email. Apollo's people search is free; revealing a
 person's email and LinkedIn costs Apollo credits, so it happens only per person, on request.
-Keys live in macOS Keychain: apollo-api-key (Apollo API key), job-radar-gmail (account = Gmail address,
+Keys live in macOS Keychain: apollo-api-key (Apollo key for searching people and revealing emails),
+apollo-lists-key (Apollo key for the account whose saved lists you sync), job-radar-gmail (account = Gmail address,
 password = a Google app password).
 """
 import datetime as dt
@@ -30,7 +31,7 @@ FOLLOW_UP_DAYS = 5
 
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS contacts(person_id TEXT PRIMARY KEY, job_id TEXT, company TEXT, first_name TEXT, name TEXT,
-  title TEXT, has_email INT, linkedin TEXT, email TEXT, email_status TEXT, revealed_at TEXT);
+  title TEXT, has_email INT, linkedin TEXT, email TEXT, email_status TEXT, revealed_at TEXT, source TEXT);
 CREATE TABLE IF NOT EXISTS outreach(id INTEGER PRIMARY KEY, person_id TEXT, job_id TEXT, company TEXT, role TEXT,
   email TEXT, subject TEXT, body TEXT, sent_at TEXT, message_id TEXT, via TEXT);
 """
@@ -39,6 +40,8 @@ CREATE TABLE IF NOT EXISTS outreach(id INTEGER PRIMARY KEY, person_id TEXT, job_
 def migrate(c):
     if "via" not in [r[1] for r in c.execute("PRAGMA table_info(outreach)")]:
         c.execute("ALTER TABLE outreach ADD COLUMN via TEXT")
+    if "source" not in [r[1] for r in c.execute("PRAGMA table_info(contacts)")]:
+        c.execute("ALTER TABLE contacts ADD COLUMN source TEXT")
 
 
 def keychain(service):
@@ -58,11 +61,18 @@ def guess_domain(company, url):
     return re.sub(r"[^a-z0-9]", "", company.lower()) + ".com"
 
 
-def apollo(path, params, opener=urllib.request.urlopen):
-    _, key = keychain("apollo-api-key")
+SEARCH_KEY, LISTS_KEY = "apollo-api-key", "apollo-lists-key"
+
+
+def apollo(path, params=None, opener=urllib.request.urlopen, method="POST", body=None, key_service=SEARCH_KEY):
+    _, key = keychain(key_service)
+    if not key and key_service == LISTS_KEY:
+        _, key = keychain(SEARCH_KEY)  # until a separate lists key is saved, lists come from the search account
     if not key:
-        raise RuntimeError("No Apollo API key. Create one in Apollo (Settings > Integrations > API) and run: security add-generic-password -a apollo -s apollo-api-key -w")
-    req = urllib.request.Request(f"{APOLLO}/{path}?{urllib.parse.urlencode(params, doseq=True)}", data=b"{}", method="POST",
+        raise RuntimeError(f"No Apollo API key saved as {key_service}. Create one in Apollo (Settings > Integrations > API) and run: security add-generic-password -a apollo -s {key_service} -w")
+    query = f"?{urllib.parse.urlencode(params, doseq=True)}" if params else ""
+    data = None if method == "GET" else json.dumps(body or {}).encode()
+    req = urllib.request.Request(f"{APOLLO}/{path}{query}", data=data, method=method,
                                  headers={"x-api-key": key, "Content-Type": "application/json", "Cache-Control": "no-cache", "Accept": "application/json"})
     try:
         with opener(req, timeout=30) as r:
@@ -71,10 +81,28 @@ def apollo(path, params, opener=urllib.request.urlopen):
         raise RuntimeError(f"Apollo said {e.code}: {e.read().decode(errors='replace')[:200]}")
 
 
-def find(c, job, domain, opener=urllib.request.urlopen):
-    """Free Apollo search for recruiters at the domain. Saves and returns them, engineering recruiters first."""
-    r = apollo("mixed_people/api_search", {"person_titles[]": RECRUITER_TITLES, "q_organization_domains_list[]": [domain], "per_page": 25, "page": 1}, opener)
-    people = r.get("people") or []
+def company_key(name):
+    """'Stripe, Inc.' -> 'stripe': for matching company names and guessing domains."""
+    return re.sub(r"[^a-z0-9]", "", re.sub(r"\b(inc|llc|ltd|corp|corporation|company|co|technologies|holdings)\b\.?", "", (name or "").lower()))
+
+
+def company_job(name):
+    """A stand-in for a job when the user searches by company name only."""
+    name = re.sub(r"\s+", " ", (name or "").strip())[:120]
+    return dict(id="co:" + company_key(name), company=name, title="", url="", text="")
+
+
+def search_people(domains=None, org_ids=None, opener=urllib.request.urlopen):
+    """Free Apollo people search for recruiters, by company domain or Apollo company id."""
+    params = {"person_titles[]": RECRUITER_TITLES, "per_page": 25, "page": 1}
+    if domains:
+        params["q_organization_domains_list[]"] = domains
+    if org_ids:
+        params["organization_ids[]"] = org_ids
+    return apollo("mixed_people/api_search", params, opener=opener).get("people") or []
+
+
+def save_people(c, job, people):
     for p in people:
         c.execute("INSERT INTO contacts(person_id, job_id, company, first_name, title, has_email) VALUES(?,?,?,?,?,?) "
                   "ON CONFLICT(person_id) DO UPDATE SET title=excluded.title, has_email=excluded.has_email",
@@ -83,8 +111,75 @@ def find(c, job, domain, opener=urllib.request.urlopen):
     return contacts(c, job, [p["id"] for p in people])
 
 
+def find(c, job, domain=None, org_id=None, opener=urllib.request.urlopen):
+    """Free Apollo search for recruiters at a domain or Apollo company. Saves and returns them, engineering recruiters first."""
+    return save_people(c, job, search_people([domain] if domain else None, [org_id] if org_id else None, opener))
+
+
+def find_by_name(c, job, name, opener=urllib.request.urlopen):
+    """Recruiters from a company name, free when name.com is the company's domain.
+    Returns {contacts} or {need_lookup} when the guess finds nobody at that company."""
+    name = name.strip()
+    if re.fullmatch(r"(https?://)?(www\.)?[\w.-]+\.[a-z]{2,}/?", name, re.I):
+        domain = re.sub(r"^(https?://)?(www\.)?", "", name, flags=re.I).strip("/").lower()
+        return dict(contacts=find(c, job, domain=domain, opener=opener), searched=domain)
+    key, guess = company_key(name), company_key(name) + ".com"
+    people = search_people([guess], None, opener)
+    # name.com can belong to a different company; keep results only when the employer name matches.
+    org = lambda p: company_key((p.get("organization") or {}).get("name", ""))
+    same = [p for p in people if key and org(p) and (key in org(p) or org(p) in key)]
+    if same:
+        return dict(contacts=save_people(c, job, same), searched=guess)
+    return dict(need_lookup=True, searched=guess)
+
+
+def lists(opener=urllib.request.urlopen):
+    """Your Apollo contact lists. Free."""
+    return [dict(id=l["id"], name=l.get("name") or "", count=l.get("cached_count") or 0)
+            for l in apollo("labels", opener=opener, method="GET", key_service=LISTS_KEY) if l.get("modality") == "contacts"]
+
+
+def sync_contacts(c, label_id=None, opener=urllib.request.urlopen, max_pages=5):
+    """Copies contacts saved in your Apollo account (all, or one list) into Job Radar. Free: no reveal needed."""
+    seen = 0
+    for page in range(1, max_pages + 1):
+        body = {"sort_by_field": "contact_created_at", "page": page, "per_page": 100}
+        if label_id:
+            body["contact_label_ids"] = [label_id]
+        found = apollo("contacts/search", opener=opener, body=body, key_service=LISTS_KEY).get("contacts") or []
+        for p in found:
+            company = p.get("organization_name") or (p.get("account") or {}).get("name") or ""
+            if not company:
+                continue
+            c.execute("INSERT INTO contacts(person_id, job_id, company, first_name, name, title, has_email, linkedin, email, email_status, revealed_at, source) "
+                      "VALUES(?,?,?,?,?,?,?,?,?,?,?,?) ON CONFLICT(person_id) DO UPDATE SET name=excluded.name, title=excluded.title, company=excluded.company, "
+                      "has_email=excluded.has_email, linkedin=coalesce(nullif(excluded.linkedin,''), contacts.linkedin), email=coalesce(nullif(excluded.email,''), contacts.email), "
+                      "email_status=coalesce(nullif(excluded.email_status,''), contacts.email_status), source=excluded.source",
+                      (p.get("person_id") or "c:" + p["id"], "", company, p.get("first_name") or "", p.get("name") or "", p.get("title") or "",
+                       int(bool(p.get("email"))), p.get("linkedin_url") or "", p.get("email") or "", p.get("email_status") or "", p.get("created_at") or "", "apollo-list"))
+            seen += 1
+        if len(found) < 100:
+            break
+    c.commit()
+    return seen
+
+
+def saved_companies(c):
+    """Companies with people you saved in Apollo, newest first."""
+    return [dict(r) for r in c.execute("SELECT company, count(*) people, sum(email<>'') with_email, max(revealed_at) latest FROM contacts "
+                                       "WHERE source='apollo-list' GROUP BY company ORDER BY latest DESC")]
+
+
+def lookup_company(name, opener=urllib.request.urlopen):
+    """Apollo company search by name. Costs 1 Apollo credit."""
+    r = apollo("mixed_companies/search", {"q_organization_name": name.strip(), "per_page": 8, "page": 1}, opener=opener)
+    return [dict(id=o["id"], name=o.get("name") or "", domain=o.get("primary_domain") or "", linkedin=o.get("linkedin_url") or "")
+            for o in (r.get("organizations") or []) + (r.get("accounts") or []) if o.get("id")]
+
+
 def contacts(c, job, ids=None):
-    rows = [dict(r) for r in c.execute("SELECT * FROM contacts WHERE company=?", (job["company"],))]
+    key = company_key(job["company"])
+    rows = [dict(r) for r in c.execute("SELECT * FROM contacts") if company_key(r["company"]) == key]
     if ids is not None:
         rows = [r for r in rows if r["person_id"] in ids or r["email"]]
     sent = {r["person_id"]: r["sent_at"] for r in c.execute("SELECT person_id, max(sent_at) sent_at FROM outreach GROUP BY person_id")}
@@ -96,7 +191,7 @@ def contacts(c, job, ids=None):
 
 def reveal(c, person_id, opener=urllib.request.urlopen):
     """Apollo enrichment for one person: full name, LinkedIn, work email. Costs Apollo credits (about 1 for an email)."""
-    p = apollo("people/match", {"id": person_id, "reveal_personal_emails": "false"}, opener).get("person") or {}
+    p = apollo("people/match", {"id": person_id, "reveal_personal_emails": "false"}, opener=opener).get("person") or {}
     c.execute("UPDATE contacts SET name=?, linkedin=?, email=?, email_status=?, title=coalesce(?, title), revealed_at=? WHERE person_id=?",
               (p.get("name") or "", p.get("linkedin_url") or "", p.get("email") or "", p.get("email_status") or "", p.get("title"),
                dt.datetime.now().isoformat(timespec="seconds"), person_id))
