@@ -11,7 +11,7 @@ export const SYSTEM = `You write a short cold email from a job applicant to a re
 
 Rules:
 - Plain text. Body at most 120 words, then a sign-off. Subject at most 8 words and names the role.
-- Greet the recruiter by first name. Name the exact role and include the posting link once.
+- Greet the recruiter by first name. When a role and posting link are given, name the exact role and include the link once. When no role is given, ask about open software or machine learning engineering roles that fit the applicant's background.
 - Give one or two concrete, relevant facts about the applicant, taken only from the fact bank or resume. Never add a tool, number, scope, result, employer or ownership claim they don't state.
 - The never-claim list overrides everything.
 - Don't claim to use the company's product, don't invent praise or shared connections, and don't mention visas or sponsorship.
@@ -25,7 +25,7 @@ export const draftEmail = (llm, d) =>
     system: `${SYSTEM}\n\n<fact_bank>\n${d.factBank}\n</fact_bank>\n\n<never_claim>\n${(d.neverClaim || []).join("\n")}\n</never_claim>\n\n<profile>\n${d.profile}\n</profile>\n\n<resume>\n${d.resume}\n</resume>`,
     effort: "medium",
     schema: SCHEMA,
-    user: `Role: ${d.title} at ${d.company}\nPosting: ${d.url}\nRecruiter: ${d.recruiter.name}, ${d.recruiter.title || "recruiter"}\nattach: ${!!d.attach}\n\n<job_description>\n${(d.jd || "").slice(0, 6000)}\n</job_description>`,
+    user: `${d.title ? `Role: ${d.title} at ${d.company}\nPosting: ${d.url}` : `Company: ${d.company} (no specific role)`}\nRecruiter: ${d.recruiter.name}, ${d.recruiter.title || "recruiter"}\nattach: ${!!d.attach}\n\n<job_description>\n${(d.jd || "").slice(0, 6000)}\n</job_description>`,
   });
 
 if (import.meta.url === `file://${process.argv[1]}`) {

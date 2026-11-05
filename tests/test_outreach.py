@@ -76,11 +76,41 @@ class Outreach(unittest.TestCase):
     def test_find_is_a_free_search_and_ranks_technical_recruiters_first(self):
         seen = []
         people = [dict(id="a", first_name="Bo", title="Recruiter", has_email=True), dict(id="b", first_name="Cy", title="Technical Recruiter", has_email=True)]
-        rows = outreach.find(self.c, JOB, "acme.com", opener(dict(people=people), seen))
+        rows = outreach.find(self.c, JOB, domain="acme.com", opener=opener(dict(people=people), seen))
         self.assertIn("mixed_people/api_search", seen[0].full_url)
         self.assertIn("q_organization_domains_list%5B%5D=acme.com", seen[0].full_url)
         self.assertEqual(seen[0].headers["X-api-key"], "secret")
         self.assertEqual([r["person_id"] for r in rows], ["b", "a"])
+
+    def test_company_name_search_is_free_when_name_dot_com_matches(self):
+        seen = []
+        people = [dict(id="a", first_name="Bo", title="Recruiter", has_email=True, organization=dict(name="Stripe, Inc."))]
+        r = outreach.find_by_name(self.c, outreach.company_job("Stripe"), "Stripe", opener(dict(people=people), seen))
+        self.assertEqual(r["searched"], "stripe.com")
+        self.assertEqual([x["person_id"] for x in r["contacts"]], ["a"])
+        self.assertEqual(len(seen), 1)
+
+    def test_a_different_company_at_the_guessed_domain_is_not_used(self):
+        people = [dict(id="z", first_name="Zed", title="Recruiter", organization=dict(name="Scale Fitness"))]
+        r = outreach.find_by_name(self.c, outreach.company_job("Scale AI"), "Scale AI", opener(dict(people=people), []))
+        self.assertTrue(r["need_lookup"])
+        self.assertEqual(self.c.execute("SELECT count(*) FROM contacts").fetchone()[0], 0)
+
+    def test_a_typed_website_is_searched_directly(self):
+        seen = []
+        outreach.find_by_name(self.c, outreach.company_job("scale.com"), "https://www.scale.com/", opener(dict(people=[]), seen))
+        self.assertIn("q_organization_domains_list%5B%5D=scale.com", seen[0].full_url)
+
+    def test_sync_copies_saved_apollo_contacts_without_credits(self):
+        seen = []
+        saved = [dict(id="k1", person_id="p9", first_name="Lee", name="Lee Park", title="Technical Recruiter", email="lee@acme.com", email_status="verified",
+                      linkedin_url="https://linkedin.com/in/lee", organization_name="Acme", created_at="2026-11-04T10:00:00Z")]
+        self.assertEqual(outreach.sync_contacts(self.c, "L1", opener(dict(contacts=saved), seen)), 1)
+        self.assertIn("contacts/search", seen[0].full_url)
+        self.assertEqual(json.loads(seen[0].data)["contact_label_ids"], ["L1"])
+        self.assertEqual(outreach.saved_companies(self.c)[0]["company"], "Acme")
+        row = outreach.contacts(self.c, dict(company="ACME Inc."))[0]
+        self.assertEqual((row["email"], row["linkedin"]), ("lee@acme.com", "https://linkedin.com/in/lee"))
 
     def test_reveal_saves_email_and_linkedin(self):
         self.add_contact(email="", email_status="", linkedin="", name="")
@@ -149,10 +179,18 @@ class Outreach(unittest.TestCase):
         self.c.execute("INSERT INTO followups VALUES(?,?,?)", ("Acme", due[0]["role"], later.isoformat()))
         self.assertEqual(outreach.due_followups(self.c, later), [])
 
+    def test_lists_use_the_search_key_until_a_lists_key_is_saved(self):
+        used = []
+        with mock.patch.object(outreach, "keychain", lambda s: (used.append(s), (None, "k") if s == outreach.SEARCH_KEY else (None, None))[1]):
+            outreach.apollo("labels", opener=opener([], []), method="GET", key_service=outreach.LISTS_KEY)
+        self.assertEqual(used, [outreach.LISTS_KEY, outreach.SEARCH_KEY])
+
     def test_missing_keys_explain_what_to_do(self):
         with mock.patch.object(outreach, "keychain", lambda s: (None, None)):
             with self.assertRaisesRegex(RuntimeError, "apollo-api-key"):
                 outreach.apollo("mixed_people/api_search", {})
+            with self.assertRaisesRegex(RuntimeError, "apollo-lists-key"):
+                outreach.lists()  # no lists key and no search key to fall back to
             r = outreach.send(self.c, JOB, self.add_contact(), "s", "b", smtp=FakeSMTP)
             self.assertIn("job-radar-gmail", r["error"])
 

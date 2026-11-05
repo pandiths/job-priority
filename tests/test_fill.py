@@ -96,5 +96,49 @@ class ExtensionApi(unittest.TestCase):
         self.assertEqual([j["id"] for j in body], ["acme|2", "x|1", ""])
 
 
+    def test_the_exact_posting_beats_another_job_on_the_same_ats_host(self):
+        jobs = [dict(id="harvey|re", company="Harvey", title="Research Engineer", url="https://jobs.ashbyhq.com/harvey/1111", prepared=True),
+                dict(id="plaid|mle", company="Plaid", title="ML Engineer", url="https://jobs.ashbyhq.com/plaid/2222", prepared=True)]
+        status = lambda d: {"state": "ready", "passed": d["id"] == "harvey|re", "ats_after": 88.9}
+        with mock.patch.object(radar, "visible", return_value=jobs), mock.patch.object(radar, "db"), mock.patch.object(radar, "prep_status", side_effect=status):
+            ranked = radar.ext_jobs("https://jobs.ashbyhq.com/plaid/2222/application", "ML Engineer @ Plaid")
+        self.assertEqual(ranked[0]["id"], "plaid|mle")
+        self.assertIn("(ATS 89)", ranked[0]["label"])
+        self.assertTrue(ranked[0]["files"]["resume"].endswith(".pdf"))
+
+
 if __name__ == "__main__":
     unittest.main()
+
+
+class FocusTab(unittest.TestCase):
+    TABS = [{"type": "page", "id": "A", "title": "Reddit", "url": "https://job-boards.greenhouse.io/embed/job_app?for=reddit&token=7333744"},
+            {"type": "page", "id": "B", "title": "Chime", "url": "https://job-boards.greenhouse.io/embed/job_app?for=chime&token=8868948"},
+            {"type": "service_worker", "id": "C", "title": "", "url": "chrome-extension://x/background.js"}]
+
+    def opener(self):
+        calls = []
+        def fn(u):
+            calls.append(u)
+            return json.dumps(self.TABS).encode() if u.endswith("/json") else b"Target activated"
+        return fn, calls
+
+    def test_the_posting_id_picks_the_tab(self):
+        fn, calls = self.opener()
+        r = radar.focus_tab("https://chime.com/careers?gh_jid=8868948", "Chime Financial, Inc", opener=fn)
+        self.assertEqual((r["ok"], r["title"]), (True, "Chime"))
+        self.assertTrue(calls[-1].endswith("/json/activate/B"))
+
+    def test_falls_back_to_the_company_name(self):
+        fn, calls = self.opener()
+        self.assertEqual(radar.focus_tab("", "Reddit", opener=fn)["title"], "Reddit")
+
+    def test_no_match_activates_nothing(self):
+        fn, calls = self.opener()
+        self.assertIn("error", radar.focus_tab("https://x.com/jobs/555555", "Stripe", opener=fn))
+        self.assertEqual(len(calls), 1)
+
+    def test_chrome_not_running(self):
+        def down(u):
+            raise urllib.error.URLError("refused")
+        self.assertIn("isn't running", radar.focus_tab("", "Chime", opener=down)["error"])

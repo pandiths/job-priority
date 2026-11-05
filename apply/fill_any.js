@@ -128,8 +128,13 @@ async (page) => {
     }
     let filled = 0;
     for (const [f, list] of perFrame) {
-      const r = await within(f.evaluate(([l, fl]) => window.__jr.apply(l, fl), [list, files]), 120000, { filled: 0, failed: ['The page stopped responding while filling.'] });
+      const r = await within(f.evaluate(([l, fl]) => window.__jr.apply(l, fl), [list, files]), 120000, { filled: 0, failed: ['The page stopped responding while filling.'], keys: [] });
       filled += r.filled; left.push(...r.failed);
+      // Date boxes need real keystrokes, typed from the first part (month) on.
+      for (const k of r.keys || []) {
+        if (!(await f.evaluate((id) => { const e = document.getElementById(id); if (e) { e.scrollIntoView({ block: 'center' }); e.focus(); } return !!e; }, k.id).catch(() => false))) continue;
+        await p.keyboard.type(k.text, { delay: 80 }); await p.keyboard.press('Tab'); await W(200); filled++;
+      }
     }
     filledTotal += filled;
     say(`Page ${pg + 1}: filled ${filled} of ${s.fields.filter((x) => !x.value).length} empty fields.`);
