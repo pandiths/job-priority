@@ -38,6 +38,14 @@ python3 -m unittest discover tests
 
 Python 3.9+ (standard library, plus `pypdf` for page counts), Node 24 and Google Chrome.
 
+## Always on (macOS)
+
+`tools/service.sh install` runs the server as a LaunchAgent: it starts at login and restarts if it crashes. After a code change, `tools/service.sh deploy` pulls `main`, runs both test suites and restarts only if they pass. `status`, `logs` and `uninstall` do what they say.
+
+macOS doesn't let background services read `~/Documents`. If the repo lives there, give the Command Line Tools `Python.app` Full Disk Access (System Settings → Privacy & Security); the script runs that Python directly.
+
+GitHub Actions (`.github/workflows/ci.yml`) runs both test suites on every push and pull request, and fails if any personal file is tracked.
+
 ## Claude API key
 
 Without a key the app still runs, using keyword tailoring only. To turn on Claude:
