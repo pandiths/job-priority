@@ -6,7 +6,7 @@ from urllib.parse import parse_qs, urlparse
 
 D = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, D)
-import scoring, sources  # noqa: E402
+import outreach, scoring, sources  # noqa: E402
 
 # Sources that carry the full job description; their row wins when the same job comes from several places.
 FULL_TEXT_SOURCES = ("Greenhouse", "Ashby", "Lever", "Workday", "SmartRecruiters", "Workable", "Career sites")
@@ -42,6 +42,8 @@ def db():
     CREATE TABLE IF NOT EXISTS followups(company TEXT, role TEXT, at TEXT);
     CREATE TABLE IF NOT EXISTS job_urls(id TEXT, url TEXT, host TEXT, first_seen TEXT, PRIMARY KEY(id, url));
     """)
+    c.executescript(outreach.SCHEMA)
+    outreach.migrate(c)
     if "raw" not in [r["name"] for r in c.execute("PRAGMA table_info(jobs)")]:
         c.execute("ALTER TABLE jobs ADD COLUMN raw TEXT")
     return c
@@ -249,6 +251,7 @@ def followups():
         days = (today - dt.date.fromisoformat(r["at"][:10])).days
         if days >= REFERRAL_NUDGE_DAYS:
             due.append(dict(kind="referral", company=r["company"], role=r["role"], applied=r["at"][:10], days=days, count=0))
+    due += [dict(f, applied=f["at"][:10], count=0) for f in outreach.due_followups(c, today)]
     return sorted(due, key=lambda x: -x["days"])
 
 
@@ -565,6 +568,57 @@ def ext_filled(job_id):
     return dict(ok=True)
 
 
+# ---------- recruiter outreach (outreach.py): Apollo lookups, Claude drafts, sending only on the user's click ----------
+def sender_name():
+    with open(PROFILE_MD) as f:
+        m = re.search(r"^- First name:\s*(.+)$", f.read(), re.M)
+    return os.environ.get("JR_SENDER_NAME") or (m.group(1).strip() if m else "")
+
+
+def outreach_view(job):
+    c = db()
+    return dict(domain=outreach.guess_domain(job["company"], job["url"]), contacts=outreach.contacts(c, job),
+                sent=[h for h in outreach.history(c) if h["job_id"] == job["id"]], max_per_day=outreach.MAX_SENDS_PER_DAY)
+
+
+def outreach_draft(job, person_id, attach):
+    c = db()
+    contact = c.execute("SELECT * FROM contacts WHERE person_id=?", (person_id,)).fetchone()
+    if not contact or not contact["email"]:
+        return dict(error="Reveal the recruiter's email first.")
+    html, pdf, _, _ = ext_paths(job["id"])
+    if not os.path.exists(html):
+        html, pdf = MASTER_HTML, MASTER_PDF
+    with open(os.path.join(D, "data", "fact_bank.md")) as f:
+        facts = f.read()
+    with open(os.path.join(D, "data", "profile.json")) as f:
+        never = json.load(f).get("never_claim", [])
+    with open(PROFILE_MD) as f:
+        profile = f.read()
+    payload = dict(factBank=facts, neverClaim=never, profile=profile, resume=html_text(html), jd=job["text"] or "", company=job["company"], title=job["title"],
+                   url=job["url"], recruiter=dict(name=contact["name"] or contact["first_name"], title=contact["title"]), attach=bool(attach and os.path.exists(pdf)))
+    p = subprocess.run([NODE, os.path.join(D, "apply", "outreach_draft.mjs")], input=json.dumps(payload), capture_output=True, text=True, timeout=180, cwd=D)
+    try:
+        return json.loads(p.stdout)
+    except ValueError:
+        return dict(error=(p.stderr or "no draft")[-300:])
+
+
+def outreach_send(job, b):
+    c = db()
+    contact = c.execute("SELECT * FROM contacts WHERE person_id=?", (b.get("person_id"),)).fetchone()
+    _, pdf, _, _ = ext_paths(job["id"])
+    if not os.path.exists(pdf):
+        pdf = MASTER_PDF
+    try:
+        return outreach.send(c, job, dict(contact) if contact else None, str(b.get("subject", "")), str(b.get("body", "")),
+                             attachment=pdf if b.get("attach") and os.path.exists(pdf) else None, sender_name=sender_name(), allow_unverified=bool(b.get("allow_unverified")))
+    except (outreach.smtplib.SMTPAuthenticationError, outreach.imaplib.IMAP4.error) as e:
+        return dict(ok=False, error=f"Gmail rejected the app password saved as job-radar-gmail ({e}). Make a new one at myaccount.google.com/apppasswords and save it again.")
+    except Exception as e:  # other SMTP and IMAP errors go back to the page as text
+        return dict(ok=False, error=f"Gmail refused: {e}")
+
+
 class Handler(BaseHTTPRequestHandler):
     def log_message(self, *a):
         pass
@@ -592,6 +646,11 @@ class Handler(BaseHTTPRequestHandler):
         if u.path == "/api/status":
             s = c.execute("SELECT at,status,total,new FROM scans ORDER BY at DESC LIMIT 1").fetchone()
             return self.reply(dict(scan=dict(s, status=json.loads(s["status"])) if s else None, pipeline=pipeline(), scanning=scanning(), weights=scoring.WEIGHTS, resting=sources.cooldowns()))
+        if u.path == "/api/outreach":
+            job = job_row(parse_qs(u.query).get("id", [""])[0])
+            return self.reply(outreach_view(job) if job else {"error": "unknown job"})
+        if u.path == "/api/outreach/history":
+            return self.reply(outreach.history(db()))
         if u.path == "/api/followups":
             return self.reply(followups())
         if u.path == "/api/referrals":
@@ -673,6 +732,23 @@ class Handler(BaseHTTPRequestHandler):
             c.execute("INSERT INTO followups VALUES(?,?,?)", (str(b.get("company"))[:120], str(b.get("role"))[:200], now()))
             c.commit()
             return self.reply({"ok": True})
+        if self.path.startswith("/api/outreach/"):
+            b = json.loads(self.rfile.read(int(self.headers.get("Content-Length", 0))) or b"{}")
+            job = job_row(b.get("id", ""))
+            if not job:
+                return self.reply({"error": "unknown job"}, code=404)
+            try:
+                if self.path == "/api/outreach/find":
+                    return self.reply(dict(contacts=outreach.find(db(), job, re.sub(r"^(https?://)?(www\.)?", "", str(b.get("domain") or "")).strip("/ ") or outreach.guess_domain(job["company"], job["url"]))))
+                if self.path == "/api/outreach/reveal":
+                    return self.reply(dict(contact=outreach.reveal(db(), str(b.get("person_id")))))
+            except RuntimeError as e:
+                return self.reply({"error": str(e)})
+            if self.path == "/api/outreach/draft":
+                return self.reply(outreach_draft(job, b.get("person_id"), b.get("attach")))
+            if self.path == "/api/outreach/send":
+                return self.reply(outreach_send(job, b))
+            return self.reply({"error": "not found"}, code=404)
         if self.path in ("/api/prepare", "/api/fill"):
             job = job_row(json.loads(self.rfile.read(int(self.headers.get("Content-Length", 0)))).get("id"))
             if not job:
